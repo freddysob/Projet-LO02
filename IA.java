@@ -3,17 +3,21 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 @objid ("ce110b50-f8ea-48ea-8017-a2104bc861e8")
 public class IA {
     @objid ("9dc00c79-ce71-45b1-84b2-6186938b3244")
-    public String situation;
+    String situation;
 
     @objid ("eb467e72-172b-4013-b7f4-c5022868e87a")
-    public Joueur joueur;
+    private Joueur joueur;
 
     @objid ("3ce5ca07-26e2-49b1-86f3-210856435573")
-    public void prioriserCartes() {
+    public int[] prioriserCartes() {
     }
-
+    
+    private void tricher() {
+    
+    }
+    
     @objid ("24fe93d9-1fa5-4ccf-9d3c-f2f7cd3b0005")
-    public void jouer() {
+    public void jouerCarte() {
     }
 
     @objid ("f628ab36-a009-47c2-b9f6-efdfb85d129a")
