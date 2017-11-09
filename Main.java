@@ -10,6 +10,11 @@ public class Main {
     @objid ("aacbce62-fcd5-49c5-9b64-7f4ef32ed7af")
     public List<Carte> carte = new ArrayList<Carte> ();
 
+    public Main(int nbCartes, List<Carte> carte){
+        this.nbCarte= nbCarte;
+        this.carte = carte;
+    }
+    
     @objid ("24a3d8ab-a154-4a3e-b130-919b64291868")
     int getNbCartes() {
         // Automatically generated method. Please delete this comment before entering specific code.
