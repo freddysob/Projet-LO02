@@ -19,6 +19,15 @@ public class Joueur {
 
     @objid ("f6d36953-674e-46b7-879f-8c27393785f5")
     public Main main;
+    
+    public Joueur(String nom, boolean type, int numero, Main main){
+        this.etat = true;
+        this.nom = nom;
+        this.type = type;
+        this.numero = numero;
+        this.points = 0;
+        this.main = main;
+    }
 
     @objid ("c0252c95-0978-40bb-bc14-40076292a884")
     public void signalerDerniereCarte() {
