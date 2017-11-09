@@ -10,6 +10,11 @@ public class Carte {
 
     @objid ("21f64c68-6feb-4d38-a211-20d3eae4718e")
     private String localisation;
+    
+    public Carte(string type, string numero){
+        this.numero=numero;
+        this.type=type;
+    }
 
     @objid ("fb3544d3-93a5-4fb3-a317-fb7855a90a64")
     public void jouerCarte() {
@@ -17,10 +22,6 @@ public class Carte {
 
     @objid ("bb607436-5a85-4c20-ae05-1bc967a5a60d")
     public void appliquerPouvoir() {
-    }
-
-    @objid ("3892324b-f15d-4ebd-a86c-19aaa9bd14dd")
-    public void changerCarteHaut() {
     }
 
     @objid ("a2c1c4b8-686b-492d-83f3-07fe90735d7f")
