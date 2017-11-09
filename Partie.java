@@ -5,17 +5,17 @@ public class Partie {
     @objid ("79e8229f-77de-4a75-97e1-fe3782043a6b")
     private String statut;
 
-    @objid ("d17e671f-c88b-4620-8290-28c2e231268d")
-    private Variante variante;
-
     @objid ("3aeb1c27-a90e-4339-bd9f-581cad54cf90")
     private int nbJoueurs;
 
-    @objid ("5028ebf9-a427-499a-a23e-9f8a0d58d6c1")
-    private int nbManches;
-
     @objid ("6eb49448-5654-4cee-a87c-85f5c2848ab5")
     private int pointsMax;
+	
+    public Partie(int nbJoueurs, int pointsMax){
+    	this.nbJoueurs = nbJoueurs
+	this.pointsMax = pointsMax
+	this.statut = "initialise"
+    }
 
     @objid ("f8726706-c624-42b8-98c0-d271b7ba5ec2")
     public void changerNbManches() {
@@ -41,18 +41,6 @@ public class Partie {
         this.statut = value;
     }
 
-    @objid ("a8db33b1-45b7-4f9c-946d-426e4af02dee")
-    Variante getVariante() {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        return this.variante;
-    }
-
-    @objid ("5666bd98-5b0e-45f7-84aa-ec68b5663f3a")
-    void setVariante(Variante value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        this.variante = value;
-    }
-
     @objid ("7994ffd4-279b-47d9-b8c2-09943c5fd4e6")
     int getNbJoueurs() {
         // Automatically generated method. Please delete this comment before entering specific code.
@@ -65,17 +53,6 @@ public class Partie {
         this.nbJoueurs = value;
     }
 
-    @objid ("ada73401-6ee3-4e25-8a14-8f48a225fac3")
-    int getNbManches() {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        return this.nbManches;
-    }
-
-    @objid ("df73599c-90b7-47e6-89cf-d4c0f16617b2")
-    void setNbManches(int value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        this.nbManches = value;
-    }
 
     @objid ("88af0ca6-8146-4642-8771-66bca899883f")
     int getPointsMax() {
@@ -117,7 +94,7 @@ public class Partie {
 			{
 				System.out.println("Le joueur "& i &" joue.");
 				Carte C=Joueur[i].jouerCarte();
-				Tatamis.verifierValiditÈCarte(normale);
+				Tatamis.verifierValidit√©Carte(normale);
 				C.appliquerPouvoir();
 				Pioche.reconstituer();
 				this.verifierFinPartie(V);
@@ -126,9 +103,9 @@ public class Partie {
     		
     		
     		System.out.println("Le joueur"& i & "joue.");
-    		System.out.println("VÈrification carte.");
-    		System.out.println("Effets et pÈnalitÈs.");
-    		System.out.println("VÈrifications finales.");
+    		System.out.println("V√©rification carte.");
+    		System.out.println("Effets et p√©nalit√©s.");
+    		System.out.println("V√©rifications finales.");
     		System.out.println("Le joueur suivant joue.");
     	if (i<this.nbJoueurs){i=i+1;
     	}
