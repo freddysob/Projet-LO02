@@ -4,8 +4,6 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("a01dd153-c040-44b2-8be3-508863e3b0c0")
 public class Manche {
-    @objid ("82238392-8d75-4504-baaf-a0ae3c1615bb")
-    private int nbJoueurs;
 
     @objid ("ba8d8d3f-7077-46fe-94db-e661fce0b9f9")
     private boolean sensJeuPos;
@@ -24,6 +22,15 @@ public class Manche {
 
     @objid ("f0af0d16-edef-44fe-8481-d43c4799219e")
     public Partie partie;
+    
+    public Manche(List<Joueur> joueur, Tatais tatamis, Pioche pioche, Variante variante, Partie partie){
+        this.sensJeuPos = true;
+        this.joueur = joueur;
+        this.tatamis = tatamis;
+        this.pioche = pioche;
+        this.variante = variante;
+        this.partie = partie;
+    }
 
     @objid ("57446165-d680-43ad-b02c-8badf65fcc0b")
     public void penaliserJoueur() {
@@ -39,18 +46,6 @@ public class Manche {
 
     @objid ("69682896-ea71-4f20-95de-d74694a1418b")
     public void changerSens() {
-    }
-
-    @objid ("ccb6b1af-8648-4ff9-9754-6da718861634")
-    int getNbJoueurs() {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        return this.nbJoueurs;
-    }
-
-    @objid ("99b7c47a-995e-4b6b-80f7-0b9e44769cfe")
-    void setNbJoueurs(int value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        this.nbJoueurs = value;
     }
 
     @objid ("5954785d-bd4e-490f-b174-f90950a9ea74")
