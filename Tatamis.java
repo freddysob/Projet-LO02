@@ -6,6 +6,10 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 public class Tatamis {
     @objid ("e2025e3e-4ae1-42d6-8b82-6d62d090d799")
     public List<Carte> carte = new ArrayList<Carte> ();
+    
+    public Tatamis(List<Carte> carte){
+        this.carte=carte;
+    }
 
     @objid ("6775325f-3103-4b75-8638-b36c9712ae84")
     public void verifierValiditeCarte:(Variante Variante) {
