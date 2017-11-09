@@ -12,6 +12,12 @@ public class Variante {
 
     @objid ("5b9273cf-6a6f-4215-a1db-0ac1d9b0091b")
     public List<Carte> carte = new ArrayList<Carte> ();
+    
+    public Variante(int nbCartes, String nom, List<Carte> carte){
+        this.nbCartes = nbCartes;
+        this.nom = nom;
+        this.carte = carte;
+    }
 
     @objid ("8baf9c35-cec6-4486-9814-664a11b68306")
     public void changerPouvoirCarte() {
