@@ -6,6 +6,10 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 public class Pioche {
     @objid ("ffa064a3-1995-4c33-9249-fd8f2ea61be7")
     public List<Carte> carte = new ArrayList<Carte> ();
+    
+    public Pioche(List<Carte> carte){
+        this.carte = carte;
+    }
 
     @objid ("afd6a121-7cf8-4e34-86ab-30b1f743b039")
     public void reconstituer() {
