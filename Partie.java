@@ -2,8 +2,10 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("50a23012-b43d-47f5-b068-5836148a3eab")
 public class Partie {
+    
+	
     @objid ("79e8229f-77de-4a75-97e1-fe3782043a6b")
-    private String statut;
+    private boolean statutEnCours;
 
     @objid ("3aeb1c27-a90e-4339-bd9f-581cad54cf90")
     private int nbJoueurs;
@@ -12,31 +14,30 @@ public class Partie {
     private int pointsMax;
 	
     public Partie(int nbJoueurs, int pointsMax){
-    	this.nbJoueurs = nbJoueurs
-	this.pointsMax = pointsMax
-	this.statut = "initialise"
+    	this.nbJoueurs = nbJoueurs;
+	this.pointsMax = pointsMax;
+	this.statutEnCours = true;
     }
 
     @objid ("f8726706-c624-42b8-98c0-d271b7ba5ec2")
     public void changerNbManches() {
     }
 
-    @objid ("2487c473-f257-4846-84e2-49c1bb4738a4")
-    public void verifierFinPartie(Variante Variante) {
-    }
+   // @objid ("2487c473-f257-4846-84e2-49c1bb4738a4")
+    
 
     @objid ("bc882b0a-e085-4c2b-ac03-dad20d396aa6")
     public void changerPointMax() {
     }
 
     @objid ("4fa97aa3-f468-4134-abd5-ca54228d6fce")
-    String getStatut() {
+    String getStatutEnCours() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.statut;
     }
 
     @objid ("ee0c5832-0f66-425a-873d-93188663f168")
-    void setStatut(String value) {
+    void setStatutEnCours(Boolean value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.statut = value;
     }
@@ -71,7 +72,7 @@ public class Partie {
     	Scanner sc = new Scanner(System.in);
     	int i=1;
     	Joueur[] Joueurs;
-    	Variante V;
+    	Variante V(52,"normale");
     	
     	System.out.println("Entrez la variante");
 		int var=sc.nextLine();
@@ -102,13 +103,13 @@ public class Partie {
 			}
     		
     		
-    		System.out.println("Le joueur"& i & "joue.");
-    		System.out.println("Vérification carte.");
-    		System.out.println("Effets et pénalités.");
-    		System.out.println("Vérifications finales.");
-    		System.out.println("Le joueur suivant joue.");
-    	if (i<this.nbJoueurs){i=i+1;
-    	}
-    	else if (i=this.nbJoueurs){i=1;
-    }
+    			//	System.out.println("Le joueur"& i & "joue.");
+    			//	System.out.println("Vérification carte.");
+    			//	System.out.println("Effets et pénalités.");
+			//	System.out.println("Vérifications finales.");
+			//	System.out.println("Le joueur suivant joue.");
+    			if (i<this.nbJoueurs){i=i+1;
+			}
+			else if (i=this.nbJoueurs){i=1;
+		    }
 }
