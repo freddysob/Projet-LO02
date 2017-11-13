@@ -23,11 +23,11 @@ public class Manche {
     @objid ("f0af0d16-edef-44fe-8481-d43c4799219e")
     public Partie partie;
     
-    public Manche(List<Joueur> joueur, Tatais tatamis, Pioche pioche, Variante variante, Partie partie){
+    public Manche( Variante variante, Partie partie){
         this.sensJeuPos = true;
-        this.joueur = joueur;
-        this.tatamis = tatamis;
-        this.pioche = pioche;
+    //  this.joueur = joueur;
+        this.tatamis = new tatamis();
+        this.pioche = new pioche();
         this.variante = variante;
         this.partie = partie;
     }
