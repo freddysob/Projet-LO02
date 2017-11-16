@@ -5,18 +5,25 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 @objid ("13fb79e4-c248-4e81-8baf-bddb4c4f4b1a")
 public class Variante {
     @objid ("6e8b6ac1-e09e-497f-9fd5-821f554c587c")
-    private int nbCartes;
+    private int nbJeuDeCartes;
 
     @objid ("fcfb94d8-e310-468f-a3f9-7ab727361459")
-    private String nom;
+    private typVariante nom;
 
     @objid ("5b9273cf-6a6f-4215-a1db-0ac1d9b0091b")
     public List<Carte> carte = new ArrayList<Carte> ();
     
-    public Variante(int nbCartes, String nom, List<Carte> carte){
-        this.nbCartes = nbCartes;
+    @objid ("d61ad526-226d-4650-ab08-6ee425d1d67a")
+    public Variante(int nbCartes, String nom) {
+    	this.nbCartes = nbCartes;
         this.nom = nom;
         this.carte = carte;
+    }
+    
+    public String toString(){
+    	String s;
+    	s="[ Variante: "+this.nom+"]";         // Affiche seulement le nom de la variante
+    	return s;
     }
 
     @objid ("8baf9c35-cec6-4486-9814-664a11b68306")
@@ -58,5 +65,10 @@ public class Variante {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.carte = value;
     }
+    
+	public static void main(String[] args ) {
+    	
+    }
 
+    
 }

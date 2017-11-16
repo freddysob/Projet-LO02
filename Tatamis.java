@@ -7,13 +7,23 @@ public class Tatamis {
     @objid ("e2025e3e-4ae1-42d6-8b82-6d62d090d799")
     public List<Carte> carte = new ArrayList<Carte> ();
     
-    public Tatamis(List<Carte> carte){
-        this.carte=carte;
+    @objid ("4df1b0b0-44af-47ce-898f-fa61b1f58332")
+    public Tatamis() {
+    	this.carte = new ArrayList<Carte> ();
+    }
+
+    public String toString(){
+    	String s;
+    	s=this.carte.get(1);     // Affichage de la carte de dessus
+    	return s;
+    }
+    
+    @objid ("d61f72cf-3977-4030-a554-44a4d78f1cdb")
+    protected void finalize() {
     }
 
     @objid ("6775325f-3103-4b75-8638-b36c9712ae84")
-    public void verifierValiditeCarte:(Variante Variante) {
-    	Boolean results[][]={{'MauvaiseCarte','DerniereCarte'},{'Oui','Non'}};
+    public boolean[] verifierValiditeCarte:(Variante Variante) {
     	
     }
 
@@ -28,5 +38,11 @@ public class Tatamis {
         // Automatically generated method. Please delete this comment before entering specific code.
         return carte;
     }
+    
+	public static void main(String[] args ) {
+    	
+    }
+
+   
 
 }

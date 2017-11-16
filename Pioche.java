@@ -7,24 +7,37 @@ public class Pioche {
     @objid ("ffa064a3-1995-4c33-9249-fd8f2ea61be7")
     public List<Carte> carte = new ArrayList<Carte> ();
     
-    public Pioche(List<Carte> carte){
-        this.carte = carte;
+    @objid ("5ee962dc-ef28-4ff9-912e-0bf8696e138c")
+    public Pioche() {
+    	this.carte=new ArrayList<Carte> ();
+    }
+    
+    public String toString(){
+    	String s;
+    	s="[ Pioche ]";       // Affiche le mot "Pioche"
+    	return s;
+    }
+
+    @objid ("ae48e544-0168-4f70-90ba-c750754013cf")
+    protected void finalize() {
     }
 
     @objid ("afd6a121-7cf8-4e34-86ab-30b1f743b039")
     public void reconstituer() {
     }
 
-    @objid ("8ca2882d-213d-4ad3-93c7-fb7163d2a674")
-    List<Carte> getCarte() {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        return this.carte;
+    @objid ("38c62700-f8c0-47aa-b775-d6fb998014c0")
+    public void distribuerCartesDebut() {
     }
 
-    @objid ("f7f24b1d-7e08-40cc-8830-606901cbbca7")
-    void setCarte(List<Carte> value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        this.carte = value;
+    @objid ("eeae6efa-06c0-489c-995b-28e6a78fafe7")
+    public void distribuerCarte() {
     }
+    
+	public static void main(String[] args ) {
+    	
+    }
+
+    
 
 }

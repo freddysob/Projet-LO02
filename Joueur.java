@@ -15,30 +15,34 @@ public class Joueur {
     private int numeroJoueur;
 
     @objid ("b25383cd-f581-4d33-a1c5-44ba4b0b2f4a")
-    public int nbPoints;
+    private int nbPoints;
 
     @objid ("f6d36953-674e-46b7-879f-8c27393785f5")
-    public Main main;
+    public Hand hand;
     
-    public Joueur(String nom, boolean type, int numero, Main main){
-        this.etat = true;
-        this.nom = nom;
-        this.type = type;
-        this.numero = numero;
-        this.points = 0;
-        this.main = main;
+    @objid ("38eacb92-e7d6-4452-a9e5-5c6838d5e754")
+    public Joueur(String name, int num, Hand hand) {
+    	this.etatActif = false;
+    	this.typePhysique = false;
+    	this.numeroJoueur=num;
+    	this.nbPoints = 0;
+    	this.nom=name;
+    	this.hand=new Hand(this);
     }
+    
+    public String toString(){
+    	String s;
+    	s="[Joueur "+this.getnom()+", numero "+this.getNumeroJoueur()+" "+this.getNbPoints()+" points"]";
+    	return s;
+    }
+
+    @objid ("bfdeddd7-0068-4d05-89a1-c7b85cc8c54f")
+    protected void finalize() {
+    }
+
 
     @objid ("c0252c95-0978-40bb-bc14-40076292a884")
     public void signalerDerniereCarte() {
-    }
-
-    @objid ("9eb218ab-3a12-4b4f-8b6b-c2d7c0c79878")
-    public void ajouterPoints() {
-    }
-
-    @objid ("04b236c2-ecc6-4366-a6c2-69577b38a715")
-    public void changerEtat() {
     }
 
     @objid ("8432d2c2-1b86-47f7-aad6-338c6efb0d6e")
@@ -57,80 +61,69 @@ public class Joueur {
     public void denoncerMCarte() {
     }
 
-    @objid ("f4602fe4-a041-4f04-a2e2-326ba9729198")
-    public void changerNom() {
-    }
-
-    @objid ("af1eb9de-d1fa-4eb4-b391-7f0d13a44146")
+    @objid ("ad53043c-fa56-4988-98e7-4b52306e1af4")
     boolean isEtatActif() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.etatActif;
     }
 
-    @objid ("511e44ad-07b0-4e85-b275-10acadc1f459")
+    @objid ("28403170-33bc-40a9-b504-5c3450abe974")
     void setEtatActif(boolean value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.etatActif = value;
     }
 
-    @objid ("c5e86206-f87e-4ae6-849b-927a6b86856f")
+    @objid ("32738ca0-c5a4-4bbf-a98d-984e129bfab9")
     String getNom() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.nom;
     }
 
-    @objid ("bdcf6e2c-fbed-4c12-b1c5-dc21a0a37a70")
+    @objid ("aedae8e2-4cfe-4fcf-9941-4087c32d890c")
     void setNom(String value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.nom = value;
     }
 
-    @objid ("8d4eaf01-5cec-48ae-baeb-f50923fdc7ec")
+    @objid ("4152e987-036d-430c-898a-41cdfbcab303")
     boolean isTypePhysique() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.typePhysique;
     }
 
-    @objid ("5ea6c27b-be10-476b-a4b6-dd81a4e73432")
+    @objid ("b29687ae-d766-42f0-8947-fbb5b3f54006")
     void setTypePhysique(boolean value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.typePhysique = value;
     }
 
-    @objid ("802261d8-fea3-40d3-be17-cdc2ea73e238")
+    @objid ("33b07d26-3623-4475-8768-46a1197b43e0")
     int getNumeroJoueur() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.numeroJoueur;
     }
 
-    @objid ("23ca29fb-65de-4f33-b431-3b637d701c65")
+    @objid ("bcb2af85-8bcb-4a95-9752-74cf5c962910")
     void setNumeroJoueur(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.numeroJoueur = value;
     }
 
-    @objid ("62f9c634-0b08-44c4-9e1a-c357783fc838")
+    @objid ("99402ae3-7a52-40d4-9316-06744c865728")
     int getNbPoints() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.nbPoints;
     }
 
-    @objid ("63138f52-8005-4f27-b3f4-87bed3d29f03")
+    @objid ("5ab852bd-9110-446b-a66b-957b1657542f")
     void setNbPoints(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.nbPoints = value;
     }
-
-    @objid ("20cb3d26-4067-473e-a193-d37a9c844892")
-    void setMain(Main value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        this.main = value;
+    
+	public static void main(String[] args ) {
+    	
     }
 
-    @objid ("ac89fb7a-69f2-4134-8ded-e5b69b11c953")
-    Main getMain() {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        return this.main;
-    }
-
+    
 }
