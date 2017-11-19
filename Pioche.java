@@ -16,16 +16,15 @@ public class Pioche {
     	return s;
     }
 
-    protected void finalize() {
-    }
-
     public void reconstituer() {
+    	
     }
 
-    public void distribuerCartesDebut() {
+    public void distribuerCartesDebut(Variante variante) {
     }
 
-    public void distribuerCarte() {
+    public void distribuerCarte(int nombre, Joueur joueur) {
+
     }
     
 	public static void main(String[] args ) {

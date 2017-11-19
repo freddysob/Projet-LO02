@@ -13,7 +13,6 @@ public class Carte {
     	this.poids=5;
     	this.numero=num;
     	this.type=typ;
-    	this.poids=poids;
     	this.localisation=LocalisationCarte.Pioche;
     }
     

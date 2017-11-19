@@ -33,11 +33,9 @@ public class Manche {
     	s="[Manche]";
     	return s;
     }
-    
-    protected void finalize() {
-    }
 
-    public void penaliserJoueur() {
+    public void penaliserJoueur(int nombre, Joueur joueur) {
+		pioche.distribuerCarte(nombre, joueur); 
     }
 
     Partie getPartie() {

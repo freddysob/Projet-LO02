@@ -10,10 +10,12 @@ public class Variante {
 
     public List<Carte> carte;
     
+    private int nombreCarteDebut;
+    
     public Variante(int nbCartes, TypVariante nom) {
     	this.nbJeuDeCartes = nbCartes;
         this.nom = nom;
-        this.carte = new ArrayList<Carte>(); // ça sert à quoi ?
+        this.carte = new ArrayList<Carte>();
     }
     
     public String toString(){
@@ -45,6 +47,16 @@ public class Variante {
         this.nom = value;
     }
 
+    TypVariante getNombreCarteDebut() {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        return this.nom;
+    }
+
+    void setNombreCarteDebut(TypVariante value) {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        this.nom = value;
+    }    
+    
     List<Carte> getCarte() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.carte;

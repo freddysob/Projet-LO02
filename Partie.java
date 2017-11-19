@@ -21,9 +21,6 @@ public class Partie {
     	return s;
     }
 
-    protected void finalize() {
-    }
-
     public void verifierFinPartie(Variante Variante) {
     }
 
