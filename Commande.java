@@ -1,8 +1,12 @@
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
+package PackageLO02;
 
-@objid ("e4746301-2b1a-4942-b0c2-8d1a64d718ed")
 public class Commande extends Carte {
 	
+	public Commande(NumerosCarte num, TypCarte typ) {
+		super(num, typ);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void appliquerPouvoir() {
 	   
 	 }
