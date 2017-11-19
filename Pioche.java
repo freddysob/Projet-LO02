@@ -15,7 +15,11 @@ public class Pioche {
     	s="[ Pioche ]";       // Affiche le mot "Pioche"
     	return s;
     }
-
+    
+    public List<Carte> getCarte() {
+    	return(this.carte);
+    }
+    
     public void reconstituer() {
     	
     }
