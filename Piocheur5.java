@@ -1,8 +1,12 @@
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
+package PackageLO02;
 
-@objid ("53938d9b-bf54-4825-9e11-7fc012944174")
-public class Piocheur5 {
+public class Piocheur5 extends Carte{
 	
+	public Piocheur5(NumerosCarte num, TypCarte typ) {
+		super(num, typ);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void appliquerPouvoir() {
 		   
 	 }

@@ -1,8 +1,12 @@
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
+package PackageLO02;
 
-@objid ("06625f01-a524-49a1-bdf9-2d0352967772")
 public class Inverseur extends Carte {
 	
+	public Inverseur(NumerosCarte num, TypCarte typ) {
+		super(num, typ);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void appliquerPouvoir() {
 	   
 	 }
