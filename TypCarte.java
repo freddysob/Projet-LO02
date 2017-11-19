@@ -5,5 +5,6 @@ public enum TypCarte {
     Trefle,
     Pique,
     Carreau,
-    Joker;
+    JokerR,
+    JokerN;	
 }
