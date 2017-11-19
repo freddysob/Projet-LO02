@@ -24,11 +24,14 @@ public class IA {
     }
 
     public IA() {
+    	
     }
 
-    protected void finalize() {
-    }
-    
+	public IA(Joueur joueur) {
+		this.situation = SituationIA.Normale;
+		this.joueur = joueur;
+	}
+
 	public static void main(String[] args ) {
     	
     }
