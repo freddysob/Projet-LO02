@@ -1,5 +1,8 @@
 package PackageLO02;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Manche {
     private int nbJoueurs;
 
@@ -7,7 +10,7 @@ public class Manche {
 
     private Variante variante;
 
-    public List<Joueur> joueur = new ArrayList<Joueur>();
+    public List<Joueur> joueur;
 
     public Tatamis tatamis;
 
@@ -18,7 +21,7 @@ public class Manche {
     public Manche(int n, Variante variante, Partie partie) {
     	    this.nbJoueurs = n;
     		this.sensJeuPos = true;
-            this.joueur = new ArrayList<Joueur> ();
+            this.joueur = new ArrayList<Joueur>();
             this.tatamis = new Tatamis();
             this.pioche = new Pioche();
             this.variante = variante;

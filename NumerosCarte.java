@@ -1,7 +1,7 @@
 package PackageLO02;
 
 public enum NumerosCarte {
-   __,
+   _J,
    _1,
    _2,
    _3,
@@ -12,8 +12,8 @@ public enum NumerosCarte {
    _8,
    _9,
    _10,
-   J,
-   D,
-   R;
+   _V,
+   _D,
+   _R;
 }
 

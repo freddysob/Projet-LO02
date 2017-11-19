@@ -58,7 +58,7 @@ public class Partie {
     }
 
     public static void main(String[] args ) {
-    	Scanner sc = new Scanner(System.in);
+  /*  	Scanner sc = new Scanner(System.in);
     	int i=1;
     	Joueur[] Joueurs;
     	Variante V(52,"normale");
@@ -78,7 +78,7 @@ public class Partie {
 					else {Joueur[i].typePhysique='False';}	
 			}
     	
-			Tatamis = New Tatamis;
+			Tatamis = New Tatamis();
 			
 			while(this.verifierFinPartie="True")
 			{
@@ -101,7 +101,7 @@ public class Partie {
 			}
 			else if (i=this.nbJoueurs){i=1;
 		    }
-    	}
+    	}*/
 
     }
 }

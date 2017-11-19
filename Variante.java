@@ -8,12 +8,12 @@ public class Variante {
 
     private TypVariante nom;
 
-    public List<Carte> carte = new ArrayList<Carte> ();
+    public List<Carte> carte;
     
     public Variante(int nbCartes, TypVariante nom) {
     	this.nbJeuDeCartes = nbCartes;
         this.nom = nom;
-        this.carte = carte; // ça sert à quoi ?
+        this.carte = new ArrayList<Carte>(); // ça sert à quoi ?
     }
     
     public String toString(){

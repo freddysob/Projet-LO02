@@ -3,7 +3,7 @@ package PackageLO02;
 public class Piocheur5 extends Carte{
 	
 	public Piocheur5(NumerosCarte num, TypCarte typ) {
-		super(num, typ);
+		super(num, typ, 30);
 		// TODO Auto-generated constructor stub
 	}
 

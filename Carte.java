@@ -5,11 +5,22 @@ public class Carte {
 
     private TypCarte type;
 
+    private int poids;
+    
     private LocalisationCarte localisation;
     
     public Carte(NumerosCarte num, TypCarte typ) {
+    	this.poids=5;
     	this.numero=num;
     	this.type=typ;
+    	this.poids=poids;
+    	this.localisation=LocalisationCarte.Pioche;
+    }
+    
+    public Carte(NumerosCarte num, TypCarte typ, int poids) {
+    	this.numero=num;
+    	this.type=typ;
+    	this.poids=poids;
     	this.localisation=LocalisationCarte.Pioche;
     }
     
@@ -53,6 +64,16 @@ public class Carte {
     void setType(TypCarte value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.type = value;
+    }
+    
+    int getPoids() {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        return this.poids;
+    }
+
+    void setPoids(int value) {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        this.poids = value;
     }
 
     public static void main(String[] args ) {
