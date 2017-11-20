@@ -3,7 +3,7 @@ package PackageLO02;
 public class Commande extends Carte {
 	
 	public Commande(NumerosCarte num, TypCarte typ) {
-		super(num, typ);
+		super(num, typ, 23);
 		// TODO Auto-generated constructor stub
 	}
 

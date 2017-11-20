@@ -12,12 +12,17 @@ public class Tatamis {
 
     public String toString(){
     	String s;
-    	s=""+this.carte.get(1);     // Affichage de la carte de dessus
+    	s=""+this.carte.get(0);     // Affichage de la carte de dessus
     	return s;
     }
 
     public boolean verifierValiditeCarte(Variante Variante) {
-    	return(true);
+    	if(this.carte.get(0).getType()==this.carte.get(1).getType()||this.carte.get(0).getNumero()==this.carte.get(1).getNumero())
+    	{
+    		return(true);
+    	}else {
+    		return(false);
+    	}
     }
 
     public void setCarte(List<Carte> value) {
