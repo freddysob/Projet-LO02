@@ -1,8 +1,10 @@
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
-@objid ("065f6a1b-9a02-42b9-b6a9-00953c5f9ce5")
 public class Rejoueur extends Carte {
 	
+	public Rejoueur(NumeroCarte num, TypCarte typ) {
+		super(num, typ, 27);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void appliquerPouvoir() {
 		   
 	 }
