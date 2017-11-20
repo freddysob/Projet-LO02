@@ -1,8 +1,10 @@
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
-@objid ("2bec906f-2470-4f75-91b4-29a45c68def1")
 public class StopperSuivant extends Carte {
 	
+	public StopperSuivant(NumeroCarte num, TypCarte typ) {
+		super(num, typ, 34);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void appliquerPouvoir() {
 		   
 	 }
