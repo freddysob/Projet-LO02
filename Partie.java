@@ -83,6 +83,7 @@ public class Partie {
     	System.out.println("Entrez la variante");
 		String var=sc.nextLine();
 		//TypVariante V.nom=TypVariante.var;
+		//System.out.println(var);
     	System.out.println("Entrez le nombre de joueurs");
 		//int nbj=sc.nextLine();
     	int nbj=1;
