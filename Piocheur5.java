@@ -1,10 +1,12 @@
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
-@objid ("53938d9b-bf54-4825-9e11-7fc012944174")
-public class Piocheur5 {
+public class Piocheur5 extends Carte{
 	
-	public void appliquerPouvoir() {
-		   
+	public Piocheur5(NumeroCarte num, TypCarte typ) {
+		super(num, typ, 30);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void appliquerPouvoir(Joueur joueur, Pioche pioche) {
+		pioche.distribuerCarte(5, joueur);   
 	 }
 	
 	public static void main(String[] args ) {
