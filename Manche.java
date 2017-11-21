@@ -23,7 +23,7 @@ public class Manche {
     		this.sensJeuPos = true;
             this.joueur = new ArrayList<Joueur>();
             this.tatamis = new Tatamis();
-            this.pioche = new Pioche();
+            this.pioche = new Pioche(this);
             this.variante = variante;
             this.partie = partie;
     }
@@ -86,6 +86,39 @@ public class Manche {
     void setVariante(Variante value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.variante = value;
+    }
+    
+    public void joueurSuivant(Carte cartePose) {
+    	if(cartePose instanceof Rejoueur) {
+    		return;
+    	}
+    	if(cartePose instanceof StopperSuivant) {
+    		for(int i=0; i<this.joueur.size();i++) {
+        		if(this.joueur.get(i).isEtatActif()) {
+        			this.joueur.get(i).setEtatActif(false);
+        			if(this.joueur.get(i+1)!= null) {
+        				if(this.joueur.get(i+2) != null) {
+        					this.joueur.get(i+2).setEtatActif(true);
+        				}
+        				this.joueur.get(1).setEtatActif(true);
+        			}else {
+        				this.joueur.get(0).setEtatActif(true);
+        			}
+        		}
+    		}
+    	}else {
+    		for(int i=0; i<this.joueur.size();i++) {
+        		if(this.joueur.get(i).isEtatActif()) {
+        			this.joueur.get(i).setEtatActif(false);
+        			if(this.joueur.get(i+1)!= null) {
+        				this.joueur.get(i+1).setEtatActif(true);
+        			}else {
+        				this.joueur.get(0).setEtatActif(true);
+        			}
+        		}
+    		}
+    	}
+    	
     }
     
 	public static void main(String[] args ) {
