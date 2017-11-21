@@ -3,25 +3,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
-    private int nbCartes;
+    private int nbCartes; // pas utile
     
     public Joueur joueur;
-
-    public List<Carte> carte = new ArrayList<Carte> ();
     
-    public Hand(Joueur J) {
+    public Manche manche;
+
+    public List<Carte> carte;
+    
+    public Hand(Joueur J, Manche manche) {
     	this.nbCartes=0;
     	this.joueur=J;
     	this.carte= new ArrayList<Carte> ();
+    	this.manche = manche;
     }
     
     public String toString(){
     	String s;
     	s="["+this.getNbCartes()+","+this.joueur+"]";
     	return s;
-    }
-
-    protected void finalize() {
     }
 
     int getNbCartes() {

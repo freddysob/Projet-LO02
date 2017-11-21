@@ -13,13 +13,15 @@ public class Joueur {
 
     public Hand hand;
     
-    public Joueur(String name, int num, Hand hand) {
+    public Manche manche;
+    
+    public Joueur(String name, int num, Hand hand, Manche manche) {
     	this.etatActif = false;
     	this.typePhysique = false;
     	this.numeroJoueur=num;
     	this.nbPoints = 0;
     	this.nom=name;
-    	this.hand=new Hand(this);
+    	this.hand=new Hand(this,manche);
     }
     
     public String toString(){
@@ -36,9 +38,6 @@ public class Joueur {
     }
 
     public void jouerCarte() {
-    }
-
-    public void piocher() {
     }
 
     public void denoncerDCarte() {
