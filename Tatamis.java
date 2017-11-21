@@ -37,6 +37,16 @@ public class Tatamis {
         return carte;
     }
     
+    public void setType(TypCarte value) {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        this.type = value;
+    }
+
+    public TypCarte getType() {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        return type;
+    }
+    
 	public static void main(String[] args ) {
     	
     }
