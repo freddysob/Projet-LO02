@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tatamis {
-    public List<Carte> carte = new ArrayList<Carte> ();
+    public List<Carte> carte;
     
     public Tatamis() {
     	this.carte = new ArrayList<Carte> ();
@@ -16,8 +16,8 @@ public class Tatamis {
     	return s;
     }
 
-    public boolean verifierValiditeCarte(Variante Variante) {
-    	if(this.carte.get(0).getType()==this.carte.get(1).getType()||this.carte.get(0).getNumero()==this.carte.get(1).getNumero())
+    public boolean verifierValiditeCarte(/*Variante Variante*/) {
+    	if(this.carte.get(0).getType()==this.carte.get(1).getType()||this.carte.get(0).getNumero()==this.carte.get(1).getNumero()||this.carte.get(0) instanceof Commande)
     	{
     		return(true);
     	}else {
