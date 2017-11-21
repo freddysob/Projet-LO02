@@ -92,34 +92,63 @@ public class Manche {
     	if(cartePose instanceof Rejoueur) {
     		return;
     	}
-    	if(cartePose instanceof StopperSuivant) {
-    		for(int i=0; i<this.joueur.size();i++) {
-        		if(this.joueur.get(i).isEtatActif()) {
-        			this.joueur.get(i).setEtatActif(false);
-        			if(this.joueur.get(i+1)!= null) {
-        				if(this.joueur.get(i+2) != null) {
-        					this.joueur.get(i+2).setEtatActif(true);
-        				}
-        				this.joueur.get(1).setEtatActif(true);
-        			}else {
-        				this.joueur.get(0).setEtatActif(true);
-        			}
-        		}
-    		}
+    	if(this.sensJeuPos) {
+	    	if(cartePose instanceof StopperSuivant) {
+	    		for(int i=0; i<this.joueur.size();i++) {
+	        		if(this.joueur.get(i).isEtatActif()) {
+	        			this.joueur.get(i).setEtatActif(false);
+	        			if(this.joueur.get(i+1)!= null) {
+	        				if(this.joueur.get(i+2) != null) {
+	        					this.joueur.get(i+2).setEtatActif(true);
+	        				}
+	        				this.joueur.get(1).setEtatActif(true);
+	        			}else {
+	        				this.joueur.get(0).setEtatActif(true);
+	        			}
+	        		}
+	    		}
+	    	}else {
+	    		for(int i=0; i<this.joueur.size();i++) {
+	        		if(this.joueur.get(i).isEtatActif()) {
+	        			this.joueur.get(i).setEtatActif(false);
+	        			if(this.joueur.get(i+1)!= null) {
+	        				this.joueur.get(i+1).setEtatActif(true);
+	        			}else {
+	        				this.joueur.get(0).setEtatActif(true);
+	        			}
+	        		}
+	    		}
+	    	}
     	}else {
-    		for(int i=0; i<this.joueur.size();i++) {
-        		if(this.joueur.get(i).isEtatActif()) {
-        			this.joueur.get(i).setEtatActif(false);
-        			if(this.joueur.get(i+1)!= null) {
-        				this.joueur.get(i+1).setEtatActif(true);
-        			}else {
-        				this.joueur.get(0).setEtatActif(true);
-        			}
-        		}
-    		}
+	    	if(cartePose instanceof StopperSuivant) {
+	    		for(int i=0; i<this.joueur.size();i++) {
+	        		if(this.joueur.get(i).isEtatActif()) {
+	        			this.joueur.get(i).setEtatActif(false);
+	        			if(this.joueur.get(i-1)!= null) {
+	        				if(this.joueur.get(i-2) != null) {
+	        					this.joueur.get(i-2).setEtatActif(true);
+	        				}
+	        				this.joueur.get(this.joueur.size()-1).setEtatActif(true);
+	        			}else {
+	        				this.joueur.get(this.joueur.size()).setEtatActif(true);
+	        			}
+	        		}
+	    		}
+	    	}else {
+	    		for(int i=0; i<this.joueur.size();i++) {
+	        		if(this.joueur.get(i).isEtatActif()) {
+	        			this.joueur.get(i).setEtatActif(false);
+	        			if(this.joueur.get(i-1)!= null) {
+	        				this.joueur.get(i-1).setEtatActif(true);
+	        			}else {
+	        				this.joueur.get(this.joueur.size()).setEtatActif(true);
+	        			}
+	        		}
+	    		}
+	    	}
     	}
-    	
-    }
+	    	
+	    }
     
 	public static void main(String[] args ) {
     	
