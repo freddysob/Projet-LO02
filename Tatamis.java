@@ -19,7 +19,7 @@ public class Tatamis {
     }
 
     public boolean verifierValiditeCarte(/*Variante Variante*/) {
-    	if(this.carte.get(0).getType()==this.type||(type==TypCarte.JokerN &&(this.carte.get(0).getType()==TypCarte.Pique || this.carte.get(0).getType()==TypCarte.Trefle))||(type==TypCarte.JokerR &&(this.carte.get(0).getType()==TypCarte.Coeur || this.carte.get(0).getType()==TypCarte.Carreau))||this.carte.get(0).getNumero()==this.carte.get(1).getNumero()||this.carte.get(0) instanceof Commande)
+    	if(this.carte.get(0).getType()==this.type||(type==TypCarte.JN &&(this.carte.get(0).getType()==TypCarte.Pique || this.carte.get(0).getType()==TypCarte.Trefle))||(type==TypCarte.JR &&(this.carte.get(0).getType()==TypCarte.Coeur || this.carte.get(0).getType()==TypCarte.Carreau))||this.carte.get(0).getNumero()==this.carte.get(1).getNumero()||this.carte.get(0) instanceof Commande)
     	{
     		return(true);
     	}else {
