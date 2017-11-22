@@ -7,7 +7,7 @@ public class Inverseur extends Carte {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void appliquerPouvoir() {
+	public void appliquerPouvoir(Manche manche) {
 	   
 	 }
 	

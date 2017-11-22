@@ -4,7 +4,7 @@ public class Carte {
     private NumerosCarte numero;
 
     private TypCarte type;
-
+    
     private int poids;
     
     private LocalisationCarte localisation;
@@ -29,10 +29,7 @@ public class Carte {
     	return s;
     }
 
-    protected void finalize() {
-    }
-
-    public void appliquerPouvoir() {
+    public void appliquerPouvoir(Manche manche) {
     }
 
     NumerosCarte getNumero() {

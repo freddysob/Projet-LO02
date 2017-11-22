@@ -10,6 +10,8 @@ public class Joueur {
     private int numeroJoueur;
 
     private int nbPoints;
+    
+    private boolean annonceDerniereCarte;
 
     public Hand hand;
     
@@ -22,6 +24,7 @@ public class Joueur {
     	this.nbPoints = 0;
     	this.nom=name;
     	this.hand=new Hand(this,manche);
+    	this.annonceDerniereCarte=false;
     }
     
     public String toString(){
@@ -30,20 +33,34 @@ public class Joueur {
     	return s;
     }
 
-    protected void finalize() {
-    }
-
-
     public void signalerDerniereCarte() {
+    	if(this.hand.carte.size()==1) {
+    		this.annonceDerniereCarte=true;
+    	}else {
+    		this.manche.penaliserJoueur(1, this);
+    	}
     }
 
-    public void jouerCarte() {
+    public void jouerCarte(Carte carte) {
+    	this.hand.carte.remove(carte);
+    	this.manche.tatamis.carte.add(0, carte);
+    	carte.appliquerPouvoir(this.manche);
     }
 
-    public void denoncerDCarte() {
+    public void denoncerDCarte(Joueur joueur) {
+    	if(this.hand.carte.size()==1 && this.annonceDerniereCarte==false) {
+    		this.manche.penaliserJoueur(2, joueur);
+    	}else {
+    		this.manche.penaliserJoueur(2, this);
+    	}
     }
 
-    public void denoncerMCarte() {
+    public void denoncerMCarte(Joueur joueur) {
+    	if(!this.manche.tatamis.verifierValiditeCarte()) {
+    		this.manche.penaliserJoueur(3, joueur);
+    	}else {
+    		this.manche.penaliserJoueur(3, this);
+    	}
     }
 
     boolean isEtatActif() {

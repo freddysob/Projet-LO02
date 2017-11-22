@@ -11,6 +11,15 @@ public class IA {
     }
 
     public void jouer() {
+    	int poids = -100;
+    	Carte carteajouer=null;
+    	for(int i=0; i<this.joueur.hand.carte.size();i++) {
+    		if(poids<this.joueur.hand.carte.get(i).getPoids()) {
+    			poids = this.joueur.hand.carte.get(i).getPoids();
+    			carteajouer=this.joueur.hand.carte.get(i);
+    		}
+    	}
+    	this.joueur.jouerCarte(carteajouer);
     }
 
     SituationIA getSituation() {
@@ -21,10 +30,6 @@ public class IA {
     void setSituation(SituationIA value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.situation = value;
-    }
-
-    public IA() {
-    	
     }
 
 	public IA(Joueur joueur) {

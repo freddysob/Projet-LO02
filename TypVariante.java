@@ -1,7 +1,6 @@
 package PackageLO02;
 
 public enum TypVariante {
-    Basique,
 	Minimale,
     Monclar,
     Variante_1,

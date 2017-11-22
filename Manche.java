@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Manche {
-    private int nbJoueurs;
 
     private boolean sensJeuPos;
 
@@ -19,13 +18,20 @@ public class Manche {
     public Partie partie;
     
     public Manche(int n, Variante variante, Partie partie) {
-    	    this.nbJoueurs = n;
+    	boolean partieFinie=false;
+    	for(int i=0; i<this.joueur.size(); i++) {
+    		if(this.joueur.get(i).getNbPoints()>=this.partie.getPointsMax()){
+    			partieFinie=true;
+    		}
+    	}
+    	if(!partieFinie) {
     		this.sensJeuPos = true;
             this.joueur = new ArrayList<Joueur>();
             this.tatamis = new Tatamis();
             this.pioche = new Pioche(this);
             this.variante = variante;
             this.partie = partie;
+    	}
     }
 
     public String toString(){
@@ -58,16 +64,6 @@ public class Manche {
         this.joueur = value;
     }
 
-    int getNbJoueurs() {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        return this.nbJoueurs;
-    }
-
-    void setNbJoueurs(int value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        this.nbJoueurs = value;
-    }
-
     boolean isSensJeuPos() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.sensJeuPos;
@@ -88,7 +84,7 @@ public class Manche {
         this.variante = value;
     }
     
-    public void joueurSuivant(Carte cartePose) {
+    public Joueur joueurSuivant(Carte cartePose) {
     	if(cartePose instanceof Rejoueur) {
     		return;
     	}

@@ -1,7 +1,5 @@
 package PackageLO02;
 
-import java.util.Scanner;
-
 public class Partie {
     private Statut statut;
 

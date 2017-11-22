@@ -7,8 +7,8 @@ public class Piocheur5 extends Carte{
 		// TODO Auto-generated constructor stub
 	}
 
-	public void appliquerPouvoir(Joueur joueur, Pioche pioche) {
-		pioche.distribuerCarte(5, joueur);   
+	public void appliquerPouvoir(Manche manche) {
+		manche.pioche.distribuerCarte(5, manche.joueurSuivant(this)); 
 	 }
 	
 	public static void main(String[] args ) {
