@@ -4,6 +4,8 @@
 public class Joueur {
     //@objid ("644ad622-ff18-461c-91e3-6613837a8102")
     private boolean etatActif;
+    
+    private boolean aFini;
 
     //@objid ("4e634eba-7033-4791-ac25-a34af8f5d0dc")
     private String nom;
@@ -54,7 +56,7 @@ public class Joueur {
     }
 
     public void jouerCarte(Carte carte) {
-    	//this.hand.carte.remove(carte);
+    	this.hand.carte.remove(carte);
     	this.manche.tatamis.ajouterCarte(carte);
     	carte.appliquerPouvoir(this.manche);
     }
@@ -115,6 +117,16 @@ public class Joueur {
         this.typePhysique = value;
     }
 
+    boolean isaFini() {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        return this.aFini;
+    }
+
+    void setaFini(boolean value) {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        this.aFini = value;
+    }
+    
     //@objid ("33b07d26-3623-4475-8768-46a1197b43e0")
     int getNumeroJoueur() {
         // Automatically generated method. Please delete this comment before entering specific code.
