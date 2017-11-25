@@ -44,8 +44,10 @@ public class Manche {
     public void penaliserJoueur(int nombre, Joueur joueur) {
 		pioche.distribuerCarte(nombre, joueur); 
     }
+    
+    
 
-    Partie getPartie() {
+    public Partie getPartie() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.partie;
     }
@@ -55,34 +57,42 @@ public class Manche {
         this.partie = value;
     }
 
-    List<Joueur> getJoueur() {
+    public List<Joueur> getJoueur() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.joueur;
     }
 
-    void setJoueur(List<Joueur> value) {
+    public void setJoueur(List<Joueur> value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.joueur = value;
     }
 
-    boolean isSensJeuPos() {
+    public boolean isSensJeuPos() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.sensJeuPos;
     }
 
-    void setSensJeuPos(boolean value) {
+    public void setSensJeuPos(boolean value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.sensJeuPos = value;
     }
 
-    Variante getVariante() {
+    public Variante getVariante() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.variante;
     }
 
-    void setVariante(Variante value) {
+    public void setVariante(Variante value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.variante = value;
+    }
+    
+    public void initialiserJoueur() {
+		for(int i=0; i<this.joueur.size(); i++) {
+			this.joueur.get(i).setEtatActif(false);
+			this.joueur.get(i).setaFini(false);
+		}
+		this.joueur.get((int)(Math.random()*(this.joueur.size()))).setEtatActif(true);
     }
     
     public Joueur joueurSuivant(Carte cartePose) {

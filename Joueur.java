@@ -126,6 +126,10 @@ public class Joueur {
         this.nbPoints = value;
     }
     
+    void ajoutPoints(int value) {
+    	this.nbPoints+= value;
+    }
+    
 	public static void main(String[] args ) {
     	
     }

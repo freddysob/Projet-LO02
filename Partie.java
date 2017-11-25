@@ -22,34 +22,37 @@ public class Partie {
     public void verifierFinPartie(Variante Variante) {
     }
 
-    Statut getStatut() {
+    public Statut getStatut() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.statut;
     }
 
-    void setStatut(Statut value) {
+    public void setStatut(Statut value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.statut = value;
     }
 
-    int getNbJoueurs() {
+    public int getNbJoueurs() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.nbJoueurs;
     }
 
-    void setNbJoueurs(int value) {
+    public void setNbJoueurs(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.nbJoueurs = value;
     }
 
-    int getPointsMax() {
+    public int getPointsMax() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.pointsMax;
     }
 
-    void setPointsMax(int value) {
+    public void setPointsMax(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.pointsMax = value;
+    }
+    public void finManche() {
+    	
     }
 
     public static void main(String[] args ) {
