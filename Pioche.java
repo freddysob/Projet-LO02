@@ -25,6 +25,10 @@ public class Pioche {
     protected void finalize() {
     }
     
+    public List<Carte> getCarte() {
+    	return this.carte;
+    }
+    
     public void setCarte(List<Carte> C) {
     	this.carte = C;
     }
