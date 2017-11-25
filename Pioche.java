@@ -1,11 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
+//import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
+
+//@objid ("41188578-bd74-4c19-8591-97c2ac12d444")
 public class Pioche {
+    //@objid ("ffa064a3-1995-4c33-9249-fd8f2ea61be7")
     public List<Carte> carte = new ArrayList<Carte> ();
     
-    public Pioche() {
+    public Manche manche;
+    
+    public Pioche(Manche manche) {
     	this.carte=new ArrayList<Carte> ();
+    	this.manche = manche;
     }
     
     public String toString(){
@@ -13,20 +20,37 @@ public class Pioche {
     	s="[ Pioche ]";       // Affiche le mot "Pioche"
     	return s;
     }
-    
-    public List<Carte> getCarte() {
-    	return(this.carte);
+
+    //@objid ("ae48e544-0168-4f70-90ba-c750754013cf")
+    protected void finalize() {
     }
     
+    public void setCarte(List<Carte> C) {
+    	this.carte = C;
+    }
+
     public void reconstituer() {
-    	
+    	this.carte.addAll(this.manche.tatamis.carte);
+        for(int i =0; i<this.manche.tatamis.carte.size(); i++) {
+        	this.manche.tatamis.carte.remove(i);
+        }
     }
 
     public void distribuerCartesDebut(Variante variante) {
+    	for(int i = 0; i<this.manche.joueur.size(); i++){
+    		this.distribuerCarte(variante.getNombreCarteDebut(), this.manche.joueur.get(i));
+    	}
     }
 
     public void distribuerCarte(int nombre, Joueur joueur) {
-
+    	for(int i = 0; i<nombre; i++){
+    		if(this.carte.isEmpty()) {
+    			this.reconstituer();
+    		}
+    		Carte retire=this.carte.get(0);
+    		this.carte.remove(0);
+    		joueur.hand.carte.add(retire);
+    	}
     }
     
 	public static void main(String[] args ) {
