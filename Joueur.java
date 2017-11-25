@@ -76,6 +76,10 @@ public class Joueur {
     		this.manche.penaliserJoueur(3, this);
     	}
     }
+    
+    public void jouer() {
+    	
+    }
 
     //@objid ("8a1180dc-f293-4922-aa03-eb2ed17e2f60")
     public void piocher() {
