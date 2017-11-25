@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
@@ -74,55 +75,7 @@ public class Partie {
     }
 
     public static void main(String[] args ) {
-    	Partie P = new Partie();
-    	Scanner sc = new Scanner(System.in);
-    	int i=1;
-    	//Joueur[] Joueurs = new Joueur( String n="", int a=0, Hand(Joueurs[0]));
-    	Variante V=new Variante(52,TypVariante.Minimale);
     	
-    	System.out.println("Entrez la variante");
-		String var=sc.nextLine();
-		//TypVariante V.nom=TypVariante.var;
-		//System.out.println(var);
-    	System.out.println("Entrez le nombre de joueurs");
-		//int nbj=sc.nextLine();
-    	int nbj=1;
-		P.nbJoueurs=nbj;
-			for (i=1;i<=P.nbJoueurs;i++){
-				System.out.println("entrer le nom du joueur "+ i);
-				//String Joueurs[i].nom=sc.nextLine;
-				//Joueurs[i].numeroJoueur=i;
-				//Joueurs[i].nbPoints=0;
-					if(i==1){//Joueurs[i].TypePhysique=true;
-						}
-					
-					else{//Joueurs[i].isTypePhysique()=false;
-						}
-			}
-			
-    	
-			Tatamis T = new Tatamis();
-			
-			while(P.verifierFinPartie(V)==true)
-			{
-				System.out.println("Le joueur "+ i +" joue.");
-				//Carte C=Joueurs[i].jouerCarte();
-				//Tatamis.verifierValiditeCarte(V);
-				//C.appliquerPouvoir();
-				//Pioche.reconstituer();
-				P.verifierFinPartie(V);
-				i=i+1;
-			}
-    		
-    		
-    			//	System.out.println("Le joueur"& i & "joue.");
-    			//	System.out.println("VÃ©rification carte.");
-    			//	System.out.println("Effets et pÃ©nalitÃ©s.");
-			//	System.out.println("VÃ©rifications finales.");
-			//	System.out.println("Le joueur suivant joue.");
-    			if (i<P.nbJoueurs){i=i+1;}
-			else if (i==P.nbJoueurs){i=1;}
-}
-
     }
+}
 
