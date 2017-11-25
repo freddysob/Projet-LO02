@@ -1,6 +1,7 @@
 package PackageLO02;
 
 import java.util.List;
+import java.util.ListIterator;
 import java.util.ArrayList;
 
 public class Manche {
@@ -85,70 +86,79 @@ public class Manche {
     }
     
     public Joueur joueurSuivant(Carte cartePose) {
+    	ListIterator<Joueur> li= joueur.listIterator();
+    	Joueur joue = null;
     	if(cartePose instanceof Rejoueur) {
-    		return;
+    		while(li.hasNext()) {
+    			joue = li.next();
+    			if(joue.isEtatActif()) {
+    				return(joue);
+    			}
+    		}
+    	}
+    	while(li.hasNext()) {
+    		if(li.next().isaFini()) {
+    			li.remove();
+    		}
+    	}
+    	while(li.hasPrevious()) {
+    		li.previous();
     	}
     	if(this.sensJeuPos) {
-	    	if(cartePose instanceof StopperSuivant) {
-	    		for(int i=0; i<this.joueur.size();i++) {
-	        		if(this.joueur.get(i).isEtatActif()) {
-	        			this.joueur.get(i).setEtatActif(false);
-	        			if(this.joueur.get(i+1)!= null) {
-	        				if(this.joueur.get(i+2) != null) {
-	        					this.joueur.get(i+2).setEtatActif(true);
-	        				}
-	        				this.joueur.get(1).setEtatActif(true);
-	        			}else {
-	        				this.joueur.get(0).setEtatActif(true);
-	        			}
-	        		}
-	    		}
-	    	}else {
-	    		for(int i=0; i<this.joueur.size();i++) {
-	        		if(this.joueur.get(i).isEtatActif()) {
-	        			this.joueur.get(i).setEtatActif(false);
-	        			if(this.joueur.get(i+1)!= null) {
-	        				this.joueur.get(i+1).setEtatActif(true);
-	        			}else {
-	        				this.joueur.get(0).setEtatActif(true);
-	        			}
-	        		}
-	    		}
-	    	}
+    		while(!li.next().isEtatActif()) {
+    			li.next();
+    		}
+    		if(cartePose instanceof StopperSuivant) {
+    			if(!li.hasNext()) {
+    		    	while(li.hasPrevious()) {
+    		    		li.previous();
+    		    	}
+    			}else {
+    				li.next();
+    			}
+    		}
+    		if(!li.hasNext()) {
+    		    while(li.hasPrevious()) {
+    		    	li.previous();
+    		    }
+    		    li.next();
+    		    joue = li.previous();
+    		}else {
+    			joue = li.next();
+    		}    		
     	}else {
-	    	if(cartePose instanceof StopperSuivant) {
-	    		for(int i=0; i<this.joueur.size();i++) {
-	        		if(this.joueur.get(i).isEtatActif()) {
-	        			this.joueur.get(i).setEtatActif(false);
-	        			if(this.joueur.get(i-1)!= null) {
-	        				if(this.joueur.get(i-2) != null) {
-	        					this.joueur.get(i-2).setEtatActif(true);
-	        				}
-	        				this.joueur.get(this.joueur.size()-1).setEtatActif(true);
-	        			}else {
-	        				this.joueur.get(this.joueur.size()).setEtatActif(true);
-	        			}
-	        		}
-	    		}
-	    	}else {
-	    		for(int i=0; i<this.joueur.size();i++) {
-	        		if(this.joueur.get(i).isEtatActif()) {
-	        			this.joueur.get(i).setEtatActif(false);
-	        			if(this.joueur.get(i-1)!= null) {
-	        				this.joueur.get(i-1).setEtatActif(true);
-	        			}else {
-	        				this.joueur.get(this.joueur.size()).setEtatActif(true);
-	        			}
-	        		}
-	    		}
-	    	}
+       		while(!li.next().isEtatActif()) {
+    			li.next();
+    		}
+    		if(cartePose instanceof StopperSuivant) {
+    			if(!li.hasPrevious()) {
+    		    	while(li.hasNext()) {
+    		    		li.next();
+    		    	}
+    			}else {
+    				li.previous();
+    			}
+    		}
+    		if(!li.hasPrevious()) {
+    		    while(li.hasNext()) {
+    		    	li.next();
+    		    }
+    		    li.previous();
+    		    joue = li.next();
+    		}else {
+    			joue = li.previous();
+    		}    		
+
+    	}for(int i=0; i<joueur.size(); i++) {
+    		joueur.get(i).setEtatActif(false);
     	}
-	    	
-	    }
+    	joue.setEtatActif(true);
+    	return(joue);
+	}
     
 	public static void main(String[] args ) {
-    	
-    }
+
+	}
 
     
 

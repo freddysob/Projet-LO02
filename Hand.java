@@ -24,22 +24,22 @@ public class Hand {
     	return s;
     }
 
-    int getNbCartes() {
+    public int getNbCartes() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.nbCartes;
     }
 
-    void setNbCartes(int value) {
+    public void setNbCartes(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.nbCartes = value;
     }
 
-    List<Carte> getCarte() {
+    public List<Carte> getCarte() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.carte;
     }
 
-    void setCarte(List<Carte> value) {
+    public void setCarte(List<Carte> value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.carte = value;
     }

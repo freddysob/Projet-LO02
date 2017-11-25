@@ -2,6 +2,8 @@ package PackageLO02;
 
 public class Joueur {
     private boolean etatActif;
+    
+    private boolean aFini;
 
     private String nom;
 
@@ -25,6 +27,7 @@ public class Joueur {
     	this.nom=name;
     	this.hand=new Hand(this,manche);
     	this.annonceDerniereCarte=false;
+    	this.aFini=false;
     }
     
     public String toString(){
@@ -71,6 +74,16 @@ public class Joueur {
     void setEtatActif(boolean value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.etatActif = value;
+    }
+    
+    boolean isaFini() {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        return this.aFini;
+    }
+
+    void setaFini(boolean value) {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        this.aFini = value;
     }
 
     String getNom() {
