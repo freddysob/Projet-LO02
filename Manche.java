@@ -167,7 +167,6 @@ public class Manche {
     		}    		
     	}else {
        		while(!li.next().isEtatActif()) {
-    			li.next();
     		}
     		if(cartePose instanceof StopperSuivant) {
     			if(!li.hasPrevious()) {
