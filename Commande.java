@@ -1,3 +1,4 @@
+
 public class Commande extends Carte {
 	
 	public Commande(NumeroCarte num, TypCarte typ) {
@@ -5,8 +6,9 @@ public class Commande extends Carte {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void appliquerPouvoir() {
-	   
+	public void appliquerPouvoir(Manche manche) {
+	   // ajouter message et demander type
+		//manche.tatamis.setType("value");
 	 }
 	
 	public static void main(String[] args ) {
