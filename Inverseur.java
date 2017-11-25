@@ -1,10 +1,10 @@
+
 public class Inverseur extends Carte {
 	
-	public Inverseur(NumeroCarte num, TypCarte typ) {
-		super(num, typ, 54);
-		// TODO Auto-generated constructor stub
+	public Inverseur(NumeroCarte num,TypCarte typ){
+		super(num, typ);
 	}
-
+	
 	public void appliquerPouvoir() {
 	   
 	 }
