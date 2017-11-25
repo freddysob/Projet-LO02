@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -15,11 +16,14 @@ public class Partie {
     //@objid ("6eb49448-5654-4cee-a87c-85f5c2848ab5")
     private int pointsMax;
     
+    public List<Joueur> joueur = new ArrayList<Joueur> ();
+    
     //@objid ("3a6cc269-d3b0-4156-b152-448097b00722")
     public Partie() {
     	this.statut=Statut.Encours;
     	this.nbJoueurs=0;
     	this.pointsMax=500;
+    	this.joueur = new ArrayList<Joueur>();
     }
     
     public String toString(){
@@ -48,6 +52,17 @@ public class Partie {
     void setStatut(Statut value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.statut = value;
+    }
+    
+    List<Joueur> getJoueur() {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        return this.joueur;
+    }
+
+    //@objid ("9b54aa45-133c-4468-8cdc-513ac26380b6")
+    void setJoueur(List<Joueur> value) {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        this.joueur = value;
     }
 
     //@objid ("75a5c5d5-3faf-44e0-a3b2-50320be51a78")
