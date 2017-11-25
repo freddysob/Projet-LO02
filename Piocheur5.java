@@ -1,12 +1,12 @@
 public class Piocheur5 extends Carte{
 	
-	public Piocheur5(NumeroCarte num, TypCarte typ) {
+	public Piocheur5(NumerosCarte num, TypCarte typ) {
 		super(num, typ, 30);
 		// TODO Auto-generated constructor stub
 	}
 
-	public void appliquerPouvoir(Joueur joueur, Pioche pioche) {
-		pioche.distribuerCarte(5, joueur);   
+	public void appliquerPouvoir(Manche manche) {
+		manche.pioche.distribuerCarte(5, manche.joueurSuivant(this)); 
 	 }
 	
 	public static void main(String[] args ) {
