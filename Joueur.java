@@ -1,95 +1,139 @@
+//import com.modeliosoft.modelio.javadesigner.annotations.objid;
+
+//@objid ("2dcc4c4b-2391-44bd-98b6-0db389694165")
 public class Joueur {
+    //@objid ("644ad622-ff18-461c-91e3-6613837a8102")
     private boolean etatActif;
 
+    //@objid ("4e634eba-7033-4791-ac25-a34af8f5d0dc")
     private String nom;
 
+    //@objid ("b1ff98fd-3675-45a0-8abe-f99d8e4e6814")
     private boolean typePhysique;
 
+    //@objid ("fc5b9751-47b7-4e50-b1a0-ae2d1702b118")
     private int numeroJoueur;
 
+    //@objid ("b25383cd-f581-4d33-a1c5-44ba4b0b2f4a")
     private int nbPoints;
+
+    private boolean annonceDerniereCarte;
 
     public Hand hand;
     
-    public Joueur(String name, int num, Hand hand) {
+    public Manche manche;
+    
+    public Joueur(String name, int num, Hand hand, Manche manche) {
     	this.etatActif = false;
     	this.typePhysique = false;
     	this.numeroJoueur=num;
     	this.nbPoints = 0;
     	this.nom=name;
+    	this.manche=manche;
     	this.hand=new Hand(this);
+    	this.annonceDerniereCarte=false;
     }
     
     public String toString(){
     	String s;
-    	s="[Joueur "+this.getNom()+", numero "+this.getNumeroJoueur()+" "+this.getNbPoints()+" points]";
+    	s="[Joueur "+this.getNom()+", numero "+this.getNumeroJoueur()+" , "+this.getNbPoints()+" points]";
     	return s;
     }
 
+    //@objid ("bfdeddd7-0068-4d05-89a1-c7b85cc8c54f")
     protected void finalize() {
     }
 
 
     public void signalerDerniereCarte() {
+    	if(this.hand.carte.size()==1) {
+    		this.annonceDerniereCarte=true;
+    	}else {
+    		this.manche.penaliserJoueur(1, this);
+    	}
     }
 
-    public void jouerCarte() {
+    public void jouerCarte(Carte carte) {
+    	//this.hand.carte.remove(carte);
+    	this.manche.tatamis.ajouterCarte(carte);
+    	carte.appliquerPouvoir(this.manche);
     }
 
+    public void denoncerDCarte(Joueur joueur) {
+    	if(this.hand.carte.size()==1 && this.annonceDerniereCarte==false) {
+    		this.manche.penaliserJoueur(2, joueur);
+    	}else {
+    		this.manche.penaliserJoueur(2, this);
+    	}
+    }
+
+    public void denoncerMCarte(Joueur joueur) {
+    	if(!this.manche.tatamis.verifierValiditeCarte()==true) {
+    		this.manche.penaliserJoueur(3, joueur);
+    	}else {
+    		this.manche.penaliserJoueur(3, this);
+    	}
+    }
+
+    //@objid ("8a1180dc-f293-4922-aa03-eb2ed17e2f60")
     public void piocher() {
     }
 
-    public void denoncerDCarte() {
-    }
-
-    public void denoncerMCarte() {
-    }
-
+    //@objid ("ad53043c-fa56-4988-98e7-4b52306e1af4")
     boolean isEtatActif() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.etatActif;
     }
 
+    //@objid ("28403170-33bc-40a9-b504-5c3450abe974")
     void setEtatActif(boolean value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.etatActif = value;
     }
 
+    //@objid ("32738ca0-c5a4-4bbf-a98d-984e129bfab9")
     String getNom() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.nom;
     }
 
+    //@objid ("aedae8e2-4cfe-4fcf-9941-4087c32d890c")
     void setNom(String value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.nom = value;
     }
 
+    //@objid ("4152e987-036d-430c-898a-41cdfbcab303")
     boolean isTypePhysique() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.typePhysique;
     }
 
+    //@objid ("b29687ae-d766-42f0-8947-fbb5b3f54006")
     void setTypePhysique(boolean value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.typePhysique = value;
     }
 
+    //@objid ("33b07d26-3623-4475-8768-46a1197b43e0")
     int getNumeroJoueur() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.numeroJoueur;
     }
 
+    //@objid ("bcb2af85-8bcb-4a95-9752-74cf5c962910")
     void setNumeroJoueur(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.numeroJoueur = value;
     }
 
+    //@objid ("99402ae3-7a52-40d4-9316-06744c865728")
     int getNbPoints() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.nbPoints;
     }
 
+    //@objid ("5ab852bd-9110-446b-a66b-957b1657542f")
     void setNbPoints(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.nbPoints = value;
