@@ -19,7 +19,7 @@ public class Main {
 	
 	while(avance==true){
 	
-	System.out.println("Entrez une valeur de 1 � 9 pour s�lectionner le type de variante:");
+	System.out.println("Entrez une valeur de 1 à 9 pour sélectionner le type de variante:");
 	System.out.println("1 pour la version basique");
 	System.out.println("2 pour la variante Monclar");
 	System.out.println("3 pour la variante 1");
@@ -111,32 +111,44 @@ public class Main {
 		System.out.println("Main joueur " + Joueurs[i].getNom() + " : " + Joueurs[i].hand.getCarte());
 		}
 		
+		int i1=0;
+		int rand=1;
 		while(P.verifierFinPartie(V)==false && Pi.carte.size()>30)
 		{
-			int i1=0;
+			
 			for (i=0;i<P.getNbJoueurs();i++){
 				if(M.joueur.get(i).isEtatActif()==true || M.joueur.get(i).isTypePhysique()==true){i1=i;}
 			}
+			rand=(int)(Math.random()*(M.joueur.get(i1).hand.carte.size() - 0));
+			
 			System.out.println("Le joueur "+ M.joueur.get(i1).getNom() +" joue.");
-			System.out.println("Num random : "+ (int)Math.random()*(0 - M.joueur.get(i1).hand.carte.size()));
-			M.joueur.get(i1).jouerCarte(M.joueur.get(i1).hand.carte.get((int)Math.random()*(0 - M.joueur.get(i1).hand.carte.size()))); //(int)Math.random()*(0 - M.joueur.get(i1).hand.carte.size()))
+			int r=rand+1;
+			System.out.println("Num random : "+ r);
+			M.joueur.get(i1).jouerCarte(M.joueur.get(i1).hand.carte.get(rand)); 
+			//T.verifierValiditeCarte();
 			System.out.println("Main joueur "+ M.joueur.get(i1).getNom() +" : " + M.joueur.get(i1).hand.getCarte());
+			
+			T.carte.get(0).appliquerPouvoir(M);
 			//System.out.println(T.carte.get(0));
-			//M.joueurSuivant(T.carte.get(0));
-			//Pi.distribuerCarte(1, M.joueur.get(i1));
+			
+			Pi.distribuerCarte(1, M.joueur.get(i1));
+			System.out.println("Pioche : " + Pi.getCarte());
+			
 			System.out.println("Tatamis :" + T.getCarte());
-			//Tatamis.verifierValiditeCarte(V);
-			//C.appliquerPouvoir();
+			
+			
 			//Pioche.reconstituer();
 			P.verifierFinPartie(V);
 			//i=i+1;
+			
+			//i1=M.joueur.indexOf(M.joueurSuivant(T.carte.get(0)));
 		}
 		
 		
 			//	System.out.println("Le joueur"& i & "joue.");
-			//	System.out.println("Vérification carte.");
-			//	System.out.println("Effets et pénalités.");1
-		//	System.out.println("Vérifications finales.");
+			//	System.out.println("VÃ©rification carte.");
+			//	System.out.println("Effets et pÃ©nalitÃ©s.");1
+		//	System.out.println("VÃ©rifications finales.");
 		//	System.out.println("Le joueur suivant joue.");
 			if (Pi.carte.size()==0){Pi.reconstituer();}
 }
