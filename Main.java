@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Collections;
 
 
 public class Main {
@@ -78,70 +79,106 @@ public class Main {
 	System.out.println("Entrez le nombre de joueurs");
 	String var2=sc.nextLine();
 	int nbj=Integer.parseInt(var2);
-	Joueur Joueurs[] = new Joueur[nbj];
+	Joueur Joueurs[] = new Joueur[nbj];           // Creation d'un tableau à la taille du nombre de joueurs
 	
 	
-	P.setNbJoueurs(nbj);
-		for (i=0;i<P.getNbJoueurs();i++){
-			int ind=i+1;
-			System.out.println("entrer le nom du joueur "+ ind);
-			String var3=sc.nextLine();
-			Hand Main = new Hand(Joueurs[i]);
-			Joueurs[i] = new Joueur(var3,i,Main, M);
-			//Joueurs[i].nom=var;
-			//Joueurs[i].numeroJoueur=i;
-			//Joueurs[i].nbPoints=0;
-				if(i==0){Joueurs[i].setTypePhysique(true);
-					}
-				
-				else{Joueurs[i].setTypePhysique(false);
-					}
-		}
-		
-		for (i=0;i<P.getNbJoueurs();i++){
-			M.joueur.add(Joueurs[i]);  //Copie de la liste des joueurs
+	P.setNbJoueurs(nbj);                          // Mise à jour de l'attribut nombre joueurs dans la partie
+	
+		for (i=0;i<P.getNbJoueurs();i++){         // Creation des joueurs                        
+			
+			if(i==0){
+				System.out.println("Entrer votre nom ");
+
+				String var3=sc.nextLine();
+				Hand Main = new Hand(Joueurs[i]);
+				Joueurs[i] = new Joueur(var3,i,Main, M);
+				Joueurs[i].setTypePhysique(true);
 			}
 		
-		Pi.setCarte(V.genererJeuCartes());
-		//Pi.carte.shuffle();
-		Pi.distribuerCartesDebut(V);
+		else{
+			
+			String var3= "";
+			Hand Main = new Hand(Joueurs[i]);
+			Joueurs[i] = new IA(var3,i,Main, M);
+			Joueurs[i].setTypePhysique(false);
+			}
+			
+		}
+		
+					//Copie de la liste des joueurs dans la Partie
+		
+		for (i=0;i<P.getNbJoueurs();i++){
+			P.joueur.add(Joueurs[i]);  
+			}
+		
+					//Copie de la liste des joueurs dans la Manche
+		
+		for (i=0;i<P.getNbJoueurs();i++){
+			M.joueur.add(Joueurs[i]);  
+			}
+		
+		Pi.setCarte(V.genererJeuCartes());  			//Generation du jeu de cartes dans la pioche
+		Collections.shuffle(Pi.getCarte());				//Melange des cartes de la pioche
+		
+		Pi.distribuerCartesDebut(V);					// Distribution des cartes aux joueurs
+		
+				//Affichages: Pioche et liste de joueurs
 		System.out.println(Pi.carte);
 		System.out.println("Liste joueurs : "+Pi.manche.joueur);
 		for (i=0;i<P.getNbJoueurs();i++){
 		System.out.println("Main joueur " + Joueurs[i].getNom() + " : " + Joueurs[i].hand.getCarte());
 		}
 		
+		
+		//Boucle pour un tour de jeu qui se repète jusqu'à la fin
+		
+		
 		int i1=0;
 		int rand=1;
 		while(P.verifierFinPartie(V)==false && Pi.carte.size()>30)
 		{
 			
+			// Recherche du joueur actif
 			for (i=0;i<P.getNbJoueurs();i++){
 				if(M.joueur.get(i).isEtatActif()==true || M.joueur.get(i).isTypePhysique()==true){i1=i;}
 			}
-			rand=(int)(Math.random()*(M.joueur.get(i1).hand.carte.size() - 0));
 			
+			// Le joueur joue
+				
 			System.out.println("Le joueur "+ M.joueur.get(i1).getNom() +" joue.");
-			int r=rand+1;
-			System.out.println("Num random : "+ r);
-			M.joueur.get(i1).jouerCarte(M.joueur.get(i1).hand.carte.get(rand)); 
+			
+			if (M.joueur.get(i1).isTypePhysique()){                                   // Cas du joueur
+			 M.joueur.get(i1).setEtatActif(true);
+			
+			 
+			System.out.println("Saisir l'indice de la carte que vous souhaitez jouer");
+			String var4=sc.nextLine();
+			rand = Integer.parseInt(var4)-1;
+			M.joueur.get(i1).jouerCarte(M.joueur.get(i1).hand.carte.get(rand));}
+			
+			else {                                                                    // Cas de l'IA
+				M.joueur.get(i1).jouer();
+			}
+			
+			
 			//T.verifierValiditeCarte();
 			System.out.println("Main joueur "+ M.joueur.get(i1).getNom() +" : " + M.joueur.get(i1).hand.getCarte());
 			
 			T.carte.get(0).appliquerPouvoir(M);
 			//System.out.println(T.carte.get(0));
 			
-			Pi.distribuerCarte(1, M.joueur.get(i1));
+			//Pi.distribuerCarte(1, M.joueur.get(i1));
 			System.out.println("Pioche : " + Pi.getCarte());
 			
 			System.out.println("Tatamis :" + T.getCarte());
+			
 			
 			
 			//Pioche.reconstituer();
 			P.verifierFinPartie(V);
 			//i=i+1;
 			
-			//i1=M.joueur.indexOf(M.joueurSuivant(T.carte.get(0)));
+			i1=M.joueur.indexOf(M.joueurSuivant(T.carte.get(0)));
 		}
 		
 		
