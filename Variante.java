@@ -14,10 +14,24 @@ public class Variante {
     //@objid ("5b9273cf-6a6f-4215-a1db-0ac1d9b0091b")
     public List<Carte> carte = new ArrayList<Carte> ();
     
+    private int nombreCarteDebut;
+    
     //@objid ("d61ad526-226d-4650-ab08-6ee425d1d67a")
     public Variante(int nbCartes, TypVariante nom) {
     	this.nbJeuDeCartes = nbCartes;
         this.nom = nom;
+        switch (this.nom){
+    	case Minimale:this.nombreCarteDebut=5;
+    	case Monclar:this.nombreCarteDebut=5;
+    	case Variante_1:this.nombreCarteDebut=5;
+    	case Carte_et_Maou:this.nombreCarteDebut=5;
+    	case Des_Ulis:this.nombreCarteDebut=5;
+    	case Variante_4:this.nombreCarteDebut=5;
+    	case Variante_5:this.nombreCarteDebut=5;
+    	case Variante_6:this.nombreCarteDebut=5;
+    	case Variante_Courte_Amicale:this.nombreCarteDebut=5;
+    	case Man_et_resta:this.nombreCarteDebut=5;
+        }
         //this.carte = this.genererJeuCartes();
     }
     
@@ -71,6 +85,16 @@ public class Variante {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.carte = value;
     }
+    
+    int getNombreCarteDebut() {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        return this.nombreCarteDebut;
+    }
+
+    void setNombreCarteDebut(int value) {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        this.nombreCarteDebut = value;
+    }    
     
     public List<Carte> genererJeuCartes(){
     	int i=0;
