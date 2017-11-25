@@ -146,7 +146,6 @@ public class Manche {
     	}
     	if(this.sensJeuPos) {
     		while(!li.next().isEtatActif()) {
-    			li.next();
     		}
     		if(cartePose instanceof StopperSuivant) {
     			if(!li.hasNext()) {
