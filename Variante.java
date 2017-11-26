@@ -98,7 +98,7 @@ public class Variante {
     
     public List<Carte> genererJeuCartes(){
     	int i=0;
-    	List<Carte> L = new ArrayList ();
+    	List<Carte> L = new ArrayList<Carte> ();
     	for(i=0; i<this.nbJeuDeCartes; i++){
     	switch (this.nom){
     	case Minimale:

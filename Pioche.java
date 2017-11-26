@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
@@ -38,6 +39,7 @@ public class Pioche {
         for(int i =0; i<this.manche.tatamis.carte.size(); i++) {
         	this.manche.tatamis.carte.remove(i);
         }
+        Collections.shuffle(this.getCarte());
     }
 
     public void distribuerCartesDebut(Variante variante) {

@@ -11,16 +11,16 @@ public class Main {
 	Manche M = new Manche(0, V, P, T);
 	Scanner sc = new Scanner(System.in);
 	int i=1;
-	Joueur J = new Joueur("IA",1, null,M);
-	Hand H = new Hand(J);
 	Pioche Pi = new Pioche(M);
-	//Joueur[] Joueurs = {J};
+	
 	
 	boolean avance=true;
 	
-	while(avance==true){
+	// Choix Variante
 	
-	System.out.println("Entrez une valeur de 1 Ã  9 pour sÃ©lectionner le type de variante:");
+	while(avance){
+	
+	System.out.println("Entrez une valeur de 1 à 9 pour sélectionner le type de variante:");
 	System.out.println("1 pour la version basique");
 	System.out.println("2 pour la variante Monclar");
 	System.out.println("3 pour la variante 1");
@@ -75,14 +75,16 @@ public class Main {
 	}
 	
 	}
-	//TypVariante V.nom=TypVariante.var;
+	
+	// Creation d'un tableau à la taille du nombre de joueurs
+	
 	System.out.println("Entrez le nombre de joueurs");
 	String var2=sc.nextLine();
 	int nbj=Integer.parseInt(var2);
-	Joueur Joueurs[] = new Joueur[nbj];           // Creation d'un tableau Ã  la taille du nombre de joueurs
+	Joueur Joueurs[] = new Joueur[nbj];           
 	
 	
-	P.setNbJoueurs(nbj);                          // Mise Ã  jour de l'attribut nombre joueurs dans la partie
+	P.setNbJoueurs(nbj);                          // Mise à jour de l'attribut nombre joueurs dans la partie
 	
 		for (i=0;i<P.getNbJoueurs();i++){         // Creation des joueurs                        
 			
@@ -130,7 +132,7 @@ public class Main {
 		}
 		
 		
-		//Boucle pour un tour de jeu qui se repÃ¨te jusqu'Ã  la fin
+		//Boucle pour un tour de jeu qui se repète jusqu'à la fin
 		
 		
 		int i1=0;
@@ -161,7 +163,7 @@ public class Main {
 			}
 			
 			
-			//T.verifierValiditeCarte();
+			//T.verifierValiditeCarte(); ?
 			System.out.println("Main joueur "+ M.joueur.get(i1).getNom() +" : " + M.joueur.get(i1).hand.getCarte());
 			
 			T.carte.get(0).appliquerPouvoir(M);
@@ -172,21 +174,19 @@ public class Main {
 			
 			System.out.println("Tatamis :" + T.getCarte());
 			
+			// A ajouter : 
 			
+			// Possibilité de signaler Mauvaise carte/Derniere carte
+			// Attribution de points et retenue des joueurs qui ont fini leur main
+			// Verification fin de manche, si oui destruction et création de nouvelle manche
+			// Verification fin de partie
+			// Verification Pioche vide -> reconstitution
 			
-			//Pioche.reconstituer();
 			P.verifierFinPartie(V);
-			//i=i+1;
 			
 			i1=M.joueur.indexOf(M.joueurSuivant(T.carte.get(0)));
 		}
 		
-		
-			//	System.out.println("Le joueur"& i & "joue.");
-			//	System.out.println("VÃƒÂ©rification carte.");
-			//	System.out.println("Effets et pÃƒÂ©nalitÃƒÂ©s.");1
-		//	System.out.println("VÃƒÂ©rifications finales.");
-		//	System.out.println("Le joueur suivant joue.");
-			if (Pi.carte.size()==0){Pi.reconstituer();}
+			
 }
 }

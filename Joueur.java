@@ -83,6 +83,7 @@ public class Joueur {
 
     //@objid ("8a1180dc-f293-4922-aa03-eb2ed17e2f60")
     public void piocher() {
+    	this.manche.pioche.distribuerCarte(1,this);
     }
 
     //@objid ("ad53043c-fa56-4988-98e7-4b52306e1af4")

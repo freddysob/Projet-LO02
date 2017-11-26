@@ -12,3 +12,4 @@ public class Piocheur2 extends Carte {
 	public static void main(String[] args ) {
     	
     }
+}
