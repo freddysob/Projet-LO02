@@ -134,13 +134,17 @@ public class Main {
 		
 		System.out.println("Pioche : " + Pi.getCarte());
 		
+		System.out.println("Tatamis :" + T.getCarte());
 		
 		//Boucle pour un tour de jeu qui se repète jusqu'à la fin
 		
 		int i1=0;
 		int rand=1;
+		String var4 = "";
 		while(P.verifierFinPartie(M)==false && Pi.carte.size()>10)
 		{
+			
+			Scanner sc1 = new Scanner(System.in);
 			
 			// Recherche du joueur actif
 			for (i=0;i<P.getNbJoueurs();i++){
@@ -156,7 +160,7 @@ public class Main {
 			
 			 
 			System.out.println("Saisir l'indice de la carte que vous souhaitez jouer");
-			String var4=sc.nextLine();
+			var4=sc1.nextLine();
 			rand = Integer.parseInt(var4)-1;
 			M.joueur.get(i1).jouerCarte(M.joueur.get(i1).hand.carte.get(rand));}
 			
@@ -185,20 +189,22 @@ public class Main {
 			// Verification Pioche vide -> reconstitution
 			
 
-			System.out.println("Gagnants :" + M.getGagnants());
+			System.out.println("Liste de Gagnants :" + M.getGagnants());
 			
-			System.out.println("Nb joueurs restants :" + M.getNbJoueurs());
+			//System.out.println("Nb joueurs restants :" + M.getNbJoueurs());
 			
-			System.out.println("Nbj :" + nbj);
+			//System.out.println("Nbj :" + nbj);
+			
+			i1=M.joueur.indexOf(M.joueurSuivant(T.carte.get(0)));
 			
 			M.verifierFinManche();
 			P.verifierFinPartie(M);
 			
 			
-			i1=M.joueur.indexOf(M.joueurSuivant(T.carte.get(0)));
+			
 		}
 		
-		sc.close();
+		//sc.close();
 }
 	
 }

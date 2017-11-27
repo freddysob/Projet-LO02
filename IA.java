@@ -32,14 +32,33 @@ public class IA extends Joueur{
     public void jouer() {
     	int poids = -100;
     	Carte carteajouer=null;
-    	int i=0;
-    	for(i=0; i<this.hand.carte.size();i++) {
-    		if(poids<this.hand.carte.get(i).getPoids()) {
-    			poids = this.hand.carte.get(i).getPoids();
-    			carteajouer=this.hand.carte.get(i);
+    	ArrayList<Carte> carteJouable = new ArrayList<Carte>();
+    	for(int i=0; i<this.hand.carte.size();i++) {
+    		if(this.manche.tatamis.carte.get(0).getType()==this.hand.carte.get(i).getType()||this.manche.tatamis.carte.get(0).getNumero()==this.hand.carte.get(i).getNumero()||this.hand.carte.get(i) instanceof Commande) {
+    			carteJouable.add(this.hand.carte.get(i));
     		}
     	}
-    	this.jouerCarte(carteajouer);
+    	if(!carteJouable.isEmpty()) {
+        	for(int i=0; i<carteJouable.size();i++) {
+        		if(poids<carteJouable.get(i).getPoids()) {
+        			poids = carteJouable.get(i).getPoids();
+        			carteajouer=carteJouable.get(i);
+        		}
+        	this.jouerCarte(carteajouer);
+        	}
+    	}else{
+    		if(Math.random()<0.2) {
+            	for(int i=0; i<carteJouable.size();i++) {
+            		if(poids<carteJouable.get(i).getPoids()) {
+            			poids = carteJouable.get(i).getPoids();
+            			carteajouer=carteJouable.get(i);
+            		}
+            	this.jouerCarte(carteajouer);
+            	}
+    		}else {
+    			this.manche.pioche.distribuerCarte(1, this);
+    		}
+    	}
     }
 
     //@objid ("5db48821-e1bb-4323-8520-b4a682114998")
