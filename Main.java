@@ -141,10 +141,9 @@ public class Main {
 		int i1=0;
 		int rand=1;
 		String var4 = "";
-		while(P.verifierFinPartie(M)==false && Pi.carte.size()>10)
+		while(P.verifierFinPartie(M)==false && Pi.carte.size()>10) // Le && est juste pour tester pour pas avoir de cas infini
 		{
 			
-			Scanner sc1 = new Scanner(System.in);
 			
 			// Recherche du joueur actif
 			for (i=0;i<P.getNbJoueurs();i++){
@@ -160,7 +159,7 @@ public class Main {
 			
 			 
 			System.out.println("Saisir l'indice de la carte que vous souhaitez jouer");
-			var4=sc1.nextLine();
+			var4=sc.nextLine();
 			rand = Integer.parseInt(var4)-1;
 			M.joueur.get(i1).jouerCarte(M.joueur.get(i1).hand.carte.get(rand));}
 			

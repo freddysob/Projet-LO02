@@ -216,7 +216,7 @@ public class Manche {
     			
     			// Recherche et traitement de joueur avec main vide si moins de 3 personnes ont fini
     	for(i=0; i<this.nbJoueurs; i++){
-    		if (this.joueur.get(i).hand.carte.size()<1){
+    		if (this.joueur.get(i).hand.carte.size()==0){
     			this.gagnants.add(this.joueur.get(i));
     			this.joueur.get(i).setaFini(true);
     			this.joueur.get(i).setEtatActif(false);}
