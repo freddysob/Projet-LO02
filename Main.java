@@ -85,6 +85,7 @@ public class Main {
 	
 	
 	P.setNbJoueurs(nbj);                          // Mise à jour de l'attribut nombre joueurs dans la partie
+	M.setNbJoueurs(nbj);
 	
 		for (i=0;i<P.getNbJoueurs();i++){         // Creation des joueurs                        
 			
@@ -131,13 +132,14 @@ public class Main {
 		System.out.println("Main joueur " + Joueurs[i].getNom() + " : " + Joueurs[i].hand.getCarte());
 		}
 		
+		System.out.println("Pioche : " + Pi.getCarte());
+		
 		
 		//Boucle pour un tour de jeu qui se repète jusqu'à la fin
 		
-		
 		int i1=0;
 		int rand=1;
-		while(P.verifierFinPartie(V)==false && Pi.carte.size()>30)
+		while(P.verifierFinPartie(M)==false && Pi.carte.size()>10)
 		{
 			
 			// Recherche du joueur actif
@@ -163,10 +165,10 @@ public class Main {
 			}
 			
 			
-			//T.verifierValiditeCarte(); ?
+			T.verifierValiditeCarte(); 
 			System.out.println("Main joueur "+ M.joueur.get(i1).getNom() +" : " + M.joueur.get(i1).hand.getCarte());
 			
-			T.carte.get(0).appliquerPouvoir(M);
+			T.carte.get(0).appliquerPouvoir(M,M.joueur.get(i1));
 			//System.out.println(T.carte.get(0));
 			
 			//Pi.distribuerCarte(1, M.joueur.get(i1));
@@ -182,11 +184,21 @@ public class Main {
 			// Verification fin de partie
 			// Verification Pioche vide -> reconstitution
 			
-			P.verifierFinPartie(V);
+
+			System.out.println("Gagnants :" + M.getGagnants());
+			
+			System.out.println("Nb joueurs restants :" + M.getNbJoueurs());
+			
+			System.out.println("Nbj :" + nbj);
+			
+			M.verifierFinManche();
+			P.verifierFinPartie(M);
+			
 			
 			i1=M.joueur.indexOf(M.joueurSuivant(T.carte.get(0)));
 		}
 		
-			
+		sc.close();
 }
+	
 }

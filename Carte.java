@@ -35,7 +35,7 @@ public class Carte {
     }
 
     //@objid ("bb607436-5a85-4c20-ae05-1bc967a5a60d")
-    public void appliquerPouvoir (Manche manche ) {
+    public void appliquerPouvoir (Manche manche, Joueur J) {
     	
     }
 

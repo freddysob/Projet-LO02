@@ -8,7 +8,7 @@ public class Piocheur5 extends Carte {
 		super(num, typ);
 	}
 	
-	public void appliquerPouvoir(Manche manche) {
+	public void appliquerPouvoir(Manche manche, Joueur J) {
 		manche.pioche.distribuerCarte(5, manche.joueurSuivant(this));
 	 }
 	

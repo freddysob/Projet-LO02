@@ -46,6 +46,11 @@ public class Pioche {
     	for(int i = 0; i<this.manche.joueur.size(); i++){
     		this.distribuerCarte(variante.getNombreCarteDebut(), this.manche.joueur.get(i));
     	}
+    	
+    	// Distribution premiere carte du tatamis
+    	
+    	this.manche.tatamis.carte.add(this.carte.get(0));
+    	this.carte.remove(0);
     }
 
     public void distribuerCarte(int nombre, Joueur joueur) {

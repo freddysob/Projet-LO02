@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ListIterator;
 import java.util.List;
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
@@ -16,6 +17,8 @@ public class Manche {
 
     //@objid ("b670d549-6d2b-4b74-b7d9-6222c874f4b3")
     public List<Joueur> joueur = new ArrayList<Joueur> ();
+    
+    public List<Joueur> gagnants = new ArrayList<Joueur> ();
 
     //@objid ("2dd207a1-9c99-4fb6-893a-b5b54705fe49")
     public Tatamis tatamis;
@@ -87,6 +90,14 @@ public class Manche {
     void setJoueur(List<Joueur> value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.joueur = value;
+    }
+    
+    List<Joueur> getGagnants() {
+        return this.gagnants;
+    }
+    
+    void setGagnants(List<Joueur> value) {
+        this.gagnants = value;
     }
 
     //@objid ("09fe90f9-552c-4d15-942c-b2de58609213")
@@ -194,6 +205,68 @@ public class Manche {
     	joue.setEtatActif(true);
     	return(joue);
 	}
+    
+    
+    public boolean verifierFinManche() {
+    	int i=0;
+    	boolean o=false;
+    	int j=0;
+    	//while(!o){
+    		if(this.gagnants.size()<=3){
+    			
+    			// Recherche et traitement de joueur avec main vide si moins de 3 personnes ont fini
+    	for(i=0; i<this.nbJoueurs; i++){
+    		if (this.joueur.get(i).hand.carte.size()<1){
+    			this.gagnants.add(this.joueur.get(i));
+    			this.joueur.get(i).setaFini(true);
+    			this.joueur.get(i).setEtatActif(false);}
+    	}
+    			
+    		}
+    	else {
+    		
+    		o=true;
+    		
+    		System.out.println("Manche terminée.");
+
+    		for(i=0; i<=this.nbJoueurs; i++){
+    			this.joueur.get(i).setaFini(false);
+    			for(j=0; j<=this.joueur.get(i).hand.carte.size(); j++){
+    				this.pioche.carte.add(this.joueur.get(i).hand.carte.get(j));
+    				this.joueur.get(i).hand.carte.remove(j);
+    			}
+    		}
+    		
+    		// Attribution de points
+        	for(i=0; i<=this.nbJoueurs; i++){
+        		int r=0;
+        		if (this.gagnants.indexOf(this.joueur.get(i))==1){
+        			r=this.joueur.get(i).getNbPoints()+50;
+        			this.joueur.get(i).setNbPoints(r);
+        		}
+        		else if (this.gagnants.indexOf(this.joueur.get(i))==1){
+        			r=this.joueur.get(i).getNbPoints()+20;
+        			this.joueur.get(i).setNbPoints(r);
+        		}
+        		else if (this.gagnants.indexOf(this.joueur.get(i))==1){
+        			r=this.joueur.get(i).getNbPoints()+10;
+        			this.joueur.get(i).setNbPoints(r);
+        		}
+        		else {
+        			r=this.joueur.get(i).getNbPoints();
+        			this.joueur.get(i).setNbPoints(r);
+        		}
+        	}
+    		
+    		this.pioche.reconstituer();
+    		Collections.shuffle(this.pioche.carte);
+    		this.pioche.distribuerCartesDebut(this.variante);
+    	}
+    	
+    	//}
+    	return o;
+    }
+    
     
 	public static void main(String[] args ) {
     	
