@@ -1,21 +1,24 @@
 package PackageLO02;
 import java.util.ArrayList;
 import java.util.List;
+//import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
+
+//@objid ("15049204-cf0a-4f70-8165-1c314b15eb3c")
 public class Hand {
-    private int nbCartes; // pas utile
+    //@objid ("93daffc6-1024-4d73-898c-79abea8d32d4")
+    private int nbCartes;
     
     public Joueur joueur;
-    
-    public Manche manche;
 
-    public List<Carte> carte;
+    //@objid ("aacbce62-fcd5-49c5-9b64-7f4ef32ed7af")
+    public List<Carte> carte = new ArrayList<Carte> ();
     
-    public Hand(Joueur J, Manche manche) {
+    //@objid ("f1764045-f4dc-4477-bb9f-43be5da9dde0")
+    public Hand(Joueur J) {
     	this.nbCartes=0;
     	this.joueur=J;
     	this.carte= new ArrayList<Carte> ();
-    	this.manche = manche;
     }
     
     public String toString(){
@@ -24,48 +27,62 @@ public class Hand {
     	return s;
     }
 
-    public int getNbCartes() {
+    //@objid ("4dac1e9c-baba-47d0-9786-c87dec2fce24")
+    protected void finalize() {
+    }
+
+    //@objid ("24a3d8ab-a154-4a3e-b130-919b64291868")
+    int getNbCartes() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.nbCartes;
     }
 
-    public void setNbCartes(int value) {
+    //@objid ("67edb5a1-0891-4b63-bc7b-5fb228c03bf1")
+    void setNbCartes(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.nbCartes = value;
     }
 
-    public List<Carte> getCarte() {
+    //@objid ("c00d9a81-9258-4d10-a234-be9f791c3ef8")
+    List<Carte> getCarte() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.carte;
     }
 
-    public void setCarte(List<Carte> value) {
+    //@objid ("7aae7e93-1625-4090-b585-6474b6baede1")
+    void setCarte(List<Carte> value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.carte = value;
     }
-    
     public boolean mainVide() {
+    	boolean fini = true;
     	if(this.carte.isEmpty()) {
     		this.joueur.setaFini(true);
     		int compte = 0;
-    		for(int i=0; i<this.manche.joueur.size(); i++) {
-    			if(this.manche.joueur.get(i).isaFini()) {
+    		for(int i=0; i<this.joueur.manche.joueur.size(); i++) {
+    			if(this.joueur.manche.joueur.get(i).isaFini()) {
     				compte+=1;
     			}
     		}
-    		if(compte==0) {
+    		if(compte==1) {
     			this.joueur.ajoutPoints(50);
-    		}else if(compte == 1) {
-    			this.joueur.ajoutPoints(20);
+    			if(this.joueur.manche.joueur.size()==2) {
+    				fini=false;
+    			}
     		}else if(compte == 2) {
+    			this.joueur.ajoutPoints(20);
+    			if(this.joueur.manche.joueur.size()==3) {
+    				fini=false;
+    			}
+    		}else if(compte == 3) {
     			this.joueur.ajoutPoints(10);
-    			this.manche.partie.finManche();
+    			fini = false;
+    		//	this.joueur.manche.partie.verifi;
     		}
-    		return(true);
-    	}else {
-    		return(false);
     	}
+    	return(fini);
     }
+
 
 	public static void main(String[] args ) {
     	
