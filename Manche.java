@@ -137,14 +137,15 @@ public class Manche {
         this.variante = value;
     }
     
-    public Joueur joueurSuivant(Carte cartePose) {
+    public Joueur joueurSuivant(Carte cartePose, Joueur actif) {
     	ArrayList<Joueur> temp = new ArrayList <Joueur>();
     	for(int i=0; i<this.joueur.size(); i++) {
     		temp.add(this.joueur.get(i));
     	}
     	ListIterator<Joueur> li= temp.listIterator();
     	Joueur joue = null;
-    	if(cartePose instanceof Rejoueur) {
+
+    	if(cartePose instanceof Rejoueur && !actif.hand.carte.isEmpty()) {
     		while(li.hasNext()) {
     			joue = li.next();
     			if(joue.isEtatActif()) {

@@ -58,6 +58,7 @@ public class Joueur {
     public void jouerCarte(Carte carte) {
     	this.hand.carte.remove(carte);
     	this.manche.tatamis.ajouterCarte(carte);
+    	this.manche.tatamis.setType(carte.getType());
     	carte.appliquerPouvoir(this.manche, this);
     }
 

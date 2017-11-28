@@ -202,7 +202,7 @@ public class Main {
 			//System.out.println("Nbj :" + nbj);
 
 			
-			M.joueurSuivant(T.carte.get(0));
+			M.joueurSuivant(T.carte.get(0),M.joueur.get(i1));
 			
 			System.out.println(M.joueur);
 			System.out.println(P.joueur);
