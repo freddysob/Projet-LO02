@@ -6,7 +6,7 @@ public class Piocheur2 extends Carte {
 	}
 
 	public void appliquerPouvoir(Manche manche, Joueur J) {
-		manche.pioche.distribuerCarte(2, manche.joueurSuivant(this));   
+		manche.pioche.distribuerCarte(2, manche.joueurSuivant(this,J));   
 	 }
 	
 	public static void main(String[] args ) {

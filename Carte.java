@@ -1,6 +1,3 @@
-//import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
-//@objid ("e552cddb-2d13-42de-8744-8d933700a4a5")
 public class Carte {
 	 private NumeroCarte numero;
 

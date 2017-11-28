@@ -1,6 +1,3 @@
-//import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
-//@objid ("2dcc4c4b-2391-44bd-98b6-0db389694165")
 public class Joueur {
     //@objid ("644ad622-ff18-461c-91e3-6613837a8102")
     private boolean etatActif;
@@ -25,14 +22,13 @@ public class Joueur {
     
     public Manche manche;
     
-    public Joueur(String name, int num, Hand hand, Manche manche) {
+    public Joueur(String name, int num, Hand hand) {
     	this.etatActif = false;
     	this.typePhysique = false;
     	this.numeroJoueur=num;
     	this.nbPoints = 0;
     	this.nom=name;
-    	this.manche=manche;
-    	this.hand=new Hand(this);
+    	this.hand=hand;
     	this.annonceDerniereCarte=false;
     }
     
@@ -58,6 +54,7 @@ public class Joueur {
     public void jouerCarte(Carte carte) {
     	this.hand.carte.remove(carte);
     	this.manche.tatamis.ajouterCarte(carte);
+    	this.manche.tatamis.setType(carte.getType());
     	carte.appliquerPouvoir(this.manche, this);
     }
 
@@ -69,6 +66,10 @@ public class Joueur {
     	}
     }
 
+    public void ajoutPoints(int value) {
+    	this.nbPoints+= value;
+    }
+    
     public void denoncerMCarte(Joueur joueur) {
     	if(!this.manche.tatamis.verifierValiditeCarte()==true) {
     		this.manche.penaliserJoueur(3, joueur);
@@ -87,16 +88,24 @@ public class Joueur {
     }
 
     //@objid ("ad53043c-fa56-4988-98e7-4b52306e1af4")
-    boolean isEtatActif() {
+    public boolean isEtatActif() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.etatActif;
     }
 
     //@objid ("28403170-33bc-40a9-b504-5c3450abe974")
-    void setEtatActif(boolean value) {
+    public void setEtatActif(boolean value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.etatActif = value;
     }
+    
+    public void setManche(Manche M) {
+    	this.manche=M;
+    }
+    
+    public void setHand(Hand h) {
+    	this.hand=h;
+    }    
 
     //@objid ("32738ca0-c5a4-4bbf-a98d-984e129bfab9")
     String getNom() {

@@ -11,8 +11,8 @@ public class IA extends Joueur{
     public Joueur joueur;
     
   //@objid ("b95b7218-d770-490e-a1de-e48f4de5c815")
-    public IA(String name, int num, Hand hand, Manche manche) {
-    	super("IA "+ num +"",num, hand, manche);
+    public IA(String name, int num, Hand hand) {
+    	super("IA "+ num +"",num, hand);
     }
 
     //@objid ("35398e5b-9731-402b-829e-bb09bce54f58")
@@ -34,7 +34,7 @@ public class IA extends Joueur{
     	Carte carteajouer=null;
     	ArrayList<Carte> carteJouable = new ArrayList<Carte>();
     	for(int i=0; i<this.hand.carte.size();i++) {
-    		if(this.manche.tatamis.carte.get(0).getType()==this.hand.carte.get(i).getType()||this.manche.tatamis.carte.get(0).getNumero()==this.hand.carte.get(i).getNumero()||this.hand.carte.get(i) instanceof Commande) {
+    		if(this.manche.tatamis.carte.get(0).getType()==this.hand.carte.get(i).getType()||this.manche.tatamis.carte.get(0).getNumero()==this.hand.carte.get(i).getNumero()||this.hand.carte.get(i) instanceof Commande || (this.manche.tatamis.carte.get(0).getType()==TypCarte.Pique && this.hand.carte.get(i).getType()==TypCarte.JN) || (this.manche.tatamis.carte.get(0).getType()==TypCarte.Trefle && this.hand.carte.get(i).getType()==TypCarte.JN) || (this.manche.tatamis.carte.get(0).getType()==TypCarte.Coeur && this.hand.carte.get(i).getType()==TypCarte.JR) || (this.manche.tatamis.carte.get(0).getType()==TypCarte.Carreau && this.hand.carte.get(i).getType()==TypCarte.JR)) {
     			carteJouable.add(this.hand.carte.get(i));
     		}
     	}
@@ -59,7 +59,7 @@ public class IA extends Joueur{
     			this.manche.pioche.distribuerCarte(1, this);
     		}
     	}
-    }
+}
 
     //@objid ("5db48821-e1bb-4323-8520-b4a682114998")
     SituationIA getSituation() {

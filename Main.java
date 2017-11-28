@@ -6,10 +6,43 @@ public class Main {
 	public static void main(String[] args){
 		
 	Partie P = new Partie();
+	Scanner sc = new Scanner(System.in);
+	
+	System.out.println("Entrez le nombre de joueurs");
+	String var2=sc.nextLine();
+	int nbj=Integer.parseInt(var2);
+	Joueur Joueurs[] = new Joueur[nbj];           
+	boolean fini = true;
+	
+	P.setNbJoueurs(nbj);                      // Mise à jour de l'attribut nombre joueurs dans la partie
+	for (int i=0;i<P.getNbJoueurs();i++){         // Creation des joueurs                        
+		
+		if(i==0){
+			System.out.println("Entrer votre nom ");
+
+			String var3=sc.nextLine();
+			Joueurs[i] = new Joueur(var3,i,null);
+			Joueurs[i].setTypePhysique(true);
+		}
+	
+	else{
+		
+		String var3= "";
+		Joueurs[i] = new IA(var3,i,null);
+		Joueurs[i].setTypePhysique(false);
+		}
+		
+	}
+	//Copie de la liste des joueurs dans la Partie
+	
+	for (int i=0;i<P.getNbJoueurs();i++){
+		P.joueur.add(Joueurs[i]);
+	}
+
+	while(P.verifierFinPartie()) { 
 	Variante V = new Variante(1, TypVariante.Minimale);
 	Tatamis T = new Tatamis();
 	Manche M = new Manche(0, V, P, T);
-	Scanner sc = new Scanner(System.in);
 	int i=1;
 	Pioche Pi = new Pioche(M);
 	
@@ -78,61 +111,31 @@ public class Main {
 	
 	// Creation d'un tableau à la taille du nombre de joueurs
 	
-	System.out.println("Entrez le nombre de joueurs");
-	String var2=sc.nextLine();
-	int nbj=Integer.parseInt(var2);
-	Joueur Joueurs[] = new Joueur[nbj];           
-	
-	
-	P.setNbJoueurs(nbj);                          // Mise à jour de l'attribut nombre joueurs dans la partie
 	M.setNbJoueurs(nbj);
-	
-		for (i=0;i<P.getNbJoueurs();i++){         // Creation des joueurs                        
 			
-			if(i==0){
-				System.out.println("Entrer votre nom ");
-
-				String var3=sc.nextLine();
-				Hand Main = new Hand(Joueurs[i]);
-				Joueurs[i] = new Joueur(var3,i,Main, M);
-				Joueurs[i].setTypePhysique(true);
-			}
-		
-		else{
-			
-			String var3= "";
-			Hand Main = new Hand(Joueurs[i]);
-			Joueurs[i] = new IA(var3,i,Main, M);
-			Joueurs[i].setTypePhysique(false);
-			}
-			
-		}
-		
-					//Copie de la liste des joueurs dans la Partie
-		
-		for (i=0;i<P.getNbJoueurs();i++){
-			P.joueur.add(Joueurs[i]);  
-			}
 		
 					//Copie de la liste des joueurs dans la Manche
 		
 		for (i=0;i<P.getNbJoueurs();i++){
-			M.joueur.add(Joueurs[i]);  
+			M.joueur.add(P.joueur.get(i));
+			P.joueur.get(i).setManche(M);
+			Hand Main = new Hand(Joueurs[i]);
+			P.joueur.get(i).setHand(Main);
 			}
 		
 		Pi.setCarte(V.genererJeuCartes());  			//Generation du jeu de cartes dans la pioche
 		Collections.shuffle(Pi.getCarte());				//Melange des cartes de la pioche
-		
-		Pi.distribuerCartesDebut(V);					// Distribution des cartes aux joueurs
+		M.setPioche(Pi);
+		M.getPioche().distribuerCartesDebut(V);					// Distribution des cartes aux joueurs
 		
 				//Affichages: Pioche et liste de joueurs
-		System.out.println(Pi.carte);
-		System.out.println("Liste joueurs : "+Pi.manche.joueur);
+		System.out.println(M.getPioche().carte);
+		System.out.println("Liste joueurs : "+M.getPioche().manche.joueur);
 		for (i=0;i<P.getNbJoueurs();i++){
 		System.out.println("Main joueur " + Joueurs[i].getNom() + " : " + Joueurs[i].hand.getCarte());
 		}
 		
-		System.out.println("Pioche : " + Pi.getCarte());
+		System.out.println("Pioche : " + M.getPioche().getCarte());
 		
 		System.out.println("Tatamis :" + T.getCarte());
 		
@@ -141,41 +144,44 @@ public class Main {
 		int i1=0;
 		int rand=1;
 		String var4 = "";
-		while(P.verifierFinPartie(M)==false && Pi.carte.size()>10) // Le && est juste pour tester pour pas avoir de cas infini
+		while(/*P.verifierFinPartie(M)==false && Pi.carte.size()>10*/ P.joueur.get(i1).hand.mainVide())
 		{
 			
+			Scanner sc1 = new Scanner(System.in);
 			
 			// Recherche du joueur actif
-			for (i=0;i<P.getNbJoueurs();i++){
-				if(M.joueur.get(i).isEtatActif()==true || M.joueur.get(i).isTypePhysique()==true){i1=i;}
+			for (i=0;i<P.joueur.size();i++){
+				if(P.joueur.get(i).isEtatActif()==true || P.joueur.get(i).isTypePhysique()==true){
+					i1=i;
+					}
 			}
 			
 			// Le joueur joue
 				
-			System.out.println("Le joueur "+ M.joueur.get(i1).getNom() +" joue.");
+			System.out.println("Le joueur "+ P.joueur.get(i1).getNom() +" joue.");
 			
-			if (M.joueur.get(i1).isTypePhysique()){                                   // Cas du joueur
-			 M.joueur.get(i1).setEtatActif(true);
+			if (P.joueur.get(i1).isTypePhysique()){                                   // Cas du joueur
+			 P.joueur.get(i1).setEtatActif(true);
 			
 			 
 			System.out.println("Saisir l'indice de la carte que vous souhaitez jouer");
-			var4=sc.nextLine();
+			var4=sc1.nextLine();
 			rand = Integer.parseInt(var4)-1;
-			M.joueur.get(i1).jouerCarte(M.joueur.get(i1).hand.carte.get(rand));}
+			P.joueur.get(i1).jouerCarte(P.joueur.get(i1).hand.carte.get(rand));}
 			
 			else {                                                                    // Cas de l'IA
-				M.joueur.get(i1).jouer();
+				P.joueur.get(i1).jouer();
 			}
 			
 			
 			T.verifierValiditeCarte(); 
 			System.out.println("Main joueur "+ M.joueur.get(i1).getNom() +" : " + M.joueur.get(i1).hand.getCarte());
 			
-			T.carte.get(0).appliquerPouvoir(M,M.joueur.get(i1));
+
 			//System.out.println(T.carte.get(0));
 			
 			//Pi.distribuerCarte(1, M.joueur.get(i1));
-			System.out.println("Pioche : " + Pi.getCarte());
+			System.out.println("Pioche : " + M.getPioche().getCarte());
 			
 			System.out.println("Tatamis :" + T.getCarte());
 			
@@ -189,21 +195,27 @@ public class Main {
 			
 
 			System.out.println("Liste de Gagnants :" + M.getGagnants());
-			
+
 			//System.out.println("Nb joueurs restants :" + M.getNbJoueurs());
 			
 			//System.out.println("Nbj :" + nbj);
+
 			
-			i1=M.joueur.indexOf(M.joueurSuivant(T.carte.get(0)));
+			M.joueurSuivant(T.carte.get(0),M.joueur.get(i1));
 			
-			M.verifierFinManche();
+			System.out.println(M.joueur);
+			System.out.println(P.joueur);
+			
+			/*M.verifierFinManche();
+			
 			P.verifierFinPartie(M);
-			
-			
-			
+			System.out.println(M.joueur);
+			System.out.println(P.joueur);*/
+					
 		}
+			M.initialiserJoueur();
+		}
+	}
 		
 		//sc.close();
-}
-	
 }

@@ -53,6 +53,35 @@ public class Hand {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.carte = value;
     }
+    public boolean mainVide() {
+    	boolean fini = true;
+    	if(this.carte.isEmpty()) {
+    		this.joueur.setaFini(true);
+    		int compte = 0;
+    		for(int i=0; i<this.joueur.manche.joueur.size(); i++) {
+    			if(this.joueur.manche.joueur.get(i).isaFini()) {
+    				compte+=1;
+    			}
+    		}
+    		if(compte==1) {
+    			this.joueur.ajoutPoints(50);
+    			if(this.joueur.manche.joueur.size()==2) {
+    				fini=false;
+    			}
+    		}else if(compte == 2) {
+    			this.joueur.ajoutPoints(20);
+    			if(this.joueur.manche.joueur.size()==3) {
+    				fini=false;
+    			}
+    		}else if(compte == 3) {
+    			this.joueur.ajoutPoints(10);
+    			fini = false;
+    		//	this.joueur.manche.partie.verifi;
+    		}
+    	}
+    	return(fini);
+    }
+
 
 	public static void main(String[] args ) {
     	

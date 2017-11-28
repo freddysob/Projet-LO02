@@ -92,6 +92,14 @@ public class Manche {
         this.joueur = value;
     }
     
+    Pioche getPioche() {
+        return this.pioche;
+    }
+    
+    void setPioche(Pioche Pi) {
+        this.pioche = Pi;
+    }
+    
     List<Joueur> getGagnants() {
         return this.gagnants;
     }
@@ -136,10 +144,15 @@ public class Manche {
         this.variante = value;
     }
     
-    public Joueur joueurSuivant(Carte cartePose) {
-    	ListIterator<Joueur> li= joueur.listIterator();
+    public Joueur joueurSuivant(Carte cartePose, Joueur actif) {
+    	ArrayList<Joueur> temp = new ArrayList <Joueur>();
+    	for(int i=0; i<this.joueur.size(); i++) {
+    		temp.add(this.joueur.get(i));
+    	}
+    	ListIterator<Joueur> li= temp.listIterator();
     	Joueur joue = null;
-    	if(cartePose instanceof Rejoueur) {
+
+    	if(cartePose instanceof Rejoueur && !actif.hand.carte.isEmpty()) {
     		while(li.hasNext()) {
     			joue = li.next();
     			if(joue.isEtatActif()) {
@@ -149,6 +162,7 @@ public class Manche {
     	}
     	while(li.hasNext()) {
     		if(li.next().isaFini()) {
+    			System.out.println("remove");
     			li.remove();
     		}
     	}
@@ -211,15 +225,17 @@ public class Manche {
     	int i=0;
     	boolean o=false;
     	int j=0;
+    	this.partie.joueur = this.joueur;
     	//while(!o){
     		if(this.gagnants.size()<=3){
     			
     			// Recherche et traitement de joueur avec main vide si moins de 3 personnes ont fini
-    	for(i=0; i<this.nbJoueurs; i++){
-    		if (this.joueur.get(i).hand.carte.size()==0){
+    	for(i=0; i<this.joueur.size(); i++){
+    		if (this.joueur.get(i).hand.carte.isEmpty()){
+    			System.out.println("Un joueur a fini");
     			this.gagnants.add(this.joueur.get(i));
     			this.joueur.get(i).setaFini(true);
-    			this.joueur.get(i).setEtatActif(false);}
+    			}
     	}
     			
     		}
@@ -229,13 +245,13 @@ public class Manche {
     		
     		System.out.println("Manche terminée.");
 
-    		for(i=0; i<=this.nbJoueurs; i++){
+    		for(i=0; i<=this.joueur.size(); i++){
     			this.joueur.get(i).setaFini(false);
-    			for(j=0; j<=this.joueur.get(i).hand.carte.size(); j++){
+/*    			for(j=0; j<=this.joueur.get(i).hand.carte.size(); j++){
     				this.pioche.carte.add(this.joueur.get(i).hand.carte.get(j));
     				this.joueur.get(i).hand.carte.remove(j);
     			}
-    		}
+*/    		}
     		
     		// Attribution de points
         	for(i=0; i<=this.nbJoueurs; i++){

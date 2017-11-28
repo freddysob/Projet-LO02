@@ -1,107 +1,5 @@
 import java.util.Scanner;
 
-/*public class Commande extends Carte {
-	
-	public Commande(NumeroCarte num, TypCarte typ) {
-		super(num, typ, 23);
-		// TODO Auto-generated constructor stub
-	}
-
-	public void appliquerPouvoir(Manche manche, Joueur J) {
-	  String var="";
-	  Scanner sc = new Scanner(System.in);
-	  String Co="Co";
-	  String C="C";
-	  String T="T";
-	  String P="P";
-	  int indicerand=0;
-	  if (J.isTypePhysique()){
-		  
-	  while (indicerand==0){
-	  System.out.println("Choisissez le type de carte souhaité");
-	  System.out.println("Co pour Coeur");
-	  System.out.println("C pour Carreau");
-	  System.out.println("T pour Trèfle");
-	  System.out.println("P pour pique");
-	  System.out.println("o :"+indicerand+".");
-	  
-	  var=sc.nextLine();
-	  
-	  System.out.println("Var: "+var+".");
-	  
-		if(var.equals(Co)){
-			indicerand=1;
-		manche.tatamis.setType(TypCarte.Coeur);
-		System.out.println(""+J.getNom()+" commande Coeur");
-		}
-		else if (var.equals(C)){
-			indicerand=1;
-			manche.tatamis.setType(TypCarte.Carreau);
-			System.out.println(""+J.getNom()+" commande Carreau");
-			}
-		else if (var.equals(T)){
-			indicerand=1;
-			manche.tatamis.setType(TypCarte.Trefle);
-			System.out.println(""+J.getNom()+" commande Trefle");
-			}
-		else if (var.equals(P)){
-			indicerand=1;
-			manche.tatamis.setType(TypCarte.Pique);
-			System.out.println(""+J.getNom()+" commande Pique");
-			}
-		else {System.out.println("Saisie invalide, veuillez reprendre");}
-	 }
-	  }
-	  else {
-		  int i;
-		  int i1=0;
-		  int i2=0;
-		  int i3=0;
-		  int i4=0;
-		  for(i=0;i<J.hand.carte.size();i++){
-			  if(J.hand.carte.get(i).getType()==TypCarte.Pique){
-				  i1+=1;
-			  }
-			  if(J.hand.carte.get(i).getType()==TypCarte.Trefle){
-				  i2+=1;
-			  }
-			  if(J.hand.carte.get(i).getType()==TypCarte.Coeur){
-				  i3+=1;  
-			  }
-			  if(J.hand.carte.get(i).getType()==TypCarte.Carreau){
-				  i4+=1;
-			  }
-		  }
-		  
-		  int r =Math.max(Math.max(Math.max(i1,i2),Math.max(i3,i4)),Math.max(Math.max(i2,i3),Math.max(i1,i4)));
-		  
-		  if (i1==r){
-			  manche.tatamis.setType(TypCarte.Pique);
-			  System.out.println(""+J.getNom()+" commande Pique");
-		  }
-		  else if (i2==r){
-			  manche.tatamis.setType(TypCarte.Trefle);
-			  System.out.println(""+J.getNom()+" commande Trefle");
-		  }
-		  else if (i3==r){
-			  manche.tatamis.setType(TypCarte.Coeur);
-			  System.out.println(""+J.getNom()+" commande Coeur");
-		  }
-		  else if (i4==r){
-			  manche.tatamis.setType(TypCarte.Carreau);
-			  System.out.println(""+J.getNom()+" commande Carreau");
-		  }
-		  
-		  }
-	  
-	  
-	}
-	
-	
-	public static void main(String[] args ) {
-    	
-    }
-} */
 public class Commande extends Carte {
 	
 	public Commande(NumeroCarte num, TypCarte typ) {
@@ -155,6 +53,7 @@ public class Commande extends Carte {
 	 }
 	  }
 	  else {
+		  o=false;
 		  int i;
 		  int i1=0;
 		  int i2=0;
@@ -198,4 +97,9 @@ public class Commande extends Carte {
 	  //sc.close();
 	  
 	}
+	
+	
+	public static void main(String[] args ) {
+    	
+    }
 }
