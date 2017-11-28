@@ -37,15 +37,13 @@ public class Partie {
     }
 
     //@objid ("2487c473-f257-4846-84e2-49c1bb4738a4")
-    public boolean verifierFinPartie(Manche M) {
-    	boolean s=false;
+    public boolean verifierFinPartie() {
+    	boolean s=true;
     	int i=0;
-    	if(M.verifierFinManche()){
-    		for(i=0; i<=this.joueur.size(); i++){
+    		for(i=0; i<this.joueur.size(); i++){
     			if (this.joueur.get(i).getNbPoints()>=this.pointsMax){
-    				s=true;
+    				s=false;
     			}
-    		}
     	}
     	return s;
     }

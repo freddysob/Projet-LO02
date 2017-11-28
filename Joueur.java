@@ -32,7 +32,7 @@ public class Joueur {
     	this.numeroJoueur=num;
     	this.nbPoints = 0;
     	this.nom=name;
-    	this.hand=new Hand(this);
+    	this.hand=hand;
     	this.annonceDerniereCarte=false;
     }
     
@@ -105,6 +105,10 @@ public class Joueur {
     public void setManche(Manche M) {
     	this.manche=M;
     }
+    
+    public void setHand(Hand h) {
+    	this.hand=h;
+    }    
 
     //@objid ("32738ca0-c5a4-4bbf-a98d-984e129bfab9")
     String getNom() {

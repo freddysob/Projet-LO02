@@ -22,16 +22,14 @@ public class Main {
 			System.out.println("Entrer votre nom ");
 
 			String var3=sc.nextLine();
-			Hand Main = new Hand(Joueurs[i]);
-			Joueurs[i] = new Joueur(var3,i,Main);
+			Joueurs[i] = new Joueur(var3,i,null);
 			Joueurs[i].setTypePhysique(true);
 		}
 	
 	else{
 		
 		String var3= "";
-		Hand Main = new Hand(Joueurs[i]);
-		Joueurs[i] = new IA(var3,i,Main);
+		Joueurs[i] = new IA(var3,i,null);
 		Joueurs[i].setTypePhysique(false);
 		}
 		
@@ -39,10 +37,10 @@ public class Main {
 	//Copie de la liste des joueurs dans la Partie
 	
 	for (int i=0;i<P.getNbJoueurs();i++){
-		P.joueur.add(Joueurs[i]);  
+		P.joueur.add(Joueurs[i]);
 	}
 
-	while() {
+	while(P.verifierFinPartie()) { 
 	Variante V = new Variante(1, TypVariante.Minimale);
 	Tatamis T = new Tatamis();
 	Manche M = new Manche(0, V, P, T);
@@ -120,8 +118,10 @@ public class Main {
 					//Copie de la liste des joueurs dans la Manche
 		
 		for (i=0;i<P.getNbJoueurs();i++){
-			M.joueur.add(Joueurs[i]);
-			Joueurs[i].setManche(M);
+			M.joueur.add(P.joueur.get(i));
+			P.joueur.get(i).setManche(M);
+			Hand Main = new Hand(Joueurs[i]);
+			P.joueur.get(i).setHand(Main);
 			}
 		
 		Pi.setCarte(V.genererJeuCartes());  			//Generation du jeu de cartes dans la pioche
@@ -145,7 +145,7 @@ public class Main {
 		int i1=0;
 		int rand=1;
 		String var4 = "";
-		while(/*P.verifierFinPartie(M)==false && Pi.carte.size()>10*/ fini)
+		while(/*P.verifierFinPartie(M)==false && Pi.carte.size()>10*/ P.joueur.get(i1).hand.mainVide())
 		{
 			
 			Scanner sc1 = new Scanner(System.in);
@@ -204,9 +204,6 @@ public class Main {
 			
 			M.joueurSuivant(T.carte.get(0));
 			
-
-			fini = P.joueur.get(i1).hand.mainVide();
-			
 			System.out.println(M.joueur);
 			System.out.println(P.joueur);
 			
@@ -217,10 +214,13 @@ public class Main {
 			System.out.println(P.joueur);*/
 					
 		}
+			M.initialiserJoueur();
+		}
+	}
 		
 		//sc.close();
 }
 	
-}
+
 	
 
