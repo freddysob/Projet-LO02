@@ -54,7 +54,6 @@ public class Joueur {
     public void jouerCarte(Carte carte) {
     	this.hand.carte.remove(carte);
     	this.manche.tatamis.ajouterCarte(carte);
-    	this.manche.tatamis.setType(carte.getType());
     	carte.appliquerPouvoir(this.manche, this);
     }
 
@@ -153,6 +152,17 @@ public class Joueur {
         this.numeroJoueur = value;
     }
 
+    boolean getAnnonceDerniereCarte() {
+       
+        return this.annonceDerniereCarte;
+    }
+
+    
+    void setAnnonceDerniereCarte(boolean value) {
+       
+        this.annonceDerniereCarte = value;
+    }
+    
     //@objid ("99402ae3-7a52-40d4-9316-06744c865728")
     int getNbPoints() {
         // Automatically generated method. Please delete this comment before entering specific code.

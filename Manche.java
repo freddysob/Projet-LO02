@@ -132,6 +132,11 @@ public class Manche {
         this.sensJeuPos = value;
     }
 
+    Boolean getSensJeuPos() {
+        // Automatically generated method. Please delete this comment before entering specific code.
+       return this.sensJeuPos;
+    }
+    
     //@objid ("9affe6e9-44c0-4fc7-acf6-9ce39674af2a")
     Variante getVariante() {
         // Automatically generated method. Please delete this comment before entering specific code.

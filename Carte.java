@@ -34,6 +34,9 @@ public class Carte {
     //@objid ("bb607436-5a85-4c20-ae05-1bc967a5a60d")
     public void appliquerPouvoir (Manche manche, Joueur J) {
     	
+    	manche.tatamis.setType(manche.tatamis.carte.get(0).getType());
+    	manche.tatamis.setNumero(manche.tatamis.carte.get(0).getNumero());
+    	
     }
 
    // @objid ("9360b926-8b43-4610-9468-02bdf738200f")

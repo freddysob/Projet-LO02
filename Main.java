@@ -135,7 +135,7 @@ public class Main {
 		System.out.println("Main joueur " + Joueurs[i].getNom() + " : " + Joueurs[i].hand.getCarte());
 		}
 		
-		System.out.println("Pioche : " + M.getPioche().getCarte());
+		//System.out.println("Pioche : " + M.getPioche().getCarte());
 		
 		System.out.println("Tatamis :" + T.getCarte());
 		
@@ -164,10 +164,12 @@ public class Main {
 			 P.joueur.get(i1).setEtatActif(true);
 			
 			 
-			System.out.println("Saisir l'indice de la carte que vous souhaitez jouer");
+			System.out.println("Saisir l'indice de la carte que vous souhaitez jouer, ou P pour Piocher");
 			var4=sc1.nextLine();
+			if(var4=="P"){P.joueur.get(i1).piocher();}
+			else{
 			rand = Integer.parseInt(var4)-1;
-			P.joueur.get(i1).jouerCarte(P.joueur.get(i1).hand.carte.get(rand));}
+			P.joueur.get(i1).jouerCarte(P.joueur.get(i1).hand.carte.get(rand));}}
 			
 			else {                                                                    // Cas de l'IA
 				P.joueur.get(i1).jouer();
@@ -181,7 +183,7 @@ public class Main {
 			//System.out.println(T.carte.get(0));
 			
 			//Pi.distribuerCarte(1, M.joueur.get(i1));
-			System.out.println("Pioche : " + M.getPioche().getCarte());
+			//System.out.println("Pioche : " + M.getPioche().getCarte());
 			
 			System.out.println("Tatamis :" + T.getCarte());
 			
@@ -203,9 +205,12 @@ public class Main {
 			
 			M.joueurSuivant(T.carte.get(0),M.joueur.get(i1));
 			
-			System.out.println(M.joueur);
+			System.out.println("");
+			
+			//System.out.println(M.joueur);
 			System.out.println(P.joueur);
 			
+			System.out.println("");
 			/*M.verifierFinManche();
 			
 			P.verifierFinPartie(M);

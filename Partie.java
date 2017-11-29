@@ -41,6 +41,7 @@ public class Partie {
     	int i=0;
     		for(i=0; i<this.joueur.size(); i++){
     			if (this.joueur.get(i).getNbPoints()>=this.pointsMax){
+    				System.out.println("Partie Terminée! Gagnant : "+ this.joueur.get(i).getNom());
     				s=false;
     			}
     	}
