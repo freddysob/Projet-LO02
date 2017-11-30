@@ -166,7 +166,7 @@ public class Main {
 			 
 			System.out.println("Saisir l'indice de la carte que vous souhaitez jouer, ou P pour Piocher");
 			var4=sc1.nextLine();
-			if(var4=="P"){P.joueur.get(i1).piocher();}
+			if(var4.equals("P")){P.joueur.get(i1).piocher();}
 			else{
 			rand = Integer.parseInt(var4)-1;
 			P.joueur.get(i1).jouerCarte(P.joueur.get(i1).hand.carte.get(rand));}}
