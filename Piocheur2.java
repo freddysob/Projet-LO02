@@ -1,13 +1,10 @@
-package PackageLO02;
+import com.modeliosoft.modelio.javadesigner.annotations.objid;
+
+@objid ("3d43721d-5a51-4d1a-9907-32b4e3758526")
 public class Piocheur2 extends Carte {
 	
-	public Piocheur2(NumeroCarte num, TypCarte typ) {
-		super(num, typ, 10);
-		// TODO Auto-generated constructor stub
-	}
-
-	public void appliquerPouvoir(Manche manche, Joueur J) {
-		manche.pioche.distribuerCarte(2, manche.joueurSuivant(this,J));   
+	public void appliquerPouvoir() {
+		   
 	 }
 	
 	public static void main(String[] args ) {
