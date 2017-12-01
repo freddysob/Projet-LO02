@@ -1,10 +1,23 @@
-import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
-@objid ("3d43721d-5a51-4d1a-9907-32b4e3758526")
+package PackageLO02;
 public class Piocheur2 extends Carte {
 	
-	public void appliquerPouvoir() {
-		   
+	public Piocheur2(NumeroCarte num, TypCarte typ) {
+		super(num, typ, 10);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void appliquerPouvoir(Manche manche, Joueur J) {
+		Joueur precedent = null;
+		for(int i=0; i<manche.joueur.size();i++) {
+			if(manche.joueur.get(i).isEtatActif()) {
+				precedent = manche.joueur.get(i);
+			}
+		}
+		manche.pioche.distribuerCarte(2, manche.joueurSuivant(this,J));
+		for(int i=0; i<manche.joueur.size();i++) {
+			manche.joueur.get(i).setEtatActif(false);
+		}
+		precedent.setEtatActif(true);
 	 }
 	
 	public static void main(String[] args ) {
