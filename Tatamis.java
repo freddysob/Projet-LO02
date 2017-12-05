@@ -26,11 +26,11 @@ public class Tatamis {
     protected void finalize() {
     }
 
-    public boolean verifierValiditeCarte(/*Variante Variante*/) {
+    public boolean verifierValiditeCarte(int i/*Variante Variante*/) {
     	if(this.carte.size()<=1) {
     		return(true);
     	}
-    	else if(this.carte.get(0).getType()==this.carte.get(1).getType()||((this.carte.get(0).getType()==TypCarte.Pique||this.carte.get(0).getType()==TypCarte.Trefle)&&this.carte.get(1).getType()==TypCarte.JN)||((this.carte.get(0).getType()==TypCarte.Carreau||this.carte.get(0).getType()==TypCarte.Coeur)&&this.carte.get(1).getType()==TypCarte.JR)||(this.carte.get(0).getType()==TypCarte.JN &&(this.carte.get(1).getType()==TypCarte.Pique || this.carte.get(1).getType()==TypCarte.Trefle)||(this.carte.get(1) instanceof Commande && (this.type == TypCarte.Trefle || this.type == TypCarte.Pique)))||(this.carte.get(1).getType()==TypCarte.JR &&(this.carte.get(1).getType()==TypCarte.Coeur || this.carte.get(1).getType()==TypCarte.Carreau)||(this.carte.get(1) instanceof Commande && (this.type == TypCarte.Coeur || this.type == TypCarte.Carreau)))||this.carte.get(0).getNumero()==this.carte.get(1).getNumero()||this.carte.get(0) instanceof Commande||(this.carte.get(1) instanceof Commande && this.type==this.carte.get(0).getType()))
+    	else if(this.carte.get(i).getType()==this.carte.get(i+1).getType()||((this.carte.get(i).getType()==TypCarte.Pique||this.carte.get(i).getType()==TypCarte.Trefle)&&this.carte.get(i+1).getType()==TypCarte.JN)||((this.carte.get(i).getType()==TypCarte.Carreau||this.carte.get(i).getType()==TypCarte.Coeur)&&this.carte.get(i+1).getType()==TypCarte.JR)||(this.carte.get(i).getType()==TypCarte.JN &&(this.carte.get(i+1).getType()==TypCarte.Pique || this.carte.get(i+1).getType()==TypCarte.Trefle)||(this.carte.get(i+1) instanceof Commande && (this.type == TypCarte.Trefle || this.type == TypCarte.Pique)))||(this.carte.get(i+1).getType()==TypCarte.JR &&(this.carte.get(i+1).getType()==TypCarte.Coeur || this.carte.get(i+1).getType()==TypCarte.Carreau)||(this.carte.get(i+1) instanceof Commande && (this.type == TypCarte.Coeur || this.type == TypCarte.Carreau)))||this.carte.get(i).getNumero()==this.carte.get(i+1).getNumero()||this.carte.get(i) instanceof Commande||(this.carte.get(i+1) instanceof Commande && this.type==this.carte.get(i).getType()))
     	{
     		return(true);
     	}else {
