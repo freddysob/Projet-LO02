@@ -18,7 +18,7 @@ public class Commande extends Carte {
 	  boolean o=true;
 	  if (J.isTypePhysique()){
 		  
-	  while (o){
+		  while (o){
 	  System.out.println("Choisissez le type de carte souhaité");
 	  System.out.println("Co pour Coeur");
 	  System.out.println("C pour Carreau");
@@ -33,27 +33,32 @@ public class Commande extends Carte {
 		if(var.equals(Co)){
 			o=false;
 		manche.tatamis.setType(TypCarte.Coeur);
+		manche.tatamis.setNumero(NumeroCarte._8);
 		System.out.println(""+J.getNom()+" commande Coeur");
 		}
 		else if (var.equals(C)){
 			o=false;
 			manche.tatamis.setType(TypCarte.Carreau);
+			manche.tatamis.setNumero(NumeroCarte._8);
 			System.out.println(""+J.getNom()+" commande Carreau");
 			}
 		else if (var.equals(T)){
 			o=false;
 			manche.tatamis.setType(TypCarte.Trefle);
+			manche.tatamis.setNumero(NumeroCarte._8);
 			System.out.println(""+J.getNom()+" commande Trefle");
 			}
 		else if (var.equals(P)){
 			o=false;
 			manche.tatamis.setType(TypCarte.Pique);
+			manche.tatamis.setNumero(NumeroCarte._8);
 			System.out.println(""+J.getNom()+" commande Pique");
 			}
 		else {System.out.println("Saisie invalide, veuillez reprendre");}
-	 }
+	 } 
 	  }
 	  else {
+		  
 		  int i;
 		  int i1=0;
 		  int i2=0;

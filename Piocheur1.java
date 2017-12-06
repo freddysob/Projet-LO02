@@ -1,7 +1,8 @@
-public class Piocheur3 extends Carte {
+
+public class Piocheur1 extends Carte  {
 	
-	public Piocheur3(NumeroCarte num, TypCarte typ) {
-		super(num, typ, 15);
+	public Piocheur1(NumeroCarte num, TypCarte typ) {
+		super(num, typ, 10);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -12,7 +13,7 @@ public class Piocheur3 extends Carte {
 				precedent = manche.joueur.get(i);
 			}
 		}
-		manche.pioche.distribuerCarte(3, manche.joueurSuivant(this,J)); 
+		manche.pioche.distribuerCarte(1, manche.joueurSuivant(this,J));
 		for(int i=0; i<manche.joueur.size();i++) {
 			manche.joueur.get(i).setEtatActif(false);
 		}
@@ -22,4 +23,5 @@ public class Piocheur3 extends Carte {
 	public static void main(String[] args ) {
     	
     }
+	
 }

@@ -1,4 +1,3 @@
-package PackageLO02;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -37,7 +36,8 @@ public class Pioche {
 
     public void reconstituer() {
     	this.carte.addAll(this.manche.tatamis.carte);
-        for(int i =0; i<this.manche.tatamis.carte.size(); i++) {
+    	this.carte.remove(0);
+        for(int i =1; i<this.manche.tatamis.carte.size(); i++) {
         	this.manche.tatamis.carte.remove(i);
         }
         Collections.shuffle(this.getCarte());
@@ -56,7 +56,7 @@ public class Pioche {
 
     public void distribuerCarte(int nombre, Joueur joueur) {
     	for(int i = 0; i<nombre; i++){
-    		if(this.carte.isEmpty()) {
+    		if(this.carte.size()==0) {
     			this.reconstituer();
     		}
     		Carte retire=this.carte.get(0);

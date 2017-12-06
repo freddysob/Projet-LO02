@@ -1,7 +1,4 @@
 package PackageLO02;
-//import com.modeliosoft.modelio.javadesigner.annotations.objid;
-
-//@objid ("e552cddb-2d13-42de-8744-8d933700a4a5")
 public class Carte {
 	 private NumeroCarte numero;
 
@@ -37,6 +34,9 @@ public class Carte {
 
     //@objid ("bb607436-5a85-4c20-ae05-1bc967a5a60d")
     public void appliquerPouvoir (Manche manche, Joueur J) {
+    	
+    	manche.tatamis.setType(manche.tatamis.carte.get(0).getType());
+    	manche.tatamis.setNumero(manche.tatamis.carte.get(0).getNumero());
     	
     }
 

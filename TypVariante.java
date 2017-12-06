@@ -1,4 +1,3 @@
-package PackageLO02;
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 //@objid ("7e200235-cc1d-48cc-8d21-fdab8e7bc036")

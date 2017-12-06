@@ -1,4 +1,3 @@
-package PackageLO02;
 public class StopperSuivant extends Carte {
 	
 	public StopperSuivant(NumeroCarte num, TypCarte typ) {
