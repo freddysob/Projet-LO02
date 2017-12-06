@@ -150,10 +150,10 @@ public class Affichage {
 		}
 	}
 	public void tourJeuJoueurPhysique(Partie P, Manche M, int i1){
-
+		int h=0;
 		boolean forward=false;
 		while(forward==false){
-			System.out.println("Saisir l'indice de la carte que vous souhaitez jouer, ou P pour Piocher");
+			System.out.println("Saisir l'indice de la carte que vous souhaitez jouer, ou P pour Piocher et D pour dénoncer une tricherie");
 			String var4=sc.nextLine();
 
 			try {
@@ -170,8 +170,12 @@ public class Affichage {
 					forward=true;}
 				else if (var4.equals("D")){
 					if(M.tatamis.carte.size()!=0){
-				P.joueur.get(i1).denoncerMCarte(M.getHistorique().get(0));
-				forward=true;}
+					if(h==0){
+					P.joueur.get(i1).denoncerMCarte(M.getHistorique().get(0));
+					h=1;
+					forward=false;}
+				else {System.out.println("Vous avez déjà dénoncé");
+					forward=false;}}
 			}
 				else{
 					System.out.println("Votre saisie est invalide");

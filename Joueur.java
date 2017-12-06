@@ -71,6 +71,7 @@ public class Joueur {
 	}
 
 	public void denoncerMCarte(Joueur joueur) {
+		if(this.manche.getHistorique().size()!=0){
 		int i=0;
 		boolean o=true;
 		while(o){
@@ -84,7 +85,7 @@ public class Joueur {
 				o=false;}
 			i++;
 			if(i>this.manche.getHistorique().size()-1){o=false;}}
-
+		}
 	}
 
 	public void jouer() {

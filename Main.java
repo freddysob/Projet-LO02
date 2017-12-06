@@ -57,7 +57,7 @@ public class Main {
 			System.out.println(M.getPioche().carte);
 			System.out.println("Liste joueurs : "+M.getPioche().manche.joueur);
 			for (i=0;i<P.getNbJoueurs();i++){
-				System.out.println("Main joueur " + Joueurs[i].getNom() + " : " + Joueurs[i].hand.getCarte());
+				System.out.println("Main joueur " + M.joueur.get(i).getNom() + " : " + Joueurs[i].hand.getCarte());
 			}
 
 			//System.out.println("Pioche : " + M.getPioche().getCarte());
@@ -77,6 +77,8 @@ public class Main {
 						i1=i;
 					}
 				}
+				
+				System.out.println("Main joueur "+ M.joueur.get(i1).getNom() +" : " + M.joueur.get(i1).hand.getCarte());
 
 				// Le joueur joue
 
@@ -95,7 +97,7 @@ public class Main {
 
 				System.out.println("Historique" + M.getHistorique());
 				T.verifierValiditeCarte(0); 
-				System.out.println("Main joueur "+ M.joueur.get(i1).getNom() +" : " + M.joueur.get(i1).hand.getCarte());
+				
 
 
 				System.out.println("Tatamis :" + T.getCarte());

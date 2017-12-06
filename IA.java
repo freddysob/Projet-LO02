@@ -99,6 +99,7 @@ public class IA extends Joueur{
 	} 
 
 	public void denoncerMCarte(Joueur joueur) {
+		if(this.manche.getHistorique().size()!=0){
 		int i=0;
 		boolean o=true;
 		while(o){
@@ -112,6 +113,7 @@ public class IA extends Joueur{
 			}
 			i++;
 			if(i>this.manche.getHistorique().size()-1){o=false;}}
+		}
 	}
 
 }
