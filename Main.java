@@ -70,7 +70,7 @@ public class Main {
 			while(/*P.verifierFinPartie(M)==false && Pi.carte.size()>10*/ P.joueur.get(i1).hand.mainVide())
 			{
 
-
+				
 				// Recherche du joueur actif
 				for (i=0;i<P.joueur.size();i++){
 					if(P.joueur.get(i).isEtatActif()==true || P.joueur.get(i).isTypePhysique()==true){

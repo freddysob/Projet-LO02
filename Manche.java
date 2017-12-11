@@ -28,10 +28,12 @@ public class Manche {
 
 	//@objid ("f0af0d16-edef-44fe-8481-d43c4799219e")
 	public Partie partie;
-
-	public int tempsTransit;
 	
 	public List<Joueur> historique = new ArrayList<Joueur> ();
+	
+	private boolean derniereCarteEstRejouer;
+	
+
 
 	
 
@@ -49,8 +51,8 @@ public class Manche {
 			this.pioche = new Pioche(this);
 			this.variante = variante;
 			this.partie = partie;
+			this.derniereCarteEstRejouer=false;
 		}
-		this.tempsTransit=1000;
 	}
 
 	public String toString(){
@@ -163,6 +165,14 @@ public class Manche {
 	public void setHistorique(List<Joueur> historique) {
 		this.historique = historique;
 	}
+	
+	public boolean isDerniereCarteEstRejouer() {
+		return derniereCarteEstRejouer;
+	}
+
+	public void setDerniereCarteEstRejouer(boolean derniereCarteEstRejouer) {
+		this.derniereCarteEstRejouer = derniereCarteEstRejouer;
+	}
 
 	public Joueur joueurSuivant(Carte cartePose, Joueur actif) {
 		ArrayList<Joueur> temp = new ArrayList <Joueur>();
@@ -172,7 +182,8 @@ public class Manche {
 		ListIterator<Joueur> li= temp.listIterator();
 		Joueur joue = null;
 
-		if(cartePose instanceof Rejoueur && !actif.hand.carte.isEmpty()) {
+		if(cartePose instanceof Rejoueur && this.isDerniereCarteEstRejouer() && !actif.hand.carte.isEmpty()) {
+			this.setDerniereCarteEstRejouer(false);
 			while(li.hasNext()) {
 				joue = li.next();
 				if(joue.isEtatActif()) {
@@ -182,7 +193,7 @@ public class Manche {
 		}
 		while(li.hasNext()) {
 			if(li.next().isaFini()) {
-				System.out.println("remove");
+				//System.out.println("remove");
 				li.remove();
 			}
 		}
@@ -241,9 +252,11 @@ public class Manche {
 	}
 
 	public void compteARebours(){
+		int tempsTransit=1000;
 		int it=0;
-		for(it=3;it>=0;it--)
-		{try {   Thread.sleep (this.tempsTransit);} 
+		for(it=1
+				;it>=0;it--)
+		{try {   Thread.sleep (tempsTransit);} 
 		catch (InterruptedException e) { System.out.print("erreur");}
 		System.out.println(" "+it+" sec");} 				// Compte à rebours
 	}

@@ -34,7 +34,7 @@ public class IA extends Joueur{
 		Carte carteajouer=null;
 
 		this.signalerDerniereCarte();
-		if(Math.random()>0.2){
+		if(Math.random()>0.2 && !this.manche.getHistorique().isEmpty()){
 			/*int i=0;
 			boolean o=true;
 			while(o){
@@ -102,8 +102,8 @@ public class IA extends Joueur{
 		if(this.manche.getHistorique().size()!=0){
 		int i=0;
 		boolean o=true;
-		while(o){
-			if(joueur.getNom() == this.manche.getHistorique().get(i).getNom()){
+		while(o && i<this.manche.tatamis.carte.size() && i>=0){
+			if(i==0 && joueur.getNom() == this.manche.getHistorique().get(i).getNom() || i!=0 && joueur.getNom() == this.manche.getHistorique().get(i).getNom() && joueur.getNom() != this.manche.getHistorique().get(i+1).getNom()){
 				if(!this.manche.tatamis.verifierValiditeCarte(i)==true) {
 					this.manche.penaliserJoueur(3, joueur);
 				}
@@ -111,9 +111,11 @@ public class IA extends Joueur{
 			else {
 				o=false;
 			}
+			
 			i++;
 			if(i>this.manche.getHistorique().size()-1){o=false;}}
 		}
+		
 	}
 
 }

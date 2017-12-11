@@ -75,6 +75,7 @@ public class Joueur {
 		int i=0;
 		boolean o=true;
 		while(o){
+			
 			if(joueur.getNom() == this.manche.getHistorique().get(i).getNom()){
 				if(!this.manche.tatamis.verifierValiditeCarte(i)==true) {
 					this.manche.penaliserJoueur(3, joueur);
