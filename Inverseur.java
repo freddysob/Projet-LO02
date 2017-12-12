@@ -1,4 +1,5 @@
 package PackageLO02;
+
 public class Inverseur extends Carte {
 	
 	public Inverseur(NumeroCarte num,TypCarte typ){

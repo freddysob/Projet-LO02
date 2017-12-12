@@ -1,4 +1,4 @@
-
+package PackageLO02;
 public class Piocheur1 extends Carte  {
 	
 	public Piocheur1(NumeroCarte num, TypCarte typ) {
@@ -23,5 +23,4 @@ public class Piocheur1 extends Carte  {
 	public static void main(String[] args ) {
     	
     }
-	
 }

@@ -1,3 +1,5 @@
+package PackageLO02;
+
 public class Piocheur3 extends Carte {
 	
 	public Piocheur3(NumeroCarte num, TypCarte typ) {

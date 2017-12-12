@@ -1,10 +1,10 @@
 package PackageLO02;
-import java.util.Collections;
 
+import java.util.Collections;
 
 public class Main {
 	public static void main(String[] args){
-		
+
 		Partie P = new Partie();
 		Affichage A = new Affichage();
 		boolean fini = false;
@@ -71,7 +71,7 @@ public class Main {
 			while(/*P.verifierFinPartie(M)==false && Pi.carte.size()>10*/ P.joueur.get(i1).hand.mainVide())
 			{
 
-				M.setDerniereCarteEstRejouer(false);
+				
 				// Recherche du joueur actif
 				for (i=0;i<P.joueur.size();i++){
 					if(P.joueur.get(i).isEtatActif()==true || P.joueur.get(i).isTypePhysique()==true){

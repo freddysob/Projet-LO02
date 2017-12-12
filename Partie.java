@@ -1,7 +1,7 @@
+package PackageLO02;
+
 import java.util.List;
 import java.util.ArrayList;
-
-
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 //@objid ("50a23012-b43d-47f5-b068-5836148a3eab")

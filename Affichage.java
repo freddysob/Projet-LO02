@@ -1,3 +1,4 @@
+package PackageLO02;
 import java.util.Scanner;
 
 
@@ -170,7 +171,10 @@ public class Affichage {
 					forward=true;}
 				else if (var4.equals("D")){
 					if(M.tatamis.carte.size()!=0){
-					if(h==0){
+						
+						if(M.getHistorique().size()==0){System.out.println("Vous ne pouvzez pas dénoncer en début de partie");}
+						
+						else if(h==0){
 					P.joueur.get(i1).denoncerMCarte(M.getHistorique().get(0));
 					h=1;
 					forward=false;}
@@ -187,3 +191,4 @@ public class Affichage {
 	}
 
 }
+
