@@ -7,19 +7,20 @@ public class Main {
 		Partie P = new Partie();
 		Affichage A = new Affichage();
 		boolean fini = false;
-		int nbj=0;
-		nbj=A.saisieNombreDejoueurs(fini);
+		//int nbj=0;
+		//nbj=A.saisieNombreDejoueurs(fini);
 
-		Joueur Joueurs[] = new Joueur[nbj];           
-		P.setNbJoueurs(nbj);                      // Mise à jour de l'attribut nombre joueurs dans la partie
-
-		A.creationJoueurs(P, Joueurs);     // Creation des joueurs                        
+		           
+		P.saisieNombreDejoueurs();                      // Mise à jour de l'attribut nombre joueurs dans la partie
+		Joueur Joueurs[] = new Joueur[P.getNbJoueurs()];
+		P.creationJoueurs(Joueurs);
+		//A.creationJoueurs(P, Joueurs);     // Creation des joueurs                        
 
 		//Copie de la liste des joueurs dans la Partie
 
-		for (int i=0;i<P.getNbJoueurs();i++){
-			P.joueur.add(Joueurs[i]);
-		}
+//		for (int i=0;i<P.getNbJoueurs();i++){
+//			P.joueur.add(Joueurs[i]);
+//		}
 
 		while(P.verifierFinPartie()) { 
 			Variante V = new Variante(1, TypVariante.Minimale);
@@ -31,12 +32,12 @@ public class Main {
 
 
 			// Choix Variante
-			A.choisirVariante(V);
+			M.getVariante().choisirVariante();
 
 
 			// Creation d'un tableau à la taille du nombre de joueurs
 
-			M.setNbJoueurs(nbj);
+			M.setNbJoueurs(P.getNbJoueurs());
 
 
 			//Copie de la liste des joueurs dans la Manche

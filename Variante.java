@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
+import javax.swing.JOptionPane;
+
 
 // @objid ("13fb79e4-c248-4e81-8baf-bddb4c4f4b1a")
 public class Variante {
@@ -1215,6 +1217,59 @@ public class Variante {
     	}
     	return L;
     	}
+    
+    public void choisirVariante(){
+		String[] variante = {"basique", "Monclar","1","Carte et Maou", "Des Ulis", "4", "5", "6", "Courte Amicale", "Man et resta"};
+
+	    JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
+		   
+		    int n = jop.showOptionDialog(null, 
+
+		      "Selectionnez une variante",
+
+		      "Choix variante",
+
+		      JOptionPane.YES_NO_CANCEL_OPTION,
+
+		      JOptionPane.QUESTION_MESSAGE,
+
+		      null,
+
+		      variante,
+
+		      variante[9]);
+
+				if (n==0){
+					this.setNom(TypVariante.Minimale);
+				}
+				else if (n==1){
+					this.setNom(TypVariante.Monclar);
+				}
+				else if(n==2){
+					this.setNom(TypVariante.Variante_1);
+				}
+				else if(n==3){
+					this.setNom(TypVariante.Carte_et_Maou);
+				}
+				else if(n==4){
+					this.setNom(TypVariante.Des_Ulis);
+				}
+				else if(n==5){
+					this.setNom(TypVariante.Variante_4);
+				}
+				else if(n==6){
+					this.setNom(TypVariante.Variante_5);
+				}
+				else if(n==7){
+					this.setNom(TypVariante.Variante_6);
+				}
+				else if(n==8){
+					this.setNom(TypVariante.Variante_Courte_Amicale);
+				}
+				else if(n==9){
+					this.setNom(TypVariante.Man_et_resta);
+				}
+	}
     
 	public static void main(String[] args ) {
     	Variante V = new Variante(1,TypVariante.Minimale);

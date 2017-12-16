@@ -1,6 +1,8 @@
 import java.util.List;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
@@ -95,6 +97,89 @@ public class Partie {
         this.pointsMax = value;
     }
 
+    public void saisiePointMax(){
+		int nombre=0;
+		String[] pointsmax = {"250", "500"};
+
+	    JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
+		   
+		    int rang = jop.showOptionDialog(null, 
+
+		      "Entrez le nombre de points maximum",
+
+		      "Points max",
+
+		      JOptionPane.YES_NO_CANCEL_OPTION,
+
+		      JOptionPane.QUESTION_MESSAGE,
+
+		      null,
+
+		      pointsmax,
+
+		      pointsmax[1]);
+		    if(rang==0) {
+		    	nombre = 250;
+		    }else {
+		    	nombre = 500;
+		    }
+	
+	this.setPointsMax(nombre);
+	}
+    
+    public void saisieNombreDejoueurs() {
+		int nombre=0;
+		boolean o=false;
+
+		while (o==false){
+			JOptionPane jop = new JOptionPane();
+		    String recu = jop.showInputDialog(null, "Entrez le nombre de joueurs", "Nombre de joueurs", JOptionPane.QUESTION_MESSAGE);
+			try {
+				
+				nombre=Integer.parseInt(recu);
+				if(nombre<=6 && nombre>=0){
+				o=true;}
+				else{
+
+					jop.showMessageDialog(null, "Le nombre est trop grand ou trop petit", "Erreur", JOptionPane.ERROR_MESSAGE);
+				}
+				
+			} catch (NumberFormatException nfe) {
+
+				jop.showMessageDialog(null, "Veuillez rentrer un nombre", "Erreur", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		
+	    
+	    this.setNbJoueurs(nombre);
+	}
+    
+    
+    
+    public void creationJoueurs(Joueur Joueurs[]){
+	    JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
+		for (int i=0;i<this.getNbJoueurs();i++){         // Creation des joueurs                        
+
+			if(i==0){
+			    String nom = jop.showInputDialog(null, "Entrez votre nom :", "Nom du joueur", JOptionPane.QUESTION_MESSAGE);
+
+				Joueurs[i] = new Joueur(nom,i,null);
+				Joueurs[i].setTypePhysique(true);
+				this.joueur.add(Joueurs[i]);
+			}
+
+			else{
+
+				String nom= "";
+				Joueurs[i] = new IA(nom,i,null);
+				Joueurs[i].setTypePhysique(false);
+				this.joueur.add(Joueurs[i]);
+			}
+
+		}
+
+	}
+    
     public static void main(String[] args ) {
     	
     }
