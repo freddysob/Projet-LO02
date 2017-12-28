@@ -74,13 +74,13 @@ public class Partie {
     }
 
     //@objid ("75a5c5d5-3faf-44e0-a3b2-50320be51a78")
-    int getNbJoueurs() {
+    public int getNbJoueurs() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.nbJoueurs;
     }
 
     //@objid ("4a2daa86-d786-445f-bb31-55c2cc0d733d")
-    void setNbJoueurs(int value) {
+    public void setNbJoueurs(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.nbJoueurs = value;
     }
@@ -92,7 +92,7 @@ public class Partie {
     }
 
     //@objid ("4fd05dca-8a1f-4d54-9eea-c1ecf281691b")
-    void setPointsMax(int value) {
+    public void setPointsMax(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.pointsMax = value;
     }

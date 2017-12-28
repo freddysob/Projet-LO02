@@ -1,6 +1,8 @@
 package Modele;
 
-public class Joueur {
+import java.util.*;
+
+public class Joueur extends Observable {
 	//@objid ("644ad622-ff18-461c-91e3-6613837a8102")
 	private boolean etatActif;
 
@@ -140,7 +142,7 @@ public class Joueur {
 	}
 
 	//@objid ("b29687ae-d766-42f0-8947-fbb5b3f54006")
-	void setTypePhysique(boolean value) {
+	public void setTypePhysique(boolean value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.typePhysique = value;
 	}

@@ -1,6 +1,8 @@
 package Modele;
 
-public class Carte {
+import java.util.*;
+
+public class Carte extends Observable {
 	 private NumeroCarte numero;
 
 	    private TypCarte type;

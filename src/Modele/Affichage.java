@@ -78,27 +78,13 @@ public class Affichage {
 		}
 
 	}
-	public void choisirVariante(Variante V){
+	public void choisirVariante(Variante V, int n){
 
 		boolean avance=false;
 		while(avance==false){
 
-			System.out.println("Entrez une valeur de 1 à 9 pour sélectionner le type de variante:");
-			System.out.println("1 pour la version basique");
-			System.out.println("2 pour la variante Monclar");
-			System.out.println("3 pour la variante 1");
-			System.out.println("4 pour la variante Carte et Maou");
-			System.out.println("5 pour la variante Des Ulis");
-			System.out.println("6 pour la variante 4");
-			System.out.println("7 pour la variante 5");
-			System.out.println("8 pour la variante 6");
-			System.out.println("9 pour la variante Courte Amicale");
-			System.out.println("10 pour la variante Man et resta");
-			String var=sc.nextLine();
-
 
 			try {
-				int n=Integer.parseInt(var);
 				if (n==1){
 					V.setNom(TypVariante.Minimale);
 					avance=true;

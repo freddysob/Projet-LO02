@@ -1,12 +1,12 @@
 package Modele;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 
 
-public class Tatamis {
+public class Tatamis extends Observable{
    
     public List<Carte> carte = new ArrayList<Carte> ();
     

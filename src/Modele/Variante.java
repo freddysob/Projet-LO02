@@ -1,12 +1,12 @@
 package Modele;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 
 // @objid ("13fb79e4-c248-4e81-8baf-bddb4c4f4b1a")
-public class Variante {
+public class Variante extends Observable{
     // @objid ("6e8b6ac1-e09e-497f-9fd5-821f554c587c")
     private int nbJeuDeCartes;
 

@@ -3,11 +3,12 @@ package Modele;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Observable;
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 
 //@objid ("41188578-bd74-4c19-8591-97c2ac12d444")
-public class Pioche {
+public class Pioche extends Observable {
     //@objid ("ffa064a3-1995-4c33-9249-fd8f2ea61be7")
     public List<Carte> carte = new ArrayList<Carte> ();
     
