@@ -1,0 +1,17 @@
+package Modele;
+
+public class StopperSuivant extends Carte {
+	
+	public StopperSuivant(NumeroCarte num, TypCarte typ) {
+		super(num, typ, 34);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void appliquerPouvoir() {
+		   
+	 }
+	
+	public static void main(String[] args ) {
+    	
+    }
+}
