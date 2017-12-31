@@ -6,25 +6,21 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import Modele.*;
 
+public class ControleurPioche {
 
+	public ControleurPioche(JButton Pioche, final Pioche i, Manche M) {
 
+		Pioche.addActionListener(new ActionListener() {
 
-	public class ControleurPioche {
-		
-		public ControleurPioche(JButton Pioche, final Pioche i){
-			
-			Pioche.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					
-					if(i.carte.isEmpty()){
-						i.reconstituer();
-					}
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (M.joueur.get(0).isEtatActif()) {
+					M.joueur.get(0).piocher();
+					M.joueurSuivant(null, M.joueur.get(0));
 				}
-				
-			});
-		}
-	}
+			}
 
+		});
+	}
+}
