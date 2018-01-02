@@ -6,14 +6,21 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
+
+import Controleur.*;
+
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FenetreJeu {
 
+	private JButton lblPioche;
+	
 	private JFrame frame;
 	
 	public JFrame getFrame() {
@@ -76,7 +83,8 @@ public class FenetreJeu {
 		JLayeredPane layeredPane = new JLayeredPane();
 		panel_5.add(layeredPane);
 		
-		JLabel lblPioche = new JLabel(new ImageIcon("image/dos.png"));
+		lblPioche = new JButton(new ImageIcon("image/dos.png"));
+
 		lblPioche.setBounds(217, 141, 67, 103);
 		frame.getContentPane().add(lblPioche);
 		
@@ -135,5 +143,7 @@ public class FenetreJeu {
 		
 		JLayeredPane layeredPane_7 = new JLayeredPane();
 		panel_7.add(layeredPane_7);
+		
+		new ControleurPioche(lblPioche,null,null);
 	}
 }

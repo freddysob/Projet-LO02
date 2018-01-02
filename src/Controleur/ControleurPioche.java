@@ -11,14 +11,14 @@ public class ControleurPioche {
 	public ControleurPioche(JButton Pioche, final Pioche i, Manche M) {
 
 		Pioche.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (M.joueur.get(0).isEtatActif()) {
+				System.out.println("test");
+				/*if (M.joueur.get(0).isEtatActif()) {
 					M.joueur.get(0).piocher();
 					M.joueurSuivant(null, M.joueur.get(0));
-				}
+				}*/
 			}
 
 		});
