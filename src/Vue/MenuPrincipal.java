@@ -24,17 +24,12 @@ import Modele.Variante;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
-import java.awt.Color;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
-import java.awt.Font;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+
 import java.io.*;
 
 
@@ -125,8 +120,18 @@ public class MenuPrincipal {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							FenetreJeu window = new FenetreJeu();
+							window.getFrame().setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 				// TODO Auto-generated method stub
-				
+				/*
 				JFrame frame2 = new JFrame();
 				frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame2.setTitle(" Tableau de Jeu ");
@@ -203,7 +208,7 @@ public class MenuPrincipal {
 				
 				frame2.getContentPane().add(panel_2);
 				
-			}
+			*/}
 		});
 		
 		JLabel lblPageDaccueil = new JLabel("Le 8 Americain");
@@ -341,12 +346,12 @@ public class MenuPrincipal {
 			}
 		});
 		GridBagConstraints gbc_btnQuitter = new GridBagConstraints();
-		gbc_btnQuitter.insets = new Insets(0, 0, 5, 5);
+		gbc_btnQuitter.insets = new Insets(0, 0, 5, 0);
 		gbc_btnQuitter.gridheight = 3;
 		gbc_btnQuitter.gridwidth = 2;
 		gbc_btnQuitter.fill = GridBagConstraints.BOTH;
-		gbc_btnQuitter.gridx = 3;
-		gbc_btnQuitter.gridy = 4;
+		gbc_btnQuitter.gridx = 5;
+		gbc_btnQuitter.gridy = 6;
 		panel.add(btnQuitter, gbc_btnQuitter);
 		
 		
