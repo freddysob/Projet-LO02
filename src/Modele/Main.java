@@ -72,7 +72,7 @@ public class Main {
 		while(Ma.P.verifierFinPartie()) { 
 			Ma.V = new Variante(1, TypVariante.Minimale);
 			Tatamis T = new Tatamis();
-			Ma.M = new Manche(0, Ma.V, Ma.P, T);
+			Ma.M = new Manche( Ma.V, Ma.P);
 			int i=1;
 			Ma.Pi = new Pioche(Ma.M);
 
@@ -161,7 +161,7 @@ public class Main {
 
 
 
-				Ma.M.joueurSuivant(T.carte.get(0),Ma.M.joueur.get(i1));
+				Ma.M.joueurSuivant(Ma.M.tatamis.carte.get(0),Ma.M.joueur.get(i1));
 
 				System.out.println("");
 

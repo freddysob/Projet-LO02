@@ -1,13 +1,13 @@
 package Modele;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Collections;
 import java.util.ListIterator;
 import java.util.List;
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 //@objid ("a01dd153-c040-44b2-8be3-508863e3b0c0")
-public class Manche {
+public class Manche extends Observable{
 	//@objid ("82238392-8d75-4504-baaf-a0ae3c1615bb")
 	private int nbJoueurs;
 
@@ -39,7 +39,7 @@ public class Manche {
 
 	
 
-	public Manche(int n, Variante variante, Partie partie, Tatamis t) {
+	public Manche( Variante variante, Partie partie) {
 		boolean partieFinie=false;
 		for(int i=0; i<this.joueur.size(); i++) {
 			if(this.joueur.get(i).getNbPoints()>=this.partie.getPointsMax()){
@@ -49,7 +49,8 @@ public class Manche {
 		if(!partieFinie) {
 			this.sensJeuPos = true;
 			this.joueur = new ArrayList<Joueur>();
-			this.tatamis = t;
+			this.nbJoueurs=this.joueur.size();
+			this.tatamis = new Tatamis();
 			this.pioche = new Pioche(this);
 			this.variante = variante;
 			this.partie = partie;
@@ -92,7 +93,7 @@ public class Manche {
 	}
 
 	//@objid ("3555bd57-33a6-4d25-acde-530e45dd5c6f")
-	List<Joueur> getJoueur() {
+	public List<Joueur> getJoueur() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.joueur;
 	}
@@ -126,7 +127,7 @@ public class Manche {
 	}
 
 	//@objid ("45392d85-647f-4207-9a07-27779e0ff918")
-	void setNbJoueurs(int value) {
+	public void setNbJoueurs(int value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.nbJoueurs = value;
 	}
@@ -149,7 +150,7 @@ public class Manche {
 	}
 
 	//@objid ("9affe6e9-44c0-4fc7-acf6-9ce39674af2a")
-	Variante getVariante() {
+	public Variante getVariante() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.variante;
 	}

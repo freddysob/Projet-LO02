@@ -24,17 +24,12 @@ import Modele.Variante;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
-import java.awt.Color;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
-import java.awt.Font;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+
 import java.io.*;
 
 
@@ -49,9 +44,10 @@ public class MenuPrincipal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuPrincipal window = new MenuPrincipal();
-					window.frame.setVisible(true);
 					Main Mi = new Main();
+					MenuPrincipal window = new MenuPrincipal(Mi);
+					window.frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -62,14 +58,14 @@ public class MenuPrincipal {
 	/**
 	 * Create the application.
 	 */
-	public MenuPrincipal() {
-		initialize();
+	public MenuPrincipal(Main M) {
+		initialize(M);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private Main initialize(final Main M) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 716, 479);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,7 +75,7 @@ public class MenuPrincipal {
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.WHITE);
 		panel.setBackground(Color.GRAY);
-		panel.setBounds(10, 0, 680, 430);
+		panel.setBounds(0, 11, 680, 430);
 		frame.getContentPane().add(panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{261, 26, 161, 0, 162, 223, 0};
@@ -122,11 +118,26 @@ public class MenuPrincipal {
 				
 				return panel;
 			}
-
+			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							M.setP(new Partie());
+							M.setV(new Variante(1,TypVariante.Minimale));
+							M.setM(new Manche(M.getV(),M.getP()));
+							
+							FenetreJeu window = new FenetreJeu(M.getP(),M.getM(),M.getV());
+							window.getFrame().setVisible(true);
+							frame.setVisible(false);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 				// TODO Auto-generated method stub
-				
+				/*
 				JFrame frame2 = new JFrame();
 				frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				frame2.setTitle(" Tableau de Jeu ");
@@ -203,7 +214,7 @@ public class MenuPrincipal {
 				
 				frame2.getContentPane().add(panel_2);
 				
-			}
+			*/}
 		});
 		
 		JLabel lblPageDaccueil = new JLabel("Le 8 Americain");
@@ -253,7 +264,7 @@ public class MenuPrincipal {
 				int nbj=0;
 				Ma.setV(new Variante(1, TypVariante.Minimale));
 				Ma.setT( new Tatamis());
-				Ma.setM( new Manche(0, Ma.getV(), Ma.getP(), Ma.getT() ));
+				Ma.setM( new Manche( Ma.getV(), Ma.getP()));
 				
 				JOptionPane jop = new JOptionPane();
 				
@@ -319,10 +330,15 @@ public class MenuPrincipal {
 				    //A.choisirVariante(V,n);
 				    
 				    
-				
+				    M.setM(Ma.getM());
+				    M.setP(Ma.getP());
+				    M.setV(Ma.getV());
+				    
 			
 			}
+			
 		});
+		
 		
 		
 		GridBagConstraints gbc_btnReglerOptionsPartie = new GridBagConstraints();
@@ -341,16 +357,16 @@ public class MenuPrincipal {
 			}
 		});
 		GridBagConstraints gbc_btnQuitter = new GridBagConstraints();
-		gbc_btnQuitter.insets = new Insets(0, 0, 5, 5);
+		gbc_btnQuitter.insets = new Insets(0, 0, 5, 0);
 		gbc_btnQuitter.gridheight = 3;
 		gbc_btnQuitter.gridwidth = 2;
 		gbc_btnQuitter.fill = GridBagConstraints.BOTH;
-		gbc_btnQuitter.gridx = 3;
-		gbc_btnQuitter.gridy = 4;
+		gbc_btnQuitter.gridx = 5;
+		gbc_btnQuitter.gridy = 6;
 		panel.add(btnQuitter, gbc_btnQuitter);
 		
 		
-		
+		return M;
 		
 	}
 }

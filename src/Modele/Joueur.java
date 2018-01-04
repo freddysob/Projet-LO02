@@ -119,12 +119,16 @@ public class Joueur extends Observable {
 		this.manche=M;
 	}
 
+	public Hand getHand() {
+		return this.hand;
+	}  
+	
 	public void setHand(Hand h) {
 		this.hand=h;
 	}    
 
 	//@objid ("32738ca0-c5a4-4bbf-a98d-984e129bfab9")
-	String getNom() {
+	public String getNom() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.nom;
 	}
@@ -136,7 +140,7 @@ public class Joueur extends Observable {
 	}
 
 	//@objid ("4152e987-036d-430c-898a-41cdfbcab303")
-	boolean isTypePhysique() {
+	public boolean isTypePhysique() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.typePhysique;
 	}
