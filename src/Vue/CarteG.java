@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 import javax.*;
 
 import Modele.*;
@@ -17,10 +18,12 @@ public class CarteG extends JButton {
 	
 	public NumeroCarte numero;
 	public TypCarte type;
+	public JPanel panel;
 	
-	public CarteG(NumeroCarte num,TypCarte typ){
+	public CarteG(NumeroCarte num,TypCarte typ, JPanel p1){
 		this.numero = num;
 		this.type = typ;
+		this.panel=p1;
 		
 		BufferedImage img = null;
 		
@@ -187,8 +190,14 @@ public class CarteG extends JButton {
 		    	if(numero==NumeroCarte._J && type == TypCarte.JR){
 		    		img = ImageIO.read(new File("C:/Users/Pret/Desktop/GM05/LO02/Projet/Partie 3 - Interf Graph/Graphique2/image/JR.png"));
 		    	}
+		    	
 		    	this.setIcon(new ImageIcon(img));
-		    	img = null;
+		    	//this.setBounds(img.getMinX(),img.getMinY(), img.getWidth(),img.getHeight());
+		    	
+		    	
+		    	
+		    	//this.setSize(img.getWidth(),img.getHeight());
+		    	
 		    } catch (IOException e) {
 		    }
 		

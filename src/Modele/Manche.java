@@ -1,10 +1,6 @@
 package Modele;
 
 import java.util.*;
-import java.util.Collections;
-import java.util.ListIterator;
-import java.util.List;
-//import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 //@objid ("a01dd153-c040-44b2-8be3-508863e3b0c0")
 public class Manche extends Observable{
@@ -99,7 +95,7 @@ public class Manche extends Observable{
 	}
 
 	//@objid ("9b54aa45-133c-4468-8cdc-513ac26380b6")
-	void setJoueur(List<Joueur> value) {
+	public void setJoueur(List<Joueur> value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.joueur = value;
 	}
@@ -121,7 +117,7 @@ public class Manche extends Observable{
 	}
 
 	//@objid ("09fe90f9-552c-4d15-942c-b2de58609213")
-	int getNbJoueurs() {
+	public int getNbJoueurs() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.nbJoueurs;
 	}
@@ -176,6 +172,73 @@ public class Manche extends Observable{
 	public void setDerniereCarteEstRejouer(boolean derniereCarteEstRejouer) {
 		this.derniereCarteEstRejouer = derniereCarteEstRejouer;
 	}
+	
+	
+	 public Variante choisirVariante( int n){
+
+		 Variante V = new Variante(1,this.getVariante().getNom());
+			boolean avance=false;
+			while(avance==false){
+
+				
+
+				try {
+					if (n==1){
+						this.getVariante().setNom(TypVariante.Minimale);
+						avance=true;
+					}
+					else if (n==2){
+						this.getVariante().setNom(TypVariante.Monclar);
+						avance=true;
+					}
+					else if(n==3){
+						this.getVariante().setNom(TypVariante.Variante_1);
+						avance=true;
+					}
+					else if(n==4){
+						this.getVariante().setNom(TypVariante.Carte_et_Maou);
+						avance=true;
+					}
+					else if(n==5){
+						this.getVariante().setNom(TypVariante.Des_Ulis);
+						avance=true;
+					}
+					else if(n==6){
+						this.getVariante().setNom(TypVariante.Variante_4);
+						avance=true;
+					}
+					else if(n==7){
+						this.getVariante().setNom(TypVariante.Variante_5);
+						avance=true;
+					}
+					else if(n==8){
+						this.getVariante().setNom(TypVariante.Variante_6);
+						avance=true;
+					}
+					else if(n==9){
+						this.getVariante().setNom(TypVariante.Variante_Courte_Amicale);
+						avance=true;
+					}
+					else if(n==10){
+						this.getVariante().setNom(TypVariante.Man_et_resta);
+						avance=true;
+					}
+					else{
+						System.out.println("Nombre pas dans la plage");
+						avance=false;
+					}
+
+					V = new Variante(1,this.getVariante().getNom());
+				}
+
+				catch (NumberFormatException nfe){
+					System.out.println("Saisie variante invalide");
+					avance=false; }
+			}
+			return V;
+		}
+	
+	
 
 	public Joueur joueurSuivant(Carte cartePose, Joueur actif) {
 		ArrayList<Joueur> temp = new ArrayList <Joueur>();

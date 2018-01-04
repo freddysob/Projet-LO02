@@ -62,7 +62,7 @@ public class Partie extends Observable{
         this.statut = value;
     }
     
-    List<Joueur> getJoueur() {
+    public List<Joueur> getJoueur() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.joueur;
     }

@@ -65,7 +65,7 @@ public class ControleurPioche {
 							}
 						else{
 							Joueur.add(J);
-							CarteG C = (CarteG) Joueur.getComponent(0);
+							//CarteG C = (CarteG) Joueur.getComponent(0);
 							//Graphics g = null;
 							//C.paintComponent(g);
 							Pioche.remove(J);
@@ -93,8 +93,8 @@ public class ControleurPioche {
 						}
 						else{
 							Joueur.add(J);
-							CarteG C = (CarteG) Joueur.getComponent(0);
-							Graphics g = null;
+//							CarteG C = (CarteG) Joueur.getComponent(0);
+//							Graphics g = null;
 							//C.paintComponent(g);
 							Pioche.remove(J);
 						}
@@ -125,8 +125,8 @@ public class ControleurPioche {
 						}
 						else{
 							Joueur.add(J);
-							CarteG C = (CarteG) Joueur.getComponent(0);
-							Graphics g = null;
+//							CarteG C = (CarteG) Joueur.getComponent(0);
+//							Graphics g = null;
 							//C.paintComponent(g);
 							Pioche.remove(J);
 						}
@@ -161,8 +161,8 @@ public class ControleurPioche {
 						}
 						else{
 							Joueur.add(J);
-							CarteG C = (CarteG) Joueur.getComponent(0);
-							Graphics g = null;
+//							CarteG C = (CarteG) Joueur.getComponent(0);
+//							Graphics g = null;
 							//C.paintComponent(g);
 							Pioche.remove(J);
 						}

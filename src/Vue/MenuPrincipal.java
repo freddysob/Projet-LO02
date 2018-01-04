@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import Modele.Affichage;
+import Modele.Carte;
+import Modele.Hand;
 import Modele.IA;
 import Modele.Joueur;
 import Modele.Main;
@@ -18,7 +20,7 @@ import Modele.Manche;
 import Modele.Partie;
 import Modele.Tatamis;
 import Modele.TypVariante;
-import Modele.Variante;
+import Modele.*;
 //import Modele;
 
 import java.awt.event.ActionListener;
@@ -31,11 +33,13 @@ import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
 
 import java.io.*;
+import java.util.*;
 
 
 public class MenuPrincipal {
 
 	private JFrame frame;
+	public Main M;
 
 	/**
 	 * Launch the application.
@@ -59,7 +63,8 @@ public class MenuPrincipal {
 	 * Create the application.
 	 */
 	public MenuPrincipal(Main M) {
-		initialize(M);
+		M=initialize(M);
+		this.M = M;
 	}
 
 	/**
@@ -84,20 +89,15 @@ public class MenuPrincipal {
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
+		final Main M2= new Main();
+		M2.setPi(new Pioche(M.getM()));
+		M2.setT(new Tatamis());
 		JButton btnNewButton = new JButton("     Jouer      ");
 		btnNewButton.addActionListener(new ActionListener() {
 			
 		
 			
-			public void actionPerformed(ActionEvent arg0, Main Ma) {
-
-				
-				
-				String[] args = new String[6];
-				Ma.main(args);
-				
-
-			}
+			
 			
 			public JPanel setBackgroundImage(JFrame frame, final File img) throws IOException{
 				JPanel panel = new JPanel()
@@ -124,11 +124,12 @@ public class MenuPrincipal {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							M.setP(new Partie());
-							M.setV(new Variante(1,TypVariante.Minimale));
-							M.setM(new Manche(M.getV(),M.getP()));
-							
-							FenetreJeu window = new FenetreJeu(M.getP(),M.getM(),M.getV());
+//							M2.setP(new Partie());
+//							M2.setV(new Variante(1,TypVariante.Minimale));
+//							M2.setM(new Manche(M.getV(),M2.getP()));
+							 System.out.println("Liste joueurs manche après transmission : " + M2.getM().getJoueur());
+							 System.out.println("Variante manche après transmission : " + M2.getM().getVariante());
+							FenetreJeu window = new FenetreJeu(M2.getP(),M2.getM(),M2.getV());
 							window.getFrame().setVisible(true);
 							frame.setVisible(false);
 						} catch (Exception e) {
@@ -137,84 +138,7 @@ public class MenuPrincipal {
 					}
 				});
 				// TODO Auto-generated method stub
-				/*
-				JFrame frame2 = new JFrame();
-				frame2.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				frame2.setTitle(" Tableau de Jeu ");
-				frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame2.getContentPane().setLayout(null);
-				frame.setVisible(false);
-				frame2.setVisible(true);
-				
-				JPanel panel_2 = new JPanel();
-				panel_2.setBounds(0, 0, 1400, 1200);
-				
-				panel_2.setBackground(Color.CYAN);
-				
-				
-				
-				
-				JPanel J2 = new JPanel();
-				J2.setBounds(1000, 100, 400, 400);
-				panel_2.add(J2);
-				
-				J2.setBackground(Color.YELLOW);
-				
-				JPanel J3 = new JPanel();
-				J3.setBounds(1000, 500, 400, 400);
-				panel_2.add(J3);
-				
-				J3.setBackground(Color.WHITE);
-				
-				JPanel J4 = new JPanel();
-				J4.setBounds(1000, 900, 400, 400);
-				panel_2.add(J4);
-				
-				J4.setBackground(Color.WHITE);
-				
-				JPanel J1 = new JPanel();
-				J1.setBounds(500, 50, 400, 400);
-				panel_2.add(J1);
-				
-				J1.setBackground(Color.WHITE);
-				
-				JPanel J5 = new JPanel();
-				J5.setBounds(500, 900, 400, 400);
-				panel_2.add(J5);
-				
-				J5.setBackground(Color.WHITE);
-				
-				JPanel J6 = new JPanel();
-				J6.setBounds(100, 100, 400, 400);
-				panel_2.add(J6);
-				
-				J6.setBackground(Color.WHITE);
-				
-				JPanel J7 = new JPanel();
-				J7.setBounds(100, 500, 400, 400);
-				panel_2.add(J7);
-				
-				J7.setBackground(Color.WHITE);
-				
-				JPanel J8 = new JPanel();
-				J8.setBounds(100, 900, 400, 400);
-				panel_2.add(J8);
-				
-				J8.setBackground(Color.WHITE);
-				
-				JPanel Pioche = new JPanel();
-				Pioche.setBounds(450, 500, 400, 400);
-				panel_2.add(Pioche);
-				
-				
-				JPanel Tatamis = new JPanel();
-				Tatamis.setBounds(550, 500, 400, 400);
-				panel_2.add(Tatamis);
-				
-				
-				frame2.getContentPane().add(panel_2);
-				
-			*/}
+			}
 		});
 		
 		JLabel lblPageDaccueil = new JLabel("Le 8 Americain");
@@ -310,6 +234,7 @@ public class MenuPrincipal {
 		
 						Ma.getP().joueur.add(new Joueur(nom,i,null));
 						Ma.getP().joueur.get(i).setTypePhysique(true);
+						Ma.getP().joueur.get(i).setEtatActif(true);
 					}
 		
 					else{
@@ -317,9 +242,17 @@ public class MenuPrincipal {
 						String nom= "";
 						Ma.getP().joueur.add(new IA(nom,i,null));
 						Ma.getP().joueur.get(i).setTypePhysique(false);
+						Ma.getP().joueur.get(i).setEtatActif(false);
 					}
+					
+
+					Joueur joueur0 = new Joueur("Test", 1, null);
+					
+					Hand Main1 = new Hand(joueur0);
+					Ma.getP().joueur.get(i).setHand(Main1);
 		
 				}
+				
 				
 				
 				String[] variante = {"basique", "Monclar","1","Carte et Maou", "Des Ulis", "4", "5", "6", "Courte Amicale", "Man et resta"};
@@ -327,14 +260,25 @@ public class MenuPrincipal {
 				   
 				    int n = jop.showOptionDialog(null,  "Selectionnez une variante", "Choix variante",  JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,  null,  variante,  variante[9]);
 				    
+				    M.setV(Ma.getM().choisirVariante(n));
 				    //A.choisirVariante(V,n);
 				    
-				    
+				    Ma.setM(new Manche(M.getV(),Ma.getP()));
+				    Ma.getM().setNbJoueurs(Ma.getP().joueur.size());
+				    Ma.getM().setJoueur(Ma.getP().getJoueur());
+				    /*for(int i=0;i<Ma.getM().joueur.size();i++){
+				    	Ma.getM().joueur.get(i).setManche(Ma.getM());
+				    }*/
+				    System.out.println("Liste joueurs manche après saisie : " +Ma.getM().getJoueur());
 				    M.setM(Ma.getM());
 				    M.setP(Ma.getP());
 				    M.setV(Ma.getV());
+				    M.getM().setNbJoueurs(M.getM().joueur.size());
+				   
 				    
-			
+				    M2.setM(M.getM());
+				    M2.setP(M.getP());
+				    M2.setV(M.getV());
 			}
 			
 		});

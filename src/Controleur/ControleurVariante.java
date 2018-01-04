@@ -21,7 +21,8 @@ public class ControleurVariante {
 			for(int i=0;i<M.pioche.carte.size();i++){
 				System.out.println("TypCarte: "+ M.pioche.carte.get(i).getType());
 				JButton G = new JButton();
-				G = new	CarteG(M.pioche.carte.get(i).getNumero(),M.pioche.carte.get(i).getType());
+				G = new	CarteG(M.pioche.carte.get(i).getNumero(),M.pioche.carte.get(i).getType(), Pioche);
+				
 				Pioche.add(G);
 				JButton C = (CarteG) Pioche.getComponent(0);
 				//C.repaint();

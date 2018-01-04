@@ -94,9 +94,13 @@ public class FenetreJeu implements Observer {
 					Manche.setNbJoueurs(Manche.joueur.size());
 					Manche.joueur.get(0).setEtatActif(true);
 					Manche.joueur.get(0).setTypePhysique(true);
+					Manche.joueur.get(0).setManche(Manche);
 					
 					Manche.joueur.get(1).setEtatActif(false);
 					Manche.joueur.get(1).setTypePhysique(false);
+					Manche.joueur.get(1).setManche(Manche);
+					
+					
 					}
 					
 					
@@ -182,7 +186,8 @@ public class FenetreJeu implements Observer {
 		// Partie
 		// Carte
 		
-		Cv = new ControleurVariante(pioche, this.Manche, tatamis,this);
+		
+	Cv = new ControleurVariante(pioche, this.Manche, tatamis,this);
 		
 		Cpi = new ControleurPioche(pioche, tatamis, Joueur, IA_1, IA_2, IA_3, IA_4, IA_5, IA_6, IA_7, this, this.Manche);
 		Ct = new ControleurTatamis();
@@ -190,7 +195,6 @@ public class FenetreJeu implements Observer {
 		Cm = new ControleurManche(pioche, tatamis, Joueur, IA_1, IA_2, IA_3, IA_4, IA_5, IA_6, IA_7, this, this.Manche);
 		Cc = new ControleurCarte();
 		Cp = new ControleurPartie();
-		
 		
 		
 	}
@@ -463,6 +467,8 @@ public class FenetreJeu implements Observer {
 		JLayeredPane layeredPane_6 = new JLayeredPane();
 		IA_1.add(layeredPane_6);
 		}
+		
+	
 	}
 	
 	public void update(Observable instanceObservable, Object arg1){
@@ -481,7 +487,7 @@ public class FenetreJeu implements Observer {
 		
 		if (instanceObservable instanceof Joueur){
 			
-			Cj.controle();
+			//Cj.controle();
 		}
 		
 		if (instanceObservable instanceof Tatamis){

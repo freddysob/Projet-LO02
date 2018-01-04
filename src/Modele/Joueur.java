@@ -162,7 +162,7 @@ public class Joueur extends Observable {
 	}
 
 	//@objid ("33b07d26-3623-4475-8768-46a1197b43e0")
-	int getNumeroJoueur() {
+	public int getNumeroJoueur() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.numeroJoueur;
 	}
