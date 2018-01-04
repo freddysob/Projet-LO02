@@ -127,15 +127,10 @@ public class MenuPrincipal {
 //							M2.setP(new Partie());
 //							M2.setV(new Variante(1,TypVariante.Minimale));
 //							M2.setM(new Manche(M.getV(),M2.getP()));
-							 System.out.println("Liste joueurs manche après transmission : " + M2.getM().getJoueur());
-							 System.out.println("Variante manche après transmission : " + M2.getM().getVariante());
+							 System.out.println("Liste joueurs manche aprÃ¨s transmission : " + M2.getM().getJoueur());
+							 System.out.println("Variante manche aprÃ¨s transmission : " + M2.getM().getVariante());
 							
-							 /*for (int i=0;i<M2.getP().getNbJoueurs();i++){
-								 M2.getM().joueur.get(i).setManche(M2.getM());
-								 M2.getM().joueur.get(i).manche.setTatamis(new Tatamis());
-							    System.out.println("Taille tatamis de manche du joueur " + M2.getM().joueur.get(i).getNom() + " : " + M2.getM().joueur.get(i).manche.getTatamis().carte.size());
-							 
-							 }*/
+						
 						
 							 
 							FenetreJeu window = new FenetreJeu(M2.getP(),M2.getM(),M2.getV());
@@ -278,7 +273,7 @@ public class MenuPrincipal {
 				    /*for(int i=0;i<Ma.getM().joueur.size();i++){
 				    	Ma.getM().joueur.get(i).setManche(Ma.getM());
 				    }*/
-				    System.out.println("Liste joueurs manche après saisie : " +Ma.getM().getJoueur());
+				    System.out.println("Liste joueurs manche aprÃ¨s saisie : " +Ma.getM().getJoueur());
 				    M.setM(Ma.getM());
 				    M.setP(Ma.getP());
 				    M.setV(Ma.getV());
@@ -289,6 +284,13 @@ public class MenuPrincipal {
 				    M2.setP(M.getP());
 				    M2.setV(M.getV());
 				    M2.getM().setTatamis(new Tatamis());
+				    
+					 for (int i=0;i<M2.getP().getNbJoueurs();i++){
+						 M2.getM().joueur.get(i).setManche(M2.getM());
+						 M2.getM().joueur.get(i).manche.setTatamis(new Tatamis());
+					    //System.out.println("Taille tatamis de manche du joueur " + M2.getM().joueur.get(i).getNom() + " : " + M2.getM().joueur.get(i).manche.getTatamis().carte.size());
+					 
+					 }
 			}
 			
 		});
