@@ -79,7 +79,7 @@ public class Carte extends Observable {
         this.type = value;
     }
     
-    int getPoids() {
+    public int getPoids() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.poids;
     }

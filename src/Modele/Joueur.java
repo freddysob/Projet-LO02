@@ -2,6 +2,8 @@ package Modele;
 
 import java.util.*;
 
+import javax.swing.JPanel;
+
 public class Joueur extends Observable {
 	//@objid ("644ad622-ff18-461c-91e3-6613837a8102")
 	private boolean etatActif;
@@ -25,6 +27,8 @@ public class Joueur extends Observable {
 	public Hand hand;
 
 	public Manche manche;
+	
+	public JPanel panel;
 
 	public Joueur(String name, int num, Hand hand) {
 		this.etatActif = false;
@@ -34,6 +38,7 @@ public class Joueur extends Observable {
 		this.nom=name;
 		this.hand=hand;
 		this.annonceDerniereCarte=false;
+		this.panel = new JPanel();
 	}
 
 	public String toString(){

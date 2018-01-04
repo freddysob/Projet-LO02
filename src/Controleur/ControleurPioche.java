@@ -38,11 +38,12 @@ public class ControleurPioche {
 					for(int j=0;j<M.joueur.get(i).hand.carte.size();j++){
 						JButton J = (JButton) Pioche.getComponent(0);
 						if(M.joueur.get(i) instanceof IA){
-						
+						M.joueur.get(i).panel=IA1;
 						IA1.add(J);
 						Pioche.remove(J);
 						}
 						else{
+							M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
 							Pioche.remove(J);
 						}
@@ -55,15 +56,18 @@ public class ControleurPioche {
 						JButton J = (JButton) Pioche.getComponent(0);
 						if(M.joueur.get(i) instanceof IA && i==1){
 						
+						M.joueur.get(i).panel=IA3;
 						IA3.add(J);
 						Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==2){
 							
+							M.joueur.get(i).panel=IA6;
 							IA6.add(J);
 							Pioche.remove(J);
 							}
 						else{
+							M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
 							//CarteG C = (CarteG) Joueur.getComponent(0);
 							//Graphics g = null;
@@ -79,19 +83,24 @@ public class ControleurPioche {
 						JButton J = (JButton) Pioche.getComponent(0);
 						if(M.joueur.get(i) instanceof IA && i==1){
 						
+						M.joueur.get(i).panel=IA1;
 						IA1.add(J);
 						Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==2){
 							
+							M.joueur.get(i).panel=IA3;
 							IA3.add(J);
 							Pioche.remove(J);
 							}
 						else if(M.joueur.get(i) instanceof IA && i==3){
+							
+							M.joueur.get(i).panel=IA6;
 							IA6.add(J);
 							Pioche.remove(J);
 						}
 						else{
+							M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
 //							CarteG C = (CarteG) Joueur.getComponent(0);
 //							Graphics g = null;
@@ -107,23 +116,31 @@ public class ControleurPioche {
 						JButton J = (JButton) Pioche.getComponent(0);
 						if(M.joueur.get(i) instanceof IA && i==1){
 						
+						M.joueur.get(i).panel=IA2;
 						IA2.add(J);
 						Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==2){
 							
+							M.joueur.get(i).panel=IA4;
 							IA4.add(J);
 							Pioche.remove(J);
 							}
 						else if(M.joueur.get(i) instanceof IA && i==3){
+							
+							M.joueur.get(i).panel=IA5;
 							IA5.add(J);
 							Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==4){
+							
+							M.joueur.get(i).panel=IA7;
 							IA7.add(J);
 							Pioche.remove(J);
 						}
 						else{
+							
+							M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
 //							CarteG C = (CarteG) Joueur.getComponent(0);
 //							Graphics g = null;
@@ -139,27 +156,37 @@ public class ControleurPioche {
 						JButton J = (JButton) Pioche.getComponent(0);
 						if(M.joueur.get(i) instanceof IA && i==1){
 						
+						M.joueur.get(i).panel=IA1;
 						IA1.add(J);
 						Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==2){
 							
+							M.joueur.get(i).panel=IA2;
 							IA2.add(J);
 							Pioche.remove(J);
 							}
 						else if(M.joueur.get(i) instanceof IA && i==3){
+							
+							M.joueur.get(i).panel=IA4;
 							IA4.add(J);
 							Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==4){
+							
+							M.joueur.get(i).panel=IA5;
 							IA5.add(J);
 							Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==5){
+							
+							M.joueur.get(i).panel=IA7;
 							IA7.add(J);
 							Pioche.remove(J);
 						}
 						else{
+							
+							M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
 //							CarteG C = (CarteG) Joueur.getComponent(0);
 //							Graphics g = null;

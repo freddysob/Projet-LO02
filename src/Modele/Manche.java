@@ -165,6 +165,16 @@ public class Manche extends Observable{
 		this.historique = historique;
 	}
 	
+	public void setTatamis(Tatamis value) {
+		
+		this.tatamis = value;
+	}
+	
+	public Tatamis getTatamis() {
+		
+		return this.tatamis;
+	}
+	
 	public boolean isDerniereCarteEstRejouer() {
 		return derniereCarteEstRejouer;
 	}
