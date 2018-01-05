@@ -4,8 +4,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import Modele.*;
 import Vue.*;
@@ -13,7 +12,7 @@ import Vue.*;
 public class ControleurPioche {
 
 	private int i=0;
-	public ControleurPioche(JPanel Pioche, JPanel Tatamis, JPanel Joueur, JPanel IA1, JPanel IA2, JPanel IA3, JPanel IA4, JPanel IA5, JPanel IA6, JPanel IA7, FenetreJeu fenetre, Manche M) {
+	public ControleurPioche(JLayeredPane Pioche, JLayeredPane Tatamis, JTabbedPane Joueur, JLayeredPane IA1, JLayeredPane IA2, JLayeredPane IA3, JLayeredPane IA4, JLayeredPane IA5, JLayeredPane IA6, JLayeredPane IA7, FenetreJeu fenetre, Manche M) {
 
 //		Pioche.addActionListener(new ActionListener() {
 //			@Override
@@ -43,9 +42,10 @@ public class ControleurPioche {
 						Pioche.remove(J);
 						}
 						else{
-							M.joueur.get(i).panel=Joueur;
+							//M.joueur.get(i).panel=(JTabbedPane)Joueur;
 							Joueur.add(J);
 							Pioche.remove(J);
+							((CarteG) J).retourner();
 						}
 					}
 				}
@@ -67,12 +67,13 @@ public class ControleurPioche {
 							Pioche.remove(J);
 							}
 						else{
-							M.joueur.get(i).panel=Joueur;
+							//M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
 							//CarteG C = (CarteG) Joueur.getComponent(0);
 							//Graphics g = null;
 							//C.paintComponent(g);
 							Pioche.remove(J);
+							((CarteG) J).retourner();
 						}
 					}
 				}
@@ -100,12 +101,13 @@ public class ControleurPioche {
 							Pioche.remove(J);
 						}
 						else{
-							M.joueur.get(i).panel=Joueur;
+							//M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
 //							CarteG C = (CarteG) Joueur.getComponent(0);
 //							Graphics g = null;
 							//C.paintComponent(g);
 							Pioche.remove(J);
+							((CarteG) J).retourner();
 						}
 					}
 				}
@@ -140,12 +142,13 @@ public class ControleurPioche {
 						}
 						else{
 							
-							M.joueur.get(i).panel=Joueur;
+							//M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
 //							CarteG C = (CarteG) Joueur.getComponent(0);
 //							Graphics g = null;
 							//C.paintComponent(g);
 							Pioche.remove(J);
+							((CarteG) J).retourner();
 						}
 					}
 				}
@@ -186,21 +189,23 @@ public class ControleurPioche {
 						}
 						else{
 							
-							M.joueur.get(i).panel=Joueur;
+						//	M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
 //							CarteG C = (CarteG) Joueur.getComponent(0);
 //							Graphics g = null;
 							//C.paintComponent(g);
 							Pioche.remove(J);
+							((CarteG) J).retourner();
 						}
 					}
 				}
 			}
 			
-			JButton J = (JButton) Pioche.getComponent(0);
+			JButton J = (CarteG) Pioche.getComponent(0);
 			Tatamis.add(J);
-			CarteG C = (CarteG) Tatamis.getComponent(0);
-			Graphics g = null;
+			((CarteG) J).retourner();
+			//CarteG C = (CarteG) Tatamis.getComponent(0);
+			//Graphics g = null;
 			//C.paintComponent(g);
 			Pioche.remove(J);
 			

@@ -97,6 +97,7 @@ public class IA extends Joueur{
 		if(this.hand.carte.size()==1) {
 			this.setAnnonceDerniereCarte(true);
 		}else {
+			this.setAnnonceDerniereCarte(false);
 		}
 	} 
 

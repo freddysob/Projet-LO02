@@ -39,7 +39,7 @@ import java.util.*;
 public class MenuPrincipal {
 
 	private JFrame frame;
-	public Main M;
+	
 
 	/**
 	 * Launch the application.
@@ -64,7 +64,7 @@ public class MenuPrincipal {
 	 */
 	public MenuPrincipal(Main M) {
 		M=initialize(M);
-		this.M = M;
+		
 	}
 
 	/**
@@ -127,8 +127,8 @@ public class MenuPrincipal {
 //							M2.setP(new Partie());
 //							M2.setV(new Variante(1,TypVariante.Minimale));
 //							M2.setM(new Manche(M.getV(),M2.getP()));
-							 System.out.println("Liste joueurs manche aprÃ¨s transmission : " + M2.getM().getJoueur());
-							 System.out.println("Variante manche aprÃ¨s transmission : " + M2.getM().getVariante());
+							 System.out.println("Liste joueurs manche après transmission : " + M2.getM().getJoueur());
+							 System.out.println("Variante manche après transmission : " + M2.getM().getVariante());
 							
 						
 						
@@ -247,6 +247,7 @@ public class MenuPrincipal {
 						Ma.getP().joueur.add(new IA(nom,i,null));
 						Ma.getP().joueur.get(i).setTypePhysique(false);
 						Ma.getP().joueur.get(i).setEtatActif(false);
+						
 					}
 					
 
@@ -262,7 +263,7 @@ public class MenuPrincipal {
 				String[] variante = {"basique", "Monclar","1","Carte et Maou", "Des Ulis", "4", "5", "6", "Courte Amicale", "Man et resta"};
 
 				   
-				    int n = jop.showOptionDialog(null,  "Selectionnez une variante", "Choix variante",  JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,  null,  variante,  variante[9]);
+				    int n = jop.showOptionDialog(null,  "Selectionnez une variante", "Choix variante",  JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,  null,  variante,  variante[9]) + 1;
 				    
 				    M.setV(Ma.getM().choisirVariante(n));
 				    //A.choisirVariante(V,n);
@@ -270,15 +271,16 @@ public class MenuPrincipal {
 				    Ma.setM(new Manche(M.getV(),Ma.getP()));
 				    Ma.getM().setNbJoueurs(Ma.getP().joueur.size());
 				    Ma.getM().setJoueur(Ma.getP().getJoueur());
-				    /*for(int i=0;i<Ma.getM().joueur.size();i++){
-				    	Ma.getM().joueur.get(i).setManche(Ma.getM());
-				    }*/
-				    System.out.println("Liste joueurs manche aprÃ¨s saisie : " +Ma.getM().getJoueur());
+				    
+				    System.out.println("Liste joueurs manche après saisie : " +Ma.getM().getJoueur());
+				   
+				    // Transmission des saisies dans une variable "final"
 				    M.setM(Ma.getM());
 				    M.setP(Ma.getP());
 				    M.setV(Ma.getV());
 				    M.getM().setNbJoueurs(M.getM().joueur.size());
 				   
+				    //Copie des saisies dans la variable Main "final" qui sera utilisée pour construire la fenêtre de jeu
 				    
 				    M2.setM(M.getM());
 				    M2.setP(M.getP());
@@ -291,6 +293,8 @@ public class MenuPrincipal {
 					    //System.out.println("Taille tatamis de manche du joueur " + M2.getM().joueur.get(i).getNom() + " : " + M2.getM().joueur.get(i).manche.getTatamis().carte.size());
 					 
 					 }
+					 
+					 
 			}
 			
 		});

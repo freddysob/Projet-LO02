@@ -1,5 +1,6 @@
 package Vue;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.util.*;
@@ -10,7 +11,7 @@ import Controleur.*;
 import javax.swing.JFrame;
 import java.awt.GridLayout;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -34,16 +35,18 @@ public class FenetreJeu implements Observer {
 	JButton SignalerDerniereCarte;
 	JLabel Tatamis;
 	
-	JPanel IA_7;
-	JPanel IA_6;
-	JPanel IA_5;
-	JPanel IA_4;
-	JPanel IA_3;
-	JPanel IA_2;
-	JPanel IA_1;
-	JPanel Joueur;
-	private JPanel tatamis;
-	private JPanel pioche;
+	JLayeredPane IA_7;
+	JLayeredPane IA_6;
+	JLayeredPane IA_5;
+	JLayeredPane IA_4;
+	JLayeredPane IA_3;
+	JLayeredPane IA_2;
+	JLayeredPane IA_1;
+	JTabbedPane Joueur;
+	//private JPanel tatamis;
+	private JLayeredPane tatamis;
+	private JLayeredPane pioche;
+	//private JPanel pioche;
 	private JLabel lblTatamis;
 	
 	ControleurCarte Cc;
@@ -210,31 +213,38 @@ public class FenetreJeu implements Observer {
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.getContentPane().setLayout(null);
 		
-		Joueur = new JPanel();
-		Joueur.setBounds(370, 551, 453, 124);
+		
+		Joueur = new JTabbedPane();
+		Joueur.setBounds(374, 557, 453, 155);
 		frame.getContentPane().add(Joueur);
 		Joueur.setBackground(Color.WHITE);
 		
 		
-		JLayeredPane layeredPane_3 = new JLayeredPane();
-		Joueur.add(layeredPane_3);
+		//JLayeredPane layeredPane_3 = new JLayeredPane();
+		//Joueur.add(layeredPane_3);
 		
 		
-		tatamis = new JPanel();
-		tatamis.setBackground(Color.WHITE);
+	//	tatamis = new JPanel();
+	//	tatamis.setBackground(Color.WHITE);
+	//	tatamis.setBounds(593, 268, 126, 147);
+		
+		tatamis = new JLayeredPane();
 		tatamis.setBounds(593, 268, 126, 147);
-		
+		frame.getContentPane().add(tatamis);
 		
 		lblTatamis = new JLabel("Tatamis");
 		lblTatamis.setBounds(631, 426, 46, 14);
 		frame.getContentPane().add(lblTatamis);
 		
 		
-		pioche = new JPanel();
-		pioche.setBackground(Color.LIGHT_GRAY);
+		pioche = new JLayeredPane();
 		pioche.setBounds(443, 268, 126, 147);
-		//pioche.add(new JButton(new ImageIcon("C:/Users/Pret/Desktop/GM05/LO02/Projet/Partie 3 - Interf Graph/Graphique2/image/dos.png")));
 		frame.getContentPane().add(pioche);
+	//	pioche = new JPanel();
+	//	pioche.setBackground(Color.LIGHT_GRAY);
+	//	pioche.setBounds(443, 268, 126, 147);
+	
+	//	frame.getContentPane().add(pioche);
 		
 		
 		
@@ -263,7 +273,7 @@ public class FenetreJeu implements Observer {
 		
 		if (M.joueur.size()==2){
 			
-			IA_1 = new JPanel();
+			IA_1 = new JLayeredPane();
 			IA_1.setBackground(Color.WHITE);
 			IA_1.setBounds(480, 11, 406, 103);
 			frame.getContentPane().add(IA_1);
@@ -274,7 +284,7 @@ public class FenetreJeu implements Observer {
 		else if (M.joueur.size()==3){
 			
 			
-			IA_6 = new JPanel();
+			IA_6 = new JLayeredPane();
 			IA_6.setBackground(Color.WHITE);
 			IA_6.setBounds(22, 219, 99, 192);
 			frame.getContentPane().add(IA_6);
@@ -284,7 +294,7 @@ public class FenetreJeu implements Observer {
 			
 		
 			
-			IA_3 = new JPanel();
+			IA_3 = new JLayeredPane();
 			IA_3.setBackground(Color.WHITE);
 			IA_3.setBounds(1236, 219, 99, 192);
 			frame.getContentPane().add(IA_3);
@@ -295,7 +305,7 @@ public class FenetreJeu implements Observer {
 		
 		}
 		else if (M.joueur.size()==4){
-			IA_7 = new JPanel();
+			IA_7 = new JLayeredPane();
 			IA_7.setBackground(Color.WHITE);
 			IA_7.setBounds(185, 422, 99, 192);
 			frame.getContentPane().add(IA_7);
@@ -303,7 +313,7 @@ public class FenetreJeu implements Observer {
 			JLayeredPane layeredPane_8 = new JLayeredPane();
 			IA_7.add(layeredPane_8);
 			
-			IA_6 = new JPanel();
+			IA_6 = new JLayeredPane();
 			IA_6.setBackground(Color.WHITE);
 			IA_6.setBounds(22, 219, 99, 192);
 			frame.getContentPane().add(IA_6);
@@ -311,7 +321,7 @@ public class FenetreJeu implements Observer {
 			JLayeredPane layeredPane = new JLayeredPane();
 			IA_6.add(layeredPane);
 			
-			IA_3 = new JPanel();
+			IA_3 = new JLayeredPane();
 			IA_3.setBackground(Color.WHITE);
 			IA_3.setBounds(1236, 219, 99, 192);
 			frame.getContentPane().add(IA_3);
@@ -321,7 +331,7 @@ public class FenetreJeu implements Observer {
 			
 			
 			
-			IA_1 = new JPanel();
+			IA_1 = new JLayeredPane();
 			IA_1.setBackground(Color.WHITE);
 			IA_1.setBounds(480, 11, 406, 103);
 			frame.getContentPane().add(IA_1);
@@ -330,7 +340,7 @@ public class FenetreJeu implements Observer {
 			IA_1.add(layeredPane_6);
 		}
 		else if (M.joueur.size()==5){
-			IA_7 = new JPanel();
+			IA_7 = new JLayeredPane();
 			IA_7.setBackground(Color.WHITE);
 			IA_7.setBounds(185, 422, 99, 192);
 			frame.getContentPane().add(IA_7);
@@ -339,7 +349,7 @@ public class FenetreJeu implements Observer {
 			IA_7.add(layeredPane_8);
 			
 			
-			IA_5 = new JPanel();
+			IA_5 = new JLayeredPane();
 			IA_5.setBackground(Color.WHITE);
 			IA_5.setBounds(187, 26, 99, 192);
 			frame.getContentPane().add(IA_5);
@@ -347,7 +357,7 @@ public class FenetreJeu implements Observer {
 			JLayeredPane layeredPane_2 = new JLayeredPane();
 			IA_5.add(layeredPane_2);
 			
-			IA_4 = new JPanel();
+			IA_4 = new JLayeredPane();
 			IA_4.setBackground(Color.WHITE);
 			IA_4.setBounds(1084, 396, 99, 192);
 			frame.getContentPane().add(IA_4);
@@ -357,7 +367,7 @@ public class FenetreJeu implements Observer {
 			
 			
 			
-			IA_2 = new JPanel();
+			IA_2 = new JLayeredPane();
 			IA_2.setBackground(Color.WHITE);
 			IA_2.setBounds(1067, 11, 99, 192);
 			frame.getContentPane().add(IA_2);
@@ -368,7 +378,7 @@ public class FenetreJeu implements Observer {
 			
 		}
 		else if (M.joueur.size()==6){
-			IA_7 = new JPanel();
+			IA_7 = new JLayeredPane();
 			IA_7.setBackground(Color.WHITE);
 			IA_7.setBounds(185, 422, 99, 192);
 			frame.getContentPane().add(IA_7);
@@ -377,7 +387,7 @@ public class FenetreJeu implements Observer {
 			IA_7.add(layeredPane_8);
 		
 			
-			IA_5 = new JPanel();
+			IA_5 = new JLayeredPane();
 			IA_5.setBackground(Color.WHITE);
 			IA_5.setBounds(187, 26, 99, 192);
 			frame.getContentPane().add(IA_5);
@@ -385,7 +395,7 @@ public class FenetreJeu implements Observer {
 			JLayeredPane layeredPane_2 = new JLayeredPane();
 			IA_5.add(layeredPane_2);
 			
-			IA_4 = new JPanel();
+			IA_4 = new JLayeredPane();
 			IA_4.setBackground(Color.WHITE);
 			IA_4.setBounds(1084, 396, 99, 192);
 			frame.getContentPane().add(IA_4);
@@ -393,7 +403,7 @@ public class FenetreJeu implements Observer {
 			JLayeredPane layeredPane_1 = new JLayeredPane();
 			IA_4.add(layeredPane_1);
 			
-			IA_2 = new JPanel();
+			IA_2 = new JLayeredPane();
 			IA_2.setBackground(Color.WHITE);
 			IA_2.setBounds(1067, 11, 99, 192);
 			frame.getContentPane().add(IA_2);
@@ -401,7 +411,7 @@ public class FenetreJeu implements Observer {
 			JLayeredPane layeredPane_5 = new JLayeredPane();
 			IA_2.add(layeredPane_5);
 			
-			IA_1 = new JPanel();
+			IA_1 = new JLayeredPane();
 			IA_1.setBackground(Color.WHITE);
 			IA_1.setBounds(480, 11, 406, 103);
 			frame.getContentPane().add(IA_1);
@@ -411,7 +421,7 @@ public class FenetreJeu implements Observer {
 		}
 
 		else if (M.joueur.size()==0){
-		IA_7 = new JPanel();
+		IA_7 = new JLayeredPane();
 		IA_7.setBackground(Color.WHITE);
 		IA_7.setBounds(185, 422, 99, 192);
 		frame.getContentPane().add(IA_7);
@@ -419,7 +429,7 @@ public class FenetreJeu implements Observer {
 		JLayeredPane layeredPane_8 = new JLayeredPane();
 		IA_7.add(layeredPane_8);
 		
-		IA_6 = new JPanel();
+		IA_6 = new JLayeredPane();
 		IA_6.setBackground(Color.WHITE);
 		IA_6.setBounds(22, 219, 99, 192);
 		frame.getContentPane().add(IA_6);
@@ -427,7 +437,7 @@ public class FenetreJeu implements Observer {
 		JLayeredPane layeredPane = new JLayeredPane();
 		IA_6.add(layeredPane);
 		
-		IA_5 = new JPanel();
+		IA_5 = new JLayeredPane();
 		IA_5.setBackground(Color.WHITE);
 		IA_5.setBounds(187, 26, 99, 192);
 		frame.getContentPane().add(IA_5);
@@ -435,7 +445,7 @@ public class FenetreJeu implements Observer {
 		JLayeredPane layeredPane_2 = new JLayeredPane();
 		IA_5.add(layeredPane_2);
 		
-		IA_4 = new JPanel();
+		IA_4 = new JLayeredPane();
 		IA_4.setBackground(Color.WHITE);
 		IA_4.setBounds(1084, 396, 99, 192);
 		frame.getContentPane().add(IA_4);
@@ -443,7 +453,7 @@ public class FenetreJeu implements Observer {
 		JLayeredPane layeredPane_1 = new JLayeredPane();
 		IA_4.add(layeredPane_1);
 		
-		IA_3 = new JPanel();
+		IA_3 = new JLayeredPane();
 		IA_3.setBackground(Color.WHITE);
 		IA_3.setBounds(1236, 219, 99, 192);
 		frame.getContentPane().add(IA_3);
@@ -451,7 +461,7 @@ public class FenetreJeu implements Observer {
 		JLayeredPane layeredPane_4 = new JLayeredPane();
 		IA_3.add(layeredPane_4);
 		
-		IA_2 = new JPanel();
+		IA_2 = new JLayeredPane();
 		IA_2.setBackground(Color.WHITE);
 		IA_2.setBounds(1067, 11, 99, 192);
 		frame.getContentPane().add(IA_2);
@@ -459,7 +469,7 @@ public class FenetreJeu implements Observer {
 		JLayeredPane layeredPane_5 = new JLayeredPane();
 		IA_2.add(layeredPane_5);
 		
-		IA_1 = new JPanel();
+		IA_1 = new JLayeredPane();
 		IA_1.setBackground(Color.WHITE);
 		IA_1.setBounds(480, 11, 406, 103);
 		frame.getContentPane().add(IA_1);

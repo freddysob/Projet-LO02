@@ -2,6 +2,7 @@ package Modele;
 
 import java.util.*;
 
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 public class Joueur extends Observable {
@@ -28,7 +29,7 @@ public class Joueur extends Observable {
 
 	public Manche manche;
 	
-	public JPanel panel;
+	public JLayeredPane panel;
 
 	public Joueur(String name, int num, Hand hand) {
 		this.etatActif = false;
@@ -38,7 +39,7 @@ public class Joueur extends Observable {
 		this.nom=name;
 		this.hand=hand;
 		this.annonceDerniereCarte=false;
-		this.panel = new JPanel();
+		this.panel = new JLayeredPane();
 	}
 
 	public String toString(){
@@ -61,10 +62,12 @@ public class Joueur extends Observable {
 	}
 
 	public void jouerCarte(Carte carte) {
+		aFini = false;
 		this.hand.carte.remove(carte);
 		this.manche.tatamis.ajouterCarte(carte);
 		carte.appliquerPouvoir(this.manche, this);
 		this.manche.getHistorique().add(0,this);
+		aFini = true;
 	}
 
 	public void denoncerDCarte(Joueur joueur) {
@@ -104,8 +107,10 @@ public class Joueur extends Observable {
 
 	//@objid ("8a1180dc-f293-4922-aa03-eb2ed17e2f60")
 	public void piocher() {
+		aFini = false;
 		this.manche.pioche.distribuerCarte(1,this);
 		this.manche.getHistorique().add(0,this);
+		aFini = true;
 	}
 
 	//@objid ("ad53043c-fa56-4988-98e7-4b52306e1af4")
@@ -118,6 +123,7 @@ public class Joueur extends Observable {
 	public void setEtatActif(boolean value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.etatActif = value;
+		aFini = false;
 	}
 
 	public void setManche(Manche M) {
@@ -156,12 +162,12 @@ public class Joueur extends Observable {
 		this.typePhysique = value;
 	}
 
-	boolean isaFini() {
+	public boolean isaFini() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.aFini;
 	}
 
-	void setaFini(boolean value) {
+	public void setaFini(boolean value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.aFini = value;
 	}
@@ -178,7 +184,7 @@ public class Joueur extends Observable {
 		this.numeroJoueur = value;
 	}
 
-	boolean getAnnonceDerniereCarte() {
+	public boolean getAnnonceDerniereCarte() {
 
 		return this.annonceDerniereCarte;
 	}

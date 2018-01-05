@@ -277,8 +277,8 @@ public class Manche extends Observable{
 			li.previous();
 		}
 		if(this.sensJeuPos) {
-			while(!li.next().isEtatActif()) {
-			}
+			//while(!li.next().isEtatActif()) {
+			//}
 			if(cartePose instanceof StopperSuivant) {
 				if(!li.hasNext()) {
 					while(li.hasPrevious()) {
