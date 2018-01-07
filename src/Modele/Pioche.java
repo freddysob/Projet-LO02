@@ -47,7 +47,7 @@ public class Pioche extends Observable {
     }
 
     public void distribuerCartesDebut(Variante variante) {
-    	for(int i = 0; i<this.manche.joueur.size(); i++){
+    	for(int i=0; i<this.manche.joueur.size(); i++){
     		this.distribuerCarte(variante.getNombreCarteDebut(), this.manche.joueur.get(i));
     	}
     	
@@ -62,9 +62,11 @@ public class Pioche extends Observable {
     		if(this.carte.size()==0) {
     			this.reconstituer();
     		}
-    		Carte retire=this.carte.get(0);
+    		joueur.hand.carte.add(this.carte.get(0));
     		this.carte.remove(0);
-    		joueur.hand.carte.add(retire);
+    		this.setChanged();
+    		this.notifyObservers(joueur);
+    		
     	}
     }
     

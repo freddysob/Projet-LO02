@@ -1,13 +1,13 @@
 package Modele;
 
-import java.util.List;
+import java.util.*;
 import java.util.ArrayList;
 
 
 //import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 //@objid ("50a23012-b43d-47f5-b068-5836148a3eab")
-public class Partie {
+public class Partie extends Observable{
     //@objid ("79e8229f-77de-4a75-97e1-fe3782043a6b")
     private Statut statut;
 
@@ -62,7 +62,7 @@ public class Partie {
         this.statut = value;
     }
     
-    List<Joueur> getJoueur() {
+    public List<Joueur> getJoueur() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.joueur;
     }
@@ -100,4 +100,5 @@ public class Partie {
     public static void main(String[] args ) {
     	
     }
+
 }

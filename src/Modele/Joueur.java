@@ -2,6 +2,9 @@ package Modele;
 
 import java.util.*;
 
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+
 public class Joueur extends Observable {
 	//@objid ("644ad622-ff18-461c-91e3-6613837a8102")
 	private boolean etatActif;
@@ -25,6 +28,8 @@ public class Joueur extends Observable {
 	public Hand hand;
 
 	public Manche manche;
+	
+	public JLayeredPane panel;
 
 	public Joueur(String name, int num, Hand hand) {
 		this.etatActif = false;
@@ -34,6 +39,7 @@ public class Joueur extends Observable {
 		this.nom=name;
 		this.hand=hand;
 		this.annonceDerniereCarte=false;
+		this.panel = new JLayeredPane();
 	}
 
 	public String toString(){
@@ -60,6 +66,11 @@ public class Joueur extends Observable {
 		this.manche.tatamis.ajouterCarte(carte);
 		carte.appliquerPouvoir(this.manche, this);
 		this.manche.getHistorique().add(0,this);
+		List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(this);
+		Obs.add(carte);
+		this.setChanged();
+		this.notifyObservers(Obs);
 	}
 
 	public void denoncerDCarte(Joueur joueur) {
@@ -119,12 +130,16 @@ public class Joueur extends Observable {
 		this.manche=M;
 	}
 
+	public Hand getHand() {
+		return this.hand;
+	}  
+	
 	public void setHand(Hand h) {
 		this.hand=h;
 	}    
 
 	//@objid ("32738ca0-c5a4-4bbf-a98d-984e129bfab9")
-	String getNom() {
+	public String getNom() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.nom;
 	}
@@ -136,7 +151,7 @@ public class Joueur extends Observable {
 	}
 
 	//@objid ("4152e987-036d-430c-898a-41cdfbcab303")
-	boolean isTypePhysique() {
+	public boolean isTypePhysique() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.typePhysique;
 	}
@@ -147,18 +162,18 @@ public class Joueur extends Observable {
 		this.typePhysique = value;
 	}
 
-	boolean isaFini() {
+	public boolean isaFini() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.aFini;
 	}
 
-	void setaFini(boolean value) {
+	public void setaFini(boolean value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.aFini = value;
 	}
 
 	//@objid ("33b07d26-3623-4475-8768-46a1197b43e0")
-	int getNumeroJoueur() {
+	public int getNumeroJoueur() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.numeroJoueur;
 	}
@@ -169,7 +184,7 @@ public class Joueur extends Observable {
 		this.numeroJoueur = value;
 	}
 
-	boolean getAnnonceDerniereCarte() {
+	public boolean getAnnonceDerniereCarte() {
 
 		return this.annonceDerniereCarte;
 	}
@@ -191,10 +206,5 @@ public class Joueur extends Observable {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.nbPoints = value;
 	}
-
-	public static void main(String[] args ) {
-
-	}
-
 
 }

@@ -44,7 +44,7 @@ public class Carte extends Observable {
     }
 
    // @objid ("9360b926-8b43-4610-9468-02bdf738200f")
-    NumeroCarte getNumero() {
+    public NumeroCarte getNumero() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.numero;
     }
@@ -68,7 +68,7 @@ public class Carte extends Observable {
     }
 
     //@objid ("cf5c77d7-2419-4582-9fce-9396f2d672a3")
-    TypCarte getType() {
+    public TypCarte getType() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.type;
     }
@@ -79,7 +79,7 @@ public class Carte extends Observable {
         this.type = value;
     }
     
-    int getPoids() {
+    public int getPoids() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.poids;
     }

@@ -1,8 +1,6 @@
 package Modele;
 
 import java.util.*;
-import java.util.List;
-//import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 
 // @objid ("13fb79e4-c248-4e81-8baf-bddb4c4f4b1a")
@@ -97,6 +95,8 @@ public class Variante extends Observable{
         // Automatically generated method. Please delete this comment before entering specific code.
         this.nombreCarteDebut = value;
     }    
+    
+    
     
     public List<Carte> genererJeuCartes(){
     	int i=0;

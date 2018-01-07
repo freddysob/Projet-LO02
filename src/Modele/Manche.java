@@ -1,13 +1,9 @@
 package Modele;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.ListIterator;
-import java.util.List;
-//import com.modeliosoft.modelio.javadesigner.annotations.objid;
+import java.util.*;
 
 //@objid ("a01dd153-c040-44b2-8be3-508863e3b0c0")
-public class Manche {
+public class Manche extends Observable{
 	//@objid ("82238392-8d75-4504-baaf-a0ae3c1615bb")
 	private int nbJoueurs;
 
@@ -39,7 +35,7 @@ public class Manche {
 
 	
 
-	public Manche(int n, Variante variante, Partie partie, Tatamis t) {
+	public Manche( Variante variante, Partie partie) {
 		boolean partieFinie=false;
 		for(int i=0; i<this.joueur.size(); i++) {
 			if(this.joueur.get(i).getNbPoints()>=this.partie.getPointsMax()){
@@ -49,7 +45,8 @@ public class Manche {
 		if(!partieFinie) {
 			this.sensJeuPos = true;
 			this.joueur = new ArrayList<Joueur>();
-			this.tatamis = t;
+			this.nbJoueurs=this.joueur.size();
+			this.tatamis = new Tatamis();
 			this.pioche = new Pioche(this);
 			this.variante = variante;
 			this.partie = partie;
@@ -92,13 +89,13 @@ public class Manche {
 	}
 
 	//@objid ("3555bd57-33a6-4d25-acde-530e45dd5c6f")
-	List<Joueur> getJoueur() {
+	public List<Joueur> getJoueur() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.joueur;
 	}
 
 	//@objid ("9b54aa45-133c-4468-8cdc-513ac26380b6")
-	void setJoueur(List<Joueur> value) {
+	public void setJoueur(List<Joueur> value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.joueur = value;
 	}
@@ -120,13 +117,13 @@ public class Manche {
 	}
 
 	//@objid ("09fe90f9-552c-4d15-942c-b2de58609213")
-	int getNbJoueurs() {
+	public int getNbJoueurs() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.nbJoueurs;
 	}
 
 	//@objid ("45392d85-647f-4207-9a07-27779e0ff918")
-	void setNbJoueurs(int value) {
+	public void setNbJoueurs(int value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.nbJoueurs = value;
 	}
@@ -149,7 +146,7 @@ public class Manche {
 	}
 
 	//@objid ("9affe6e9-44c0-4fc7-acf6-9ce39674af2a")
-	Variante getVariante() {
+	public Variante getVariante() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.variante;
 	}
@@ -168,6 +165,16 @@ public class Manche {
 		this.historique = historique;
 	}
 	
+	public void setTatamis(Tatamis value) {
+		
+		this.tatamis = value;
+	}
+	
+	public Tatamis getTatamis() {
+		
+		return this.tatamis;
+	}
+	
 	public boolean isDerniereCarteEstRejouer() {
 		return derniereCarteEstRejouer;
 	}
@@ -175,6 +182,73 @@ public class Manche {
 	public void setDerniereCarteEstRejouer(boolean derniereCarteEstRejouer) {
 		this.derniereCarteEstRejouer = derniereCarteEstRejouer;
 	}
+	
+	
+	 public Variante choisirVariante( int n){
+
+		 Variante V = new Variante(1,this.getVariante().getNom());
+			boolean avance=false;
+			while(avance==false){
+
+				
+
+				try {
+					if (n==1){
+						this.getVariante().setNom(TypVariante.Minimale);
+						avance=true;
+					}
+					else if (n==2){
+						this.getVariante().setNom(TypVariante.Monclar);
+						avance=true;
+					}
+					else if(n==3){
+						this.getVariante().setNom(TypVariante.Variante_1);
+						avance=true;
+					}
+					else if(n==4){
+						this.getVariante().setNom(TypVariante.Carte_et_Maou);
+						avance=true;
+					}
+					else if(n==5){
+						this.getVariante().setNom(TypVariante.Des_Ulis);
+						avance=true;
+					}
+					else if(n==6){
+						this.getVariante().setNom(TypVariante.Variante_4);
+						avance=true;
+					}
+					else if(n==7){
+						this.getVariante().setNom(TypVariante.Variante_5);
+						avance=true;
+					}
+					else if(n==8){
+						this.getVariante().setNom(TypVariante.Variante_6);
+						avance=true;
+					}
+					else if(n==9){
+						this.getVariante().setNom(TypVariante.Variante_Courte_Amicale);
+						avance=true;
+					}
+					else if(n==10){
+						this.getVariante().setNom(TypVariante.Man_et_resta);
+						avance=true;
+					}
+					else{
+						System.out.println("Nombre pas dans la plage");
+						avance=false;
+					}
+
+					V = new Variante(1,this.getVariante().getNom());
+				}
+
+				catch (NumberFormatException nfe){
+					System.out.println("Saisie variante invalide");
+					avance=false; }
+			}
+			return V;
+		}
+	
+	
 
 	public Joueur joueurSuivant(Carte cartePose, Joueur actif) {
 		ArrayList<Joueur> temp = new ArrayList <Joueur>();
@@ -195,17 +269,18 @@ public class Manche {
 		}
 		while(li.hasNext()) {
 			if(li.next().isaFini()) {
-				//System.out.println("remove");
 				li.remove();
 			}
 		}
 		while(li.hasPrevious()) {
 			li.previous();
+			
 		}
 		if(this.sensJeuPos) {
 			while(!li.next().isEtatActif()) {
 			}
 			if(cartePose instanceof StopperSuivant) {
+				
 				if(!li.hasNext()) {
 					while(li.hasPrevious()) {
 						li.previous();
@@ -215,6 +290,7 @@ public class Manche {
 				}
 			}
 			if(!li.hasNext()) {
+				
 				while(li.hasPrevious()) {
 					li.previous();
 				}
@@ -250,6 +326,8 @@ public class Manche {
 			joueur.get(i).setEtatActif(false);
 		}
 		joue.setEtatActif(true);
+		this.setChanged();
+		this.notifyObservers(joue);
 		return(joue);
 	}
 
@@ -323,11 +401,6 @@ public class Manche {
 
 		//}
 		return o;
-	}
-
-
-	public static void main(String[] args ) {
-
 	}
 
 

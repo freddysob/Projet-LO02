@@ -21,10 +21,6 @@ public class IA extends Joueur{
 	protected void finalize() {
 	}
 
-	public static void main(String[] args ) {
-
-	}
-
 	//@objid ("3ce5ca07-26e2-49b1-86f3-210856435573")
 	public List<Integer> prioriserCartes() {
 		List<Integer> s = new ArrayList<Integer> ();
@@ -63,6 +59,7 @@ public class IA extends Joueur{
 					carteajouer=carteJouable.get(i);
 				}
 			}
+			System.out.println(carteajouer);
 			this.jouerCarte(carteajouer);
 
 		}else{
@@ -79,6 +76,7 @@ public class IA extends Joueur{
 				this.manche.pioche.distribuerCarte(1, this);
 			}
 		}
+		this.manche.joueurSuivant(carteajouer, this);
 	}
 
 	//@objid ("5db48821-e1bb-4323-8520-b4a682114998")
@@ -97,6 +95,7 @@ public class IA extends Joueur{
 		if(this.hand.carte.size()==1) {
 			this.setAnnonceDerniereCarte(true);
 		}else {
+			this.setAnnonceDerniereCarte(false);
 		}
 	} 
 
