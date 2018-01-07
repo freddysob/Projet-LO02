@@ -63,6 +63,8 @@ public class Pioche extends Observable {
     			this.reconstituer();
     		}
     		joueur.hand.carte.add(this.carte.get(0));
+    		System.out.println("La carte "+this.carte.get(0)+" nb carte "+joueur.hand.carte.size());
+    		
     		this.carte.remove(0);
     		this.setChanged();
     		this.notifyObservers(joueur);

@@ -488,9 +488,10 @@ public class FenetreJeu implements Observer {
 		if (instanceObservable instanceof Pioche){
 			JButton J = (CarteG) pioche.getComponent(0);
 			Joueur joue = (Joueur) arg1;
-			if(joue.isTypePhysique()) {
+			System.out.println(joue.hand.carte.size()+ "dans obs");
 			pioche.remove(J);
 			pioche.repaint();
+			if(joue.isTypePhysique()) {
 			Joueur.add(J);
 			Joueur.repaint();
 			((CarteG) Joueur.getComponent(Joueur.getComponents().length-1)).retourner();
@@ -500,6 +501,7 @@ public class FenetreJeu implements Observer {
 			J.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					if(Manche.joueur.get(0).isEtatActif()) {
+						System.out.println(Manche.joueur.get(0).hand.carte.get(Manche.joueur.get(0).hand.carte.size()-1));
 						Manche.joueur.get(0).jouerCarte(Manche.joueur.get(0).hand.carte.get(Manche.joueur.get(0).hand.carte.size()-1));
 						Manche.joueurSuivant(Manche.joueur.get(0).hand.carte.get(Manche.joueur.get(0).hand.carte.size()-1), Manche.joueur.get(0));
 					}
@@ -518,23 +520,32 @@ public class FenetreJeu implements Observer {
 			 } 
 		
 		if (instanceObservable instanceof Joueur){
-			System.out.println("IA");
 			List<Object> tab= (ArrayList) arg1;
-			Carte carte = (Carte) tab.get(1);
-			Joueur jouer = (Joueur) tab.get(0);
-			if(jouer.isTypePhysique()) {
-				for(int i = 0; i<Manche.joueur.get(0).hand.carte.size(); i++) {
-					CarteG carteg = (CarteG) Joueur.getComponent(i);
-					if(carte.getNumero()== carteg.getNumero() && carte.getType() == carteg.getType()) {
-						CarteG carteG = new CarteG(carte.getNumero(), carte.getType(), tatamis);
-						tatamis.add(carteG);
-						Joueur.remove(carteg);
+			if((int) tab.get(0)==1) {
+				Carte carte = (Carte) tab.get(2);
+				Joueur jouer = (Joueur) tab.get(1);
+				if(jouer.isTypePhysique()) {
+					System.out.println(jouer.hand.carte.size());
+					for(int i = 0; i<jouer.hand.carte.size(); i++) {
+						CarteG carteg = (CarteG) Joueur.getComponent(i);
+						System.out.println("jo"+carteg.getNumero()+carte.getNumero()+"jo");
+						if(carte.getNumero()== carteg.getNumero() && carte.getType() == carteg.getType()) {
+							CarteG carteG = new CarteG(carte.getNumero(), carte.getType(), tatamis);
+							tatamis.add(carteG);
+							Joueur.remove(carteg);
+							System.out.println(carteg);
+						}
 					}
+					
+				}else {
+					CarteG carteG = new CarteG(carte.getNumero(), carte.getType(), tatamis);
+					tatamis.add(carteG);
 				}
+			}if((int) tab.get(0)==2) {
 				
-			}else {
-				CarteG carteG = new CarteG(carte.getNumero(), carte.getType(), tatamis);
-				tatamis.add(carteG);
+			}
+			if((int) tab.get(0)==3) {
+				
 			}
 		}
 		

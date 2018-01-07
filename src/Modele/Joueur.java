@@ -67,6 +67,7 @@ public class Joueur extends Observable {
 		carte.appliquerPouvoir(this.manche, this);
 		this.manche.getHistorique().add(0,this);
 		List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(1);
 		Obs.add(this);
 		Obs.add(carte);
 		this.setChanged();
@@ -79,6 +80,10 @@ public class Joueur extends Observable {
 		}else {
 			this.manche.penaliserJoueur(2, this);
 		}
+		List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(2);
+		this.setChanged();
+		this.notifyObservers(Obs);
 	}
 
 	public void ajoutPoints(int value) {
@@ -102,6 +107,10 @@ public class Joueur extends Observable {
 			i++;
 			if(i>this.manche.getHistorique().size()-1){o=false;}}
 		}
+		List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(3);
+		this.setChanged();
+		this.notifyObservers(Obs);
 	}
 
 	public void jouer() {
@@ -110,6 +119,7 @@ public class Joueur extends Observable {
 
 	//@objid ("8a1180dc-f293-4922-aa03-eb2ed17e2f60")
 	public void piocher() {
+		System.out.println(this+" a pioché");
 		this.manche.pioche.distribuerCarte(1,this);
 		this.manche.getHistorique().add(0,this);
 	}
