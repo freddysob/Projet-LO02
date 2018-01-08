@@ -8,16 +8,10 @@ import java.util.*;
 import Modele.*;
 import Controleur.*;
 
-import javax.swing.JFrame;
 import java.awt.GridLayout;
 
 import javax.swing.*;
-import javax.swing.JPanel;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -181,6 +175,7 @@ public class FenetreJeu implements Observer {
 		this.Manche.addObserver(this);
 		this.Partie.addObserver(this);
 		this.Manche.pioche.addObserver(this);
+		this.Manche.tatamis.addObserver(this);
 		
 		// Joueur
 		// Variante
@@ -536,21 +531,57 @@ public class FenetreJeu implements Observer {
 							System.out.println(carteg);
 						}
 					}
+					if(carte instanceof Commande) {
+						String[] choix = {"Coeur", "Carreau","Trèfle","Pique"};
+						JOptionPane jop = new JOptionPane();
+					    int n = jop.showOptionDialog(null,  "Selectionnez une couleur", "Choix couleur",  JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,  null,  choix,  choix[3]);
+					    Commande com = (Commande) carte;
+					    com.appliquerPouvoir(Manche, n);
+					}
 					
 				}else {
 					CarteG carteG = new CarteG(carte.getNumero(), carte.getType(), tatamis);
 					tatamis.add(carteG);
 				}
 			}if((int) tab.get(0)==2) {
-				
+				JOptionPane jop1 = new JOptionPane();
+				jop1.showMessageDialog(null, (Joueur) tab.get(1)  + "a dénoncé un dernière fausse dernière carte", "Information",
+						JOptionPane.INFORMATION_MESSAGE);
+				if ((boolean) tab.get(2)) {
+					JOptionPane jop = new JOptionPane();
+					jop.showMessageDialog(null, "Bonne dénonciation", "Information",
+							JOptionPane.INFORMATION_MESSAGE);
+				}else {
+					JOptionPane jop = new JOptionPane();
+					jop.showMessageDialog(null, "Mauvaise dénonciation", "Information",
+							JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 			if((int) tab.get(0)==3) {
-				
+				JOptionPane jop1 = new JOptionPane();
+				jop1.showMessageDialog(null, (Joueur) tab.get(1)  + "a dénoncé une mauvaise carte", "Information",
+						JOptionPane.INFORMATION_MESSAGE);
+				if ((boolean) tab.get(2)) {
+					JOptionPane jop = new JOptionPane();
+					jop.showMessageDialog(null, "Bonne dénonciation", "Information",
+							JOptionPane.INFORMATION_MESSAGE);
+				}else {
+					JOptionPane jop = new JOptionPane();
+					jop.showMessageDialog(null, "Mauvaise dénonciation", "Information",
+							JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+			if((int) tab.get(0)==4) {
+				JOptionPane jop = new JOptionPane();
+				jop.showMessageDialog(null, (Joueur) tab.get(1)+" annonce n'avoir plus qu'une carte", "Information",
+						JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 		
 		if (instanceObservable instanceof Tatamis){
-			
+			JOptionPane jop = new JOptionPane();
+			jop.showMessageDialog(null, arg1 +" a été choisi", "Information",
+					JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 		if (instanceObservable instanceof Variante){

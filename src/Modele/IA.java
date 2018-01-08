@@ -38,7 +38,7 @@ public class IA extends Joueur{
 			while(o){
 			if(this.manche.getHistorique().get(0).getNom() == this.manche.getHistorique().get(i).getNom()){		
 				if(this.manche.tatamis.carte.size()!=0){*/
-					this.denoncerMCarte(this.manche.getHistorique().get(0));}
+			this.denoncerMCarte(this.manche.getHistorique().get(0));}
 			/*	i++;}
 			else {o=false;}
 			if(i>this.manche.getHistorique().size()-1){o=false;}
@@ -94,6 +94,11 @@ public class IA extends Joueur{
 	public void signalerDerniereCarte() {
 		if(this.hand.carte.size()==1) {
 			this.setAnnonceDerniereCarte(true);
+			List<Object> Obs = new ArrayList<Object> ();
+			Obs.add(4);
+			Obs.add(this);
+			this.setChanged();
+			this.notifyObservers(Obs);
 		}else {
 			this.setAnnonceDerniereCarte(false);
 		}
@@ -115,6 +120,12 @@ public class IA extends Joueur{
 			
 			i++;
 			if(i>this.manche.getHistorique().size()-1){o=false;}}
+		List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(3);
+		Obs.add(this);
+		Obs.add(true);
+		this.setChanged();
+		this.notifyObservers(Obs);
 		}
 		
 	}

@@ -117,15 +117,6 @@ public class ControleurJoueur {
 							System.out.println("Component to remove in Pioche: " + J);
 							// Boîte du message d'information
 						}
-						JOptionPane jop1 = new JOptionPane();
-						jop1.showMessageDialog(null, "Mauvaise denonciation", "Attention",
-								JOptionPane.INFORMATION_MESSAGE);
-					}
-
-					else {
-						JOptionPane jop1 = new JOptionPane();
-						jop1.showMessageDialog(null, " Bien vu ! " + M.joueur.get(0).getNom() + "", "Information",
-								JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 			}
