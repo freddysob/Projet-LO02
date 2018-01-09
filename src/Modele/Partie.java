@@ -10,8 +10,18 @@ import java.util.ArrayList;
 public class Partie extends Observable{
     //@objid ("79e8229f-77de-4a75-97e1-fe3782043a6b")
     private Statut statut;
+    
+    private boolean text;
 
-    //@objid ("3aeb1c27-a90e-4339-bd9f-581cad54cf90")
+    public boolean isText() {
+		return text;
+	}
+
+	public void setText(boolean text) {
+		this.text = text;
+	}
+
+	//@objid ("3aeb1c27-a90e-4339-bd9f-581cad54cf90")
     private int nbJoueurs;
 
     //@objid ("6eb49448-5654-4cee-a87c-85f5c2848ab5")

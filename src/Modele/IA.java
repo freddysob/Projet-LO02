@@ -111,6 +111,12 @@ public class IA extends Joueur{
 		while(o && i<this.manche.tatamis.carte.size() && i>=0){
 			if(i==0 && joueur.getNom() == this.manche.getHistorique().get(i).getNom() || i!=0 && joueur.getNom() == this.manche.getHistorique().get(i).getNom() && joueur.getNom() != this.manche.getHistorique().get(i+1).getNom()){
 				if(!this.manche.tatamis.verifierValiditeCarte(i)==true) {
+					List<Object> Obs = new ArrayList<Object> ();
+					Obs.add(3);
+					Obs.add(this);
+					Obs.add(true);
+					this.setChanged();
+					this.notifyObservers(Obs);
 					this.manche.penaliserJoueur(3, joueur);
 				}
 			}
@@ -120,12 +126,6 @@ public class IA extends Joueur{
 			
 			i++;
 			if(i>this.manche.getHistorique().size()-1){o=false;}}
-		List<Object> Obs = new ArrayList<Object> ();
-		Obs.add(3);
-		Obs.add(this);
-		Obs.add(true);
-		this.setChanged();
-		this.notifyObservers(Obs);
 		}
 		
 	}

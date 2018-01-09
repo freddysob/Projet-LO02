@@ -11,15 +11,15 @@ public class Commande extends Carte {
 
 	public void appliquerPouvoir(Manche manche, Joueur J) {
 	  String var="";
-	 // Scanner sc = new Scanner(System.in);
 	  String Co="Co";
 	  String C="C";
 	  String T="T";
 	  String P="P";
 	  boolean o=true;
-	  if (J.isTypePhysique()){
-		/*  
-		  while (o){
+	  if (J.isTypePhysique() && J.manche.partie.isText()){
+		  
+	  Scanner sc = new Scanner(System.in);
+	  while (o){
 	  System.out.println("Choisissez le type de carte souhaité");
 	  System.out.println("Co pour Coeur");
 	  System.out.println("C pour Carreau");
@@ -57,7 +57,7 @@ public class Commande extends Carte {
 			}
 		else {System.out.println("Saisie invalide, veuillez reprendre");}
 	 } 
-	  */}
+	  }
 	  else {
 		  
 		  int i;

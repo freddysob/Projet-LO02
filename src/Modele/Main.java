@@ -53,6 +53,7 @@ public class Main {
 
 		Main Ma = new Main();
 		Ma.P = new Partie();
+		Ma.P.setText(true);
 		Affichage A = new Affichage();
 		boolean fini = false;
 		int nbj=0;
