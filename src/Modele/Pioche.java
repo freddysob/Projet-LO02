@@ -48,7 +48,7 @@ public class Pioche extends Observable {
 
     public void distribuerCartesDebut(Variante variante) {
     	for(int i=0; i<this.manche.joueur.size(); i++){
-    		this.distribuerCarte(variante.getNombreCarteDebut(), this.manche.joueur.get(i));
+    		this.distribuer(variante.getNombreCarteDebut(), this.manche.joueur.get(i));
     	}
     	
     	// Distribution premiere carte du tatamis
@@ -57,14 +57,25 @@ public class Pioche extends Observable {
     	this.carte.remove(0);
     }
 
+    public void distribuer(int nombre, Joueur joueur) {
+    	for(int i = 0; i<nombre; i++){
+    		joueur.hand.carte.add(this.carte.get(0));
+    		System.out.println("Carte distribuee par la pioche"+this.carte.get(0)+"à"+joueur.getNom()+ "/nvelle taille de sa main: "+joueur.hand.carte.size());
+    		this.carte.remove(0);
+    	}
+    }
+    
     public void distribuerCarte(int nombre, Joueur joueur) {
     	for(int i = 0; i<nombre; i++){
     		if(this.carte.size()==0) {
     			this.reconstituer();
     		}
     		joueur.hand.carte.add(this.carte.get(0));
-    		//Carte retire=this.carte.get(0);
+    		System.out.println("Carte distribuee par la pioche"+this.carte.get(0)+"à"+joueur.getNom()+ "/nvelle taille de sa main: "+joueur.hand.carte.size());
+    		
     		this.carte.remove(0);
+    		this.setChanged();
+    		this.notifyObservers(joueur);
     		
     	}
     }

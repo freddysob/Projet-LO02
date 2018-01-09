@@ -8,16 +8,10 @@ import java.util.*;
 import Modele.*;
 import Controleur.*;
 
-import javax.swing.JFrame;
 import java.awt.GridLayout;
 
 import javax.swing.*;
-import javax.swing.JPanel;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -180,6 +174,8 @@ public class FenetreJeu implements Observer {
 		this.Variante.addObserver(this);
 		this.Manche.addObserver(this);
 		this.Partie.addObserver(this);
+		this.Manche.pioche.addObserver(this);
+		this.Manche.tatamis.addObserver(this);
 		
 		// Joueur
 		// Variante
@@ -278,8 +274,7 @@ public class FenetreJeu implements Observer {
 			IA_1.setBounds(480, 11, 406, 103);
 			frame.getContentPane().add(IA_1);
 			
-			JLayeredPane layeredPane_6 = new JLayeredPane();
-			IA_1.add(layeredPane_6);
+			
 		}
 		else if (M.joueur.size()==3){
 			
@@ -289,8 +284,6 @@ public class FenetreJeu implements Observer {
 			IA_6.setBounds(22, 219, 99, 192);
 			frame.getContentPane().add(IA_6);
 			
-			JLayeredPane layeredPane = new JLayeredPane();
-			IA_6.add(layeredPane);
 			
 		
 			
@@ -299,8 +292,7 @@ public class FenetreJeu implements Observer {
 			IA_3.setBounds(1236, 219, 99, 192);
 			frame.getContentPane().add(IA_3);
 			
-			JLayeredPane layeredPane_4 = new JLayeredPane();
-			IA_3.add(layeredPane_4);
+			
 			
 		
 		}
@@ -310,24 +302,19 @@ public class FenetreJeu implements Observer {
 			IA_7.setBounds(185, 422, 99, 192);
 			frame.getContentPane().add(IA_7);
 			
-			JLayeredPane layeredPane_8 = new JLayeredPane();
-			IA_7.add(layeredPane_8);
+			
 			
 			IA_6 = new JLayeredPane();
 			IA_6.setBackground(Color.WHITE);
 			IA_6.setBounds(22, 219, 99, 192);
 			frame.getContentPane().add(IA_6);
 			
-			JLayeredPane layeredPane = new JLayeredPane();
-			IA_6.add(layeredPane);
 			
 			IA_3 = new JLayeredPane();
 			IA_3.setBackground(Color.WHITE);
 			IA_3.setBounds(1236, 219, 99, 192);
 			frame.getContentPane().add(IA_3);
 			
-			JLayeredPane layeredPane_4 = new JLayeredPane();
-			IA_3.add(layeredPane_4);
 			
 			
 			
@@ -336,8 +323,7 @@ public class FenetreJeu implements Observer {
 			IA_1.setBounds(480, 11, 406, 103);
 			frame.getContentPane().add(IA_1);
 			
-			JLayeredPane layeredPane_6 = new JLayeredPane();
-			IA_1.add(layeredPane_6);
+			
 		}
 		else if (M.joueur.size()==5){
 			IA_7 = new JLayeredPane();
@@ -345,8 +331,7 @@ public class FenetreJeu implements Observer {
 			IA_7.setBounds(185, 422, 99, 192);
 			frame.getContentPane().add(IA_7);
 			
-			JLayeredPane layeredPane_8 = new JLayeredPane();
-			IA_7.add(layeredPane_8);
+			
 			
 			
 			IA_5 = new JLayeredPane();
@@ -354,16 +339,14 @@ public class FenetreJeu implements Observer {
 			IA_5.setBounds(187, 26, 99, 192);
 			frame.getContentPane().add(IA_5);
 			
-			JLayeredPane layeredPane_2 = new JLayeredPane();
-			IA_5.add(layeredPane_2);
+			
 			
 			IA_4 = new JLayeredPane();
 			IA_4.setBackground(Color.WHITE);
 			IA_4.setBounds(1084, 396, 99, 192);
 			frame.getContentPane().add(IA_4);
 			
-			JLayeredPane layeredPane_1 = new JLayeredPane();
-			IA_4.add(layeredPane_1);
+			
 			
 			
 			
@@ -372,8 +355,7 @@ public class FenetreJeu implements Observer {
 			IA_2.setBounds(1067, 11, 99, 192);
 			frame.getContentPane().add(IA_2);
 			
-			JLayeredPane layeredPane_5 = new JLayeredPane();
-			IA_2.add(layeredPane_5);
+			
 			
 			
 		}
@@ -383,8 +365,7 @@ public class FenetreJeu implements Observer {
 			IA_7.setBounds(185, 422, 99, 192);
 			frame.getContentPane().add(IA_7);
 			
-			JLayeredPane layeredPane_8 = new JLayeredPane();
-			IA_7.add(layeredPane_8);
+			
 		
 			
 			IA_5 = new JLayeredPane();
@@ -392,32 +373,28 @@ public class FenetreJeu implements Observer {
 			IA_5.setBounds(187, 26, 99, 192);
 			frame.getContentPane().add(IA_5);
 			
-			JLayeredPane layeredPane_2 = new JLayeredPane();
-			IA_5.add(layeredPane_2);
+			
 			
 			IA_4 = new JLayeredPane();
 			IA_4.setBackground(Color.WHITE);
 			IA_4.setBounds(1084, 396, 99, 192);
 			frame.getContentPane().add(IA_4);
 			
-			JLayeredPane layeredPane_1 = new JLayeredPane();
-			IA_4.add(layeredPane_1);
+			
 			
 			IA_2 = new JLayeredPane();
 			IA_2.setBackground(Color.WHITE);
 			IA_2.setBounds(1067, 11, 99, 192);
 			frame.getContentPane().add(IA_2);
 			
-			JLayeredPane layeredPane_5 = new JLayeredPane();
-			IA_2.add(layeredPane_5);
+			
 			
 			IA_1 = new JLayeredPane();
 			IA_1.setBackground(Color.WHITE);
 			IA_1.setBounds(480, 11, 406, 103);
 			frame.getContentPane().add(IA_1);
 			
-			JLayeredPane layeredPane_6 = new JLayeredPane();
-			IA_1.add(layeredPane_6);
+			
 		}
 
 		else if (M.joueur.size()==0){
@@ -426,56 +403,48 @@ public class FenetreJeu implements Observer {
 		IA_7.setBounds(185, 422, 99, 192);
 		frame.getContentPane().add(IA_7);
 		
-		JLayeredPane layeredPane_8 = new JLayeredPane();
-		IA_7.add(layeredPane_8);
+		
 		
 		IA_6 = new JLayeredPane();
 		IA_6.setBackground(Color.WHITE);
 		IA_6.setBounds(22, 219, 99, 192);
 		frame.getContentPane().add(IA_6);
 		
-		JLayeredPane layeredPane = new JLayeredPane();
-		IA_6.add(layeredPane);
+		
 		
 		IA_5 = new JLayeredPane();
 		IA_5.setBackground(Color.WHITE);
 		IA_5.setBounds(187, 26, 99, 192);
 		frame.getContentPane().add(IA_5);
 		
-		JLayeredPane layeredPane_2 = new JLayeredPane();
-		IA_5.add(layeredPane_2);
+		
 		
 		IA_4 = new JLayeredPane();
 		IA_4.setBackground(Color.WHITE);
 		IA_4.setBounds(1084, 396, 99, 192);
 		frame.getContentPane().add(IA_4);
 		
-		JLayeredPane layeredPane_1 = new JLayeredPane();
-		IA_4.add(layeredPane_1);
+		
 		
 		IA_3 = new JLayeredPane();
 		IA_3.setBackground(Color.WHITE);
 		IA_3.setBounds(1236, 219, 99, 192);
 		frame.getContentPane().add(IA_3);
 		
-		JLayeredPane layeredPane_4 = new JLayeredPane();
-		IA_3.add(layeredPane_4);
+		
 		
 		IA_2 = new JLayeredPane();
 		IA_2.setBackground(Color.WHITE);
 		IA_2.setBounds(1067, 11, 99, 192);
 		frame.getContentPane().add(IA_2);
 		
-		JLayeredPane layeredPane_5 = new JLayeredPane();
-		IA_2.add(layeredPane_5);
 		
 		IA_1 = new JLayeredPane();
 		IA_1.setBackground(Color.WHITE);
 		IA_1.setBounds(480, 11, 406, 103);
 		frame.getContentPane().add(IA_1);
 		
-		JLayeredPane layeredPane_6 = new JLayeredPane();
-		IA_1.add(layeredPane_6);
+		
 		}
 		
 	
@@ -483,25 +452,164 @@ public class FenetreJeu implements Observer {
 	
 	public void update(Observable instanceObservable, Object arg1){
 		
+		
 		if (instanceObservable instanceof Pioche){
-//			 switch (((Pioche)instanceObservable).getNumero()) {
-//			 case 0 : // à remplir
-//			 case 1: //…
-//			//… à remplir
-//			 }
-//			 }
-//
-//			 if (instanceObservable instanceof Tatamis){
-//			// à remplir
-			 } 
+			
+			JButton J = (CarteG) pioche.getComponent(0);
+			Joueur joue = (Joueur) arg1;
+			System.out.println(joue.hand.carte.size()+ "dans obs");
+			
+			if(joue.isTypePhysique()) {
+			Joueur.add(J);
+			Joueur.repaint();
+			pioche.remove(J);
+			pioche.repaint();
+			((CarteG) Joueur.getComponent(Joueur.getComponents().length-1)).retourner();
+			for(ActionListener act : J.getActionListeners()) {
+				J.removeActionListener(act);
+			}
+			Cj.donnerListener();
+	
+			/*
+			J.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if(Manche.joueur.get(0).isEtatActif()) {
+						System.out.println(Manche.joueur.get(0).hand.carte.get((Manche.joueur.get(0).hand.carte.size())-1));
+						Manche.joueur.get(0).jouerCarte(Manche.joueur.get(0).hand.carte.get((Manche.joueur.get(0).hand.carte.size())-1));
+						Manche.joueurSuivant(Manche.joueur.get(0).hand.carte.get((Manche.joueur.get(0).hand.carte.size())-1), Manche.joueur.get(0));
+					}
+				}
+				
+			}); */
+			}
+			else{
+				joue.panel.add(J);
+				joue.panel.repaint();
+				pioche.remove(J);
+				pioche.repaint();
+				Manche.joueurSuivant(null, Manche.joueur.get(0));
+				for(ActionListener act : J.getActionListeners()) {
+					J.removeActionListener(act);
+				}
+			}
+			
+			 JButton J2 = (CarteG) pioche.getComponent(0);
+			J2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if (Manche.joueur.get(0).isEtatActif()) {
+						Manche.joueur.get(0).piocher();
+						Manche.joueurSuivant(null, Manche.joueur.get(0));
+					}
+				}
+			});
+		}
+			  
 		
 		if (instanceObservable instanceof Joueur){
-			
-			//Cj.controle();
+			List<Object> tab= (ArrayList) arg1;
+			if((int) tab.get(0)==1) {
+				Carte carte = (Carte) tab.get(2);
+				Joueur jouer = (Joueur) tab.get(1);
+				
+					System.out.println("Taille main : " +jouer.hand.carte.size());
+					System.out.println("NB elements panel "+jouer.getNom()+" : "+jouer.panel.getComponents().length);
+					int i = 0;
+					int ic=0;
+					
+					CarteG carteg = (CarteG) Joueur.getComponent(ic);
+					if(jouer instanceof IA){
+						System.out.println("Components :");
+						System.out.println("NB elements panel "+jouer.getNom()+" : "+jouer.panel.getComponents().length);
+						for(i=0; i<jouer.panel.getComponents().length;i++){
+							System.out.println(" "+ jouer.panel.getComponent(i));
+						}
+						for(i=0; i<jouer.panel.getComponents().length; i++) {
+							carteg = (CarteG) jouer.panel.getComponent(i);
+							if(carte.getNumero()== carteg.getNumero() && carte.getType() == carteg.getType()) {
+								ic=i;
+								System.out.println("ic : "+ic);
+							}
+						}
+						carteg = (CarteG) jouer.panel.getComponent(ic);
+					}
+					else{
+					for(i=0; i<jouer.hand.carte.size(); i++) {
+						carteg = (CarteG) Joueur.getComponent(i);
+						if(carte.getNumero()== carteg.getNumero() && carte.getType() == carteg.getType()) {
+							ic=i;
+							System.out.println("ic : "+ic);
+						}
+					}
+					carteg = (CarteG) Joueur.getComponent(ic);
+					}
+							
+					carteg.setBounds(20, 20, 80, 120);
+					
+					if(jouer.isTypePhysique()) {
+					tatamis.add(carteg, 0);
+					tatamis.repaint();
+					Joueur.remove(carteg);
+					Joueur.repaint();
+					if(carte instanceof Commande) {
+						String[] choix = {"Coeur", "Carreau","Trèfle","Pique"};
+						JOptionPane jop = new JOptionPane();
+					    int n = jop.showOptionDialog(null,  "Selectionnez une couleur", "Choix couleur",  JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,  null,  choix,  choix[3]);
+					    Commande com = (Commande) carte;
+					    com.appliquerPouvoir(Manche, n);
+					}}
+					else{
+					tatamis.add(carteg, 0);
+					((CarteG) tatamis.getComponent(0)).retourner();
+					tatamis.repaint();
+					jouer.panel.remove(carteg);
+					jouer.panel.repaint();
+					}
+					System.out.println(jouer.getNom()+ " joue " +carteg.getNumero()+","+carteg.getType() +" = "+ carte + "dans le modele" );	
+					
+				//System.out.println("tab: "+tab);
+			}if((int) tab.get(0)==2) {
+				
+				if ((boolean) tab.get(2)) {
+					JOptionPane jop = new JOptionPane();
+					jop.showMessageDialog(null, "Bonne dénonciation de " + ((Joueur) tab.get(1)).getNom()+"(derniere carte)" , "Information",
+							JOptionPane.INFORMATION_MESSAGE);
+				}else {
+					if(((Joueur) tab.get(1)).isTypePhysique()){
+					JOptionPane jop = new JOptionPane();
+					jop.showMessageDialog(null, "Mauvaise dénonciation de " + ((Joueur) tab.get(1)).getNom()+"(derniere carte)", "Information",
+							JOptionPane.INFORMATION_MESSAGE);}
+					else{
+						
+					}
+				}
+			}
+			if((int) tab.get(0)==3) {
+				
+				if ((boolean) tab.get(2)) {
+					JOptionPane jop = new JOptionPane();
+					jop.showMessageDialog(null, "Bonne dénonciation de " + ((Joueur) tab.get(1)).getNom()+"mauvaise carte", "Information",
+							JOptionPane.INFORMATION_MESSAGE);
+				}else {if(((Joueur) tab.get(1)).isTypePhysique()){
+					JOptionPane jop = new JOptionPane();
+					jop.showMessageDialog(null, "Mauvaise dénonciation de " + ((Joueur) tab.get(1)).getNom()+"mauvaise carte", "Information",
+							JOptionPane.INFORMATION_MESSAGE);
+				}
+				else{
+					
+				}
+				}
+			}
+			if((int) tab.get(0)==4) {
+				JOptionPane jop = new JOptionPane();
+				jop.showMessageDialog(null, ((Joueur) tab.get(1)).getNom()+" annonce n'avoir plus qu'une carte", "Information",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
 		
 		if (instanceObservable instanceof Tatamis){
-			
+			JOptionPane jop = new JOptionPane();
+			jop.showMessageDialog(null, arg1 +" a été choisi", "Information",
+					JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 		if (instanceObservable instanceof Variante){
@@ -509,6 +617,14 @@ public class FenetreJeu implements Observer {
 		}
 		
 		if (instanceObservable instanceof Manche){
+			if(arg1 instanceof Joueur) {
+				Joueur joue = (Joueur) arg1;
+				System.out.println(joue);
+				if(!joue.isTypePhysique()) {
+					joue.jouer();
+				}
+			}
+			
 			/*if(Manche.verifierFinManche() || etatLancement){   //Si Debut de manche
 				
 				Manche = new Manche(Variante,Partie); 

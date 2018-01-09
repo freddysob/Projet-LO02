@@ -35,17 +35,16 @@ public class ControleurPioche {
 			if(M.joueur.size()==2){
 				for(int i=0;i<M.joueur.size();i++){
 					for(int j=0;j<M.joueur.get(i).hand.carte.size();j++){
-						JButton J = (JButton) Pioche.getComponent(0);
+						CarteG J = (CarteG) Pioche.getComponent(0);
 						if(M.joueur.get(i) instanceof IA){
 						M.joueur.get(i).panel=IA1;
-						IA1.add(J);
+						M.joueur.get(i).panel.add(J);
 						Pioche.remove(J);
 						}
 						else{
-							//M.joueur.get(i).panel=(JTabbedPane)Joueur;
 							Joueur.add(J);
+							((CarteG) Joueur.getComponent(Joueur.getComponents().length-1)).retourner();
 							Pioche.remove(J);
-							((CarteG) J).retourner();
 						}
 					}
 				}
@@ -53,27 +52,23 @@ public class ControleurPioche {
 			else if(M.joueur.size()==3){
 				for(int i=0;i<M.joueur.size();i++){
 					for(int j=0;j<M.joueur.get(i).hand.carte.size();j++){
-						JButton J = (JButton) Pioche.getComponent(0);
+						CarteG J = (CarteG) Pioche.getComponent(0);
 						if(M.joueur.get(i) instanceof IA && i==1){
 						
 						M.joueur.get(i).panel=IA3;
-						IA3.add(J);
+						M.joueur.get(i).panel.add(J);
 						Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==2){
 							
 							M.joueur.get(i).panel=IA6;
-							IA6.add(J);
+							M.joueur.get(i).panel.add(J);
 							Pioche.remove(J);
 							}
 						else{
-							//M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
-							//CarteG C = (CarteG) Joueur.getComponent(0);
-							//Graphics g = null;
-							//C.paintComponent(g);
+							((CarteG) Joueur.getComponent(Joueur.getComponents().length-1)).retourner();
 							Pioche.remove(J);
-							((CarteG) J).retourner();
 						}
 					}
 				}
@@ -81,33 +76,29 @@ public class ControleurPioche {
 			else if(M.joueur.size()==4){
 				for(int i=0;i<M.joueur.size();i++){
 					for(int j=0;j<M.joueur.get(i).hand.carte.size();j++){
-						JButton J = (JButton) Pioche.getComponent(0);
+						CarteG J = (CarteG) Pioche.getComponent(0);
 						if(M.joueur.get(i) instanceof IA && i==1){
 						
 						M.joueur.get(i).panel=IA1;
-						IA1.add(J);
+						M.joueur.get(i).panel.add(J);
 						Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==2){
 							
 							M.joueur.get(i).panel=IA3;
-							IA3.add(J);
+							M.joueur.get(i).panel.add(J);
 							Pioche.remove(J);
 							}
 						else if(M.joueur.get(i) instanceof IA && i==3){
 							
 							M.joueur.get(i).panel=IA6;
-							IA6.add(J);
+							M.joueur.get(i).panel.add(J);
 							Pioche.remove(J);
 						}
 						else{
-							//M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
-//							CarteG C = (CarteG) Joueur.getComponent(0);
-//							Graphics g = null;
-							//C.paintComponent(g);
+							((CarteG) Joueur.getComponent(Joueur.getComponents().length-1)).retourner();
 							Pioche.remove(J);
-							((CarteG) J).retourner();
 						}
 					}
 				}
@@ -115,40 +106,35 @@ public class ControleurPioche {
 			else if(M.joueur.size()==5){
 				for(int i=0;i<M.joueur.size();i++){
 					for(int j=0;j<M.joueur.get(i).hand.carte.size();j++){
-						JButton J = (JButton) Pioche.getComponent(0);
+						CarteG J = (CarteG) Pioche.getComponent(0);
 						if(M.joueur.get(i) instanceof IA && i==1){
 						
 						M.joueur.get(i).panel=IA2;
-						IA2.add(J);
+						M.joueur.get(i).panel.add(J);
 						Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==2){
 							
 							M.joueur.get(i).panel=IA4;
-							IA4.add(J);
+							M.joueur.get(i).panel.add(J);
 							Pioche.remove(J);
 							}
 						else if(M.joueur.get(i) instanceof IA && i==3){
 							
 							M.joueur.get(i).panel=IA5;
-							IA5.add(J);
+							M.joueur.get(i).panel.add(J);
 							Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==4){
 							
 							M.joueur.get(i).panel=IA7;
-							IA7.add(J);
+							M.joueur.get(i).panel.add(J);
 							Pioche.remove(J);
 						}
 						else{
-							
-							//M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
-//							CarteG C = (CarteG) Joueur.getComponent(0);
-//							Graphics g = null;
-							//C.paintComponent(g);
+							((CarteG) Joueur.getComponent(Joueur.getComponents().length-1)).retourner();
 							Pioche.remove(J);
-							((CarteG) J).retourner();
 						}
 					}
 				}
@@ -156,52 +142,47 @@ public class ControleurPioche {
 			else if(M.joueur.size()==6){
 				for(int i=0;i<M.joueur.size();i++){
 					for(int j=0;j<M.joueur.get(i).hand.carte.size();j++){
-						JButton J = (JButton) Pioche.getComponent(0);
+						CarteG J = (CarteG) Pioche.getComponent(0);
 						if(M.joueur.get(i) instanceof IA && i==1){
 						
 						M.joueur.get(i).panel=IA1;
-						IA1.add(J);
+						M.joueur.get(i).panel.add(J);
 						Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==2){
 							
 							M.joueur.get(i).panel=IA2;
-							IA2.add(J);
+							M.joueur.get(i).panel.add(J);
 							Pioche.remove(J);
 							}
 						else if(M.joueur.get(i) instanceof IA && i==3){
 							
 							M.joueur.get(i).panel=IA4;
-							IA4.add(J);
+							M.joueur.get(i).panel.add(J);
 							Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==4){
 							
 							M.joueur.get(i).panel=IA5;
-							IA5.add(J);
+							M.joueur.get(i).panel.add(J);
 							Pioche.remove(J);
 						}
 						else if(M.joueur.get(i) instanceof IA && i==5){
 							
 							M.joueur.get(i).panel=IA7;
-							IA7.add(J);
+							M.joueur.get(i).panel.add(J);
 							Pioche.remove(J);
 						}
 						else{
-							
-						//	M.joueur.get(i).panel=Joueur;
 							Joueur.add(J);
-//							CarteG C = (CarteG) Joueur.getComponent(0);
-//							Graphics g = null;
-							//C.paintComponent(g);
+							((CarteG) Joueur.getComponent(Joueur.getComponents().length-1)).retourner();
 							Pioche.remove(J);
-							((CarteG) J).retourner();
 						}
 					}
 				}
 			}
 			
-			JButton J = (CarteG) Pioche.getComponent(0);
+			CarteG J = (CarteG) Pioche.getComponent(0);
 			Tatamis.add(J);
 			((CarteG) J).retourner();
 			//CarteG C = (CarteG) Tatamis.getComponent(0);

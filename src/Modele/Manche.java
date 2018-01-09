@@ -263,23 +263,26 @@ public class Manche extends Observable{
 			while(li.hasNext()) {
 				joue = li.next();
 				if(joue.isEtatActif()) {
+					this.setChanged();
+					this.notifyObservers(joue);
 					return(joue);
 				}
 			}
 		}
 		while(li.hasNext()) {
 			if(li.next().isaFini()) {
-				//System.out.println("remove");
 				li.remove();
 			}
 		}
 		while(li.hasPrevious()) {
 			li.previous();
+			
 		}
 		if(this.sensJeuPos) {
-			//while(!li.next().isEtatActif()) {
-			//}
+			while(!li.next().isEtatActif()) {
+			}
 			if(cartePose instanceof StopperSuivant) {
+				
 				if(!li.hasNext()) {
 					while(li.hasPrevious()) {
 						li.previous();
@@ -289,6 +292,7 @@ public class Manche extends Observable{
 				}
 			}
 			if(!li.hasNext()) {
+				
 				while(li.hasPrevious()) {
 					li.previous();
 				}
@@ -324,6 +328,8 @@ public class Manche extends Observable{
 			joueur.get(i).setEtatActif(false);
 		}
 		joue.setEtatActif(true);
+		this.setChanged();
+		this.notifyObservers(joue);
 		return(joue);
 	}
 
@@ -397,11 +403,6 @@ public class Manche extends Observable{
 
 		//}
 		return o;
-	}
-
-
-	public static void main(String[] args ) {
-
 	}
 
 

@@ -58,24 +58,45 @@ public class Joueur extends Observable {
 			this.annonceDerniereCarte=true;
 		}else {
 			this.manche.penaliserJoueur(1, this);
+			this.annonceDerniereCarte=false;
 		}
+		List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(4);
+		Obs.add(this);
+		this.setChanged();
+		this.notifyObservers(Obs);
 	}
 
 	public void jouerCarte(Carte carte) {
-		aFini = false;
+	
+		List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(1);
+		Obs.add(this);
+		Obs.add(carte);
+		this.setChanged();
+		this.notifyObservers(Obs);
+		
 		this.hand.carte.remove(carte);
 		this.manche.tatamis.ajouterCarte(carte);
 		carte.appliquerPouvoir(this.manche, this);
 		this.manche.getHistorique().add(0,this);
-		aFini = true;
+		
 	}
 
 	public void denoncerDCarte(Joueur joueur) {
+		boolean vrai = false;
 		if(this.hand.carte.size()==1 && this.annonceDerniereCarte==false) {
 			this.manche.penaliserJoueur(2, joueur);
+			vrai = true;
 		}else {
 			this.manche.penaliserJoueur(2, this);
 		}
+		List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(2);
+		Obs.add(joueur);
+		Obs.add(vrai);
+		this.setChanged();
+		this.notifyObservers(Obs);
 	}
 
 	public void ajoutPoints(int value) {
@@ -86,18 +107,27 @@ public class Joueur extends Observable {
 		if(this.manche.getHistorique().size()!=0){
 		int i=0;
 		boolean o=true;
+		boolean vrai = false;
 		while(o){
 			
 			if(joueur.getNom() == this.manche.getHistorique().get(i).getNom()){
 				if(!this.manche.tatamis.verifierValiditeCarte(i)==true) {
 					this.manche.penaliserJoueur(3, joueur);
+					vrai = true;
+					o=false;
 				}
-				else {this.manche.penaliserJoueur(3, this);}
+				else {this.manche.penaliserJoueur(3, this);o=false;}
 			}
 			else {
 				o=false;}
 			i++;
-			if(i>this.manche.getHistorique().size()-1){o=false;}}
+			if(i>this.manche.getHistorique().size()-1){o=false;} }
+		List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(3);
+		Obs.add(this);
+		Obs.add(vrai);
+		this.setChanged();
+		this.notifyObservers(Obs);
 		}
 	}
 
@@ -107,10 +137,9 @@ public class Joueur extends Observable {
 
 	//@objid ("8a1180dc-f293-4922-aa03-eb2ed17e2f60")
 	public void piocher() {
-		aFini = false;
+		System.out.println(this.getNom()+" a pioché");
 		this.manche.pioche.distribuerCarte(1,this);
 		this.manche.getHistorique().add(0,this);
-		aFini = true;
 	}
 
 	//@objid ("ad53043c-fa56-4988-98e7-4b52306e1af4")
@@ -123,7 +152,6 @@ public class Joueur extends Observable {
 	public void setEtatActif(boolean value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.etatActif = value;
-		aFini = false;
 	}
 
 	public void setManche(Manche M) {
@@ -206,10 +234,5 @@ public class Joueur extends Observable {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.nbPoints = value;
 	}
-
-	public static void main(String[] args ) {
-
-	}
-
 
 }

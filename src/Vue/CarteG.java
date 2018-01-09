@@ -401,6 +401,22 @@ public class CarteG extends JButton {
 		 }
 			   
 	  }
+
+	public NumeroCarte getNumero() {
+		return numero;
+	}
+
+	public void setNumero(NumeroCarte numero) {
+		this.numero = numero;
+	}
+
+	public TypCarte getType() {
+		return type;
+	}
+
+	public void setType(TypCarte type) {
+		this.type = type;
+	}
 	
  /* public void paintComponent(Graphics g){
     //x1, y1, width, height, arcWidth, arcHeight

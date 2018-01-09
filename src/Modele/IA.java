@@ -21,10 +21,6 @@ public class IA extends Joueur{
 	protected void finalize() {
 	}
 
-	public static void main(String[] args ) {
-
-	}
-
 	//@objid ("3ce5ca07-26e2-49b1-86f3-210856435573")
 	public List<Integer> prioriserCartes() {
 		List<Integer> s = new ArrayList<Integer> ();
@@ -36,13 +32,15 @@ public class IA extends Joueur{
 		Carte carteajouer=null;
 
 		this.signalerDerniereCarte();
-		if(Math.random()>0.2 && !this.manche.getHistorique().isEmpty()){
+		if(Math.random()>0.5 && !this.manche.getHistorique().isEmpty()){
 			/*int i=0;
 			boolean o=true;
 			while(o){
 			if(this.manche.getHistorique().get(0).getNom() == this.manche.getHistorique().get(i).getNom()){		
 				if(this.manche.tatamis.carte.size()!=0){*/
-					this.denoncerMCarte(this.manche.getHistorique().get(0));}
+			this.denoncerMCarte(this.manche.getHistorique().get(0));
+			if(Math.random()>0.7 && this.manche.getHistorique().get(0).hand.carte.size()==1){
+			this.denoncerDCarte(this.manche.getHistorique().get(0));}}
 			/*	i++;}
 			else {o=false;}
 			if(i>this.manche.getHistorique().size()-1){o=false;}
@@ -63,6 +61,7 @@ public class IA extends Joueur{
 					carteajouer=carteJouable.get(i);
 				}
 			}
+			System.out.println(carteajouer);
 			this.jouerCarte(carteajouer);
 
 		}else{
@@ -76,9 +75,10 @@ public class IA extends Joueur{
 				this.jouerCarte(carteajouer);
 
 			}else {
-				this.manche.pioche.distribuerCarte(1, this);
+				this.piocher();
 			}
 		}
+		this.manche.joueurSuivant(carteajouer, this);
 	}
 
 	//@objid ("5db48821-e1bb-4323-8520-b4a682114998")
@@ -96,6 +96,11 @@ public class IA extends Joueur{
 	public void signalerDerniereCarte() {
 		if(this.hand.carte.size()==1) {
 			this.setAnnonceDerniereCarte(true);
+			List<Object> Obs = new ArrayList<Object> ();
+			Obs.add(4);
+			Obs.add(this);
+			this.setChanged();
+			this.notifyObservers(Obs);
 		}else {
 			this.setAnnonceDerniereCarte(false);
 		}
@@ -105,10 +110,13 @@ public class IA extends Joueur{
 		if(this.manche.getHistorique().size()!=0){
 		int i=0;
 		boolean o=true;
+		boolean vrai = false;
 		while(o && i<this.manche.tatamis.carte.size() && i>=0){
 			if(i==0 && joueur.getNom() == this.manche.getHistorique().get(i).getNom() || i!=0 && joueur.getNom() == this.manche.getHistorique().get(i).getNom() && joueur.getNom() != this.manche.getHistorique().get(i+1).getNom()){
 				if(!this.manche.tatamis.verifierValiditeCarte(i)==true) {
 					this.manche.penaliserJoueur(3, joueur);
+					vrai=true;
+					o=false;
 				}
 			}
 			else {
@@ -117,6 +125,12 @@ public class IA extends Joueur{
 			
 			i++;
 			if(i>this.manche.getHistorique().size()-1){o=false;}}
+		List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(3);
+		Obs.add(this);
+		Obs.add(vrai);
+		this.setChanged();
+		this.notifyObservers(Obs);
 		}
 		
 	}

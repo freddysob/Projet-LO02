@@ -11,14 +11,14 @@ public class Commande extends Carte {
 
 	public void appliquerPouvoir(Manche manche, Joueur J) {
 	  String var="";
-	  Scanner sc = new Scanner(System.in);
+	 // Scanner sc = new Scanner(System.in);
 	  String Co="Co";
 	  String C="C";
 	  String T="T";
 	  String P="P";
 	  boolean o=true;
 	  if (J.isTypePhysique()){
-		  
+		/*  
 		  while (o){
 	  System.out.println("Choisissez le type de carte souhaité");
 	  System.out.println("Co pour Coeur");
@@ -57,7 +57,7 @@ public class Commande extends Carte {
 			}
 		else {System.out.println("Saisie invalide, veuillez reprendre");}
 	 } 
-	  }
+	  */}
 	  else {
 		  
 		  int i;
@@ -83,25 +83,44 @@ public class Commande extends Carte {
 		  int r =Math.max(Math.max(Math.max(i1,i2),Math.max(i3,i4)),Math.max(Math.max(i2,i3),Math.max(i1,i4)));
 		  
 		  if (i1==r){
-			  manche.tatamis.setType(TypCarte.Pique);
+			  manche.tatamis.changeType(TypCarte.Pique);
 			  System.out.println(""+J.getNom()+" commande Pique");
 		  }
 		  else if (i2==r){
-			  manche.tatamis.setType(TypCarte.Trefle);
+			  manche.tatamis.changeType(TypCarte.Trefle);
 			  System.out.println(""+J.getNom()+" commande Trefle");
 		  }
 		  else if (i3==r){
-			  manche.tatamis.setType(TypCarte.Coeur);
+			  manche.tatamis.changeType(TypCarte.Coeur);
 			  System.out.println(""+J.getNom()+" commande Coeur");
 		  }
 		  else if (i4==r){
-			  manche.tatamis.setType(TypCarte.Carreau);
+			  manche.tatamis.changeType(TypCarte.Carreau);
 			  System.out.println(""+J.getNom()+" commande Carreau");
 		  }
 		  
 		  }
 	  //sc.close();
 	  
+	}
+	public void appliquerPouvoir(Manche manche, int n) {
+		  if (n==3){
+			  manche.tatamis.changeType(TypCarte.Pique);
+			  System.out.println(" commande Pique");
+		  }
+		  else if (n==2){
+			  manche.tatamis.changeType(TypCarte.Trefle);
+			  System.out.println(" commande Trefle");
+		  }
+		  else if (n==0){
+			  manche.tatamis.changeType(TypCarte.Coeur);
+			  System.out.println(" commande Coeur");
+		  }
+		  else if (n==1){
+			  manche.tatamis.changeType(TypCarte.Carreau);
+			  System.out.println(" commande Carreau");
+		  }
+		  
 	}
 	
 	

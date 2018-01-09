@@ -52,6 +52,14 @@ public class Tatamis extends Observable{
         this.type = value;
     }
     
+    public void changeType(TypCarte value) {
+        // Automatically generated method. Please delete this comment before entering specific code.
+        this.type = value;
+        this.setChanged();
+		this.notifyObservers(value);
+    }
+    
+    
     public NumeroCarte getNumero() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.numero;
