@@ -58,6 +58,7 @@ public class Joueur extends Observable {
 			this.annonceDerniereCarte=true;
 		}else {
 			this.manche.penaliserJoueur(1, this);
+			this.annonceDerniereCarte=false;
 		}
 		List<Object> Obs = new ArrayList<Object> ();
 		Obs.add(4);
@@ -67,16 +68,19 @@ public class Joueur extends Observable {
 	}
 
 	public void jouerCarte(Carte carte) {
-		this.hand.carte.remove(carte);
-		this.manche.tatamis.ajouterCarte(carte);
-		carte.appliquerPouvoir(this.manche, this);
-		this.manche.getHistorique().add(0,this);
+	
 		List<Object> Obs = new ArrayList<Object> ();
 		Obs.add(1);
 		Obs.add(this);
 		Obs.add(carte);
 		this.setChanged();
 		this.notifyObservers(Obs);
+		
+		this.hand.carte.remove(carte);
+		this.manche.tatamis.ajouterCarte(carte);
+		carte.appliquerPouvoir(this.manche, this);
+		this.manche.getHistorique().add(0,this);
+		
 	}
 
 	public void denoncerDCarte(Joueur joueur) {
@@ -110,13 +114,14 @@ public class Joueur extends Observable {
 				if(!this.manche.tatamis.verifierValiditeCarte(i)==true) {
 					this.manche.penaliserJoueur(3, joueur);
 					vrai = true;
+					o=false;
 				}
-				else {this.manche.penaliserJoueur(3, this);}
+				else {this.manche.penaliserJoueur(3, this);o=false;}
 			}
 			else {
 				o=false;}
 			i++;
-			if(i>this.manche.getHistorique().size()-1){o=false;}}
+			if(i>this.manche.getHistorique().size()-1){o=false;} }
 		List<Object> Obs = new ArrayList<Object> ();
 		Obs.add(3);
 		Obs.add(this);
@@ -132,9 +137,10 @@ public class Joueur extends Observable {
 
 	//@objid ("8a1180dc-f293-4922-aa03-eb2ed17e2f60")
 	public void piocher() {
-		System.out.println(this+" a pioché");
+		System.out.println(this.getNom()+" a pioché");
 		this.manche.pioche.distribuerCarte(1,this);
 		this.manche.getHistorique().add(0,this);
+		this.manche.joueurSuivant(null, this);
 	}
 
 	//@objid ("ad53043c-fa56-4988-98e7-4b52306e1af4")
@@ -213,19 +219,19 @@ public class Joueur extends Observable {
 	}
 
 
-	void setAnnonceDerniereCarte(boolean value) {
+	public void setAnnonceDerniereCarte(boolean value) {
 
 		this.annonceDerniereCarte = value;
 	}
 
 	//@objid ("99402ae3-7a52-40d4-9316-06744c865728")
-	int getNbPoints() {
+	public int getNbPoints() {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		return this.nbPoints;
 	}
 
 	//@objid ("5ab852bd-9110-446b-a66b-957b1657542f")
-	void setNbPoints(int value) {
+	public void setNbPoints(int value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.nbPoints = value;
 	}

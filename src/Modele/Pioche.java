@@ -38,17 +38,25 @@ public class Pioche extends Observable {
     }
 
     public void reconstituer() {
+    	
     	this.carte.addAll(this.manche.tatamis.carte);
     	this.carte.remove(0);
         for(int i =1; i<this.manche.tatamis.carte.size(); i++) {
         	this.manche.tatamis.carte.remove(i);
         }
         Collections.shuffle(this.getCarte());
+        System.out.println("Re 1");
+        List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(2);
+		Obs.add(this.carte);
+		this.setChanged();
+		this.notifyObservers(Obs);
+        
     }
 
     public void distribuerCartesDebut(Variante variante) {
     	for(int i=0; i<this.manche.joueur.size(); i++){
-    		this.distribuerCarte(variante.getNombreCarteDebut(), this.manche.joueur.get(i));
+    		this.distribuer(variante.getNombreCarteDebut(), this.manche.joueur.get(i));
     	}
     	
     	// Distribution premiere carte du tatamis
@@ -57,17 +65,31 @@ public class Pioche extends Observable {
     	this.carte.remove(0);
     }
 
-    public void distribuerCarte(int nombre, Joueur joueur) {
+    public void distribuer(int nombre, Joueur joueur) {
     	for(int i = 0; i<nombre; i++){
-    		if(this.carte.size()==0) {
+    		joueur.hand.carte.add(this.carte.get(0));
+    		System.out.println("Carte distribuee par la pioche"+this.carte.get(0)+"à"+joueur.getNom()+ "/nvelle taille de sa main: "+joueur.hand.carte.size());
+    		this.carte.remove(0);
+    	}
+    }
+    
+    public void distribuerCarte(int nombre, Joueur joueur) {
+    	
+    	for(int i = 0; i<nombre; i++){
+    		System.out.println("Taille pioche modele : " + this.carte.size());
+    		if(this.carte.size()<1) {
     			this.reconstituer();
+    			System.out.println("Entre dans le if");
     		}
     		joueur.hand.carte.add(this.carte.get(0));
-    		System.out.println("La carte "+this.carte.get(0)+" nb carte "+joueur.hand.carte.size());
+    		System.out.println("Carte distribuee par la pioche"+this.carte.get(0)+"à"+joueur.getNom()+ "/nvelle taille de sa main: "+joueur.hand.carte.size());
     		
+    		List<Object> Obs = new ArrayList<Object> ();
+    		Obs.add(1);
+    		Obs.add(joueur);
     		this.carte.remove(0);
     		this.setChanged();
-    		this.notifyObservers(joueur);
+    		this.notifyObservers(Obs);
     		
     	}
     }

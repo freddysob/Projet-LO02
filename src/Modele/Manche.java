@@ -152,7 +152,7 @@ public class Manche extends Observable{
 	}
 
 	//@objid ("e409e2ce-2222-4319-bbf8-e8959e2145be")
-	void setVariante(Variante value) {
+	public void setVariante(Variante value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.variante = value;
 	}
@@ -263,6 +263,9 @@ public class Manche extends Observable{
 			while(li.hasNext()) {
 				joue = li.next();
 				if(joue.isEtatActif()) {
+					this.verifierFinManche();
+					this.setChanged();
+					this.notifyObservers(joue);
 					return(joue);
 				}
 			}
@@ -326,8 +329,10 @@ public class Manche extends Observable{
 			joueur.get(i).setEtatActif(false);
 		}
 		joue.setEtatActif(true);
+		this.verifierFinManche();
 		this.setChanged();
 		this.notifyObservers(joue);
+		System.out.println("Joueur actif"+joue);
 		return(joue);
 	}
 
@@ -351,21 +356,23 @@ public class Manche extends Observable{
 
 			// Recherche et traitement de joueur avec main vide si moins de 3 personnes ont fini
 			for(i=0; i<this.joueur.size(); i++){
-				if (this.joueur.get(i).hand.carte.isEmpty()){
-					System.out.println("Un joueur a fini");
+				if (this.joueur.get(i).hand.carte.isEmpty() && !this.joueur.get(i).isaFini()){
+					System.out.println(joueur.get(i)+" a fini");
 					this.gagnants.add(this.joueur.get(i));
+					System.out.println(" rang : "+this.gagnants.indexOf(joueur.get(i)));
 					this.joueur.get(i).setaFini(true);
 				}
 			}
 
 		}
-		else {
+		if(this.gagnants.size()==3 || (this.gagnants.size()==2 && this.joueur.size() == 3)|| (this.gagnants.size()==1 && this.joueur.size()==2)) {
 
 			o=true;
 
 			System.out.println("Manche terminée.");
 
-			for(i=0; i<=this.joueur.size(); i++){
+			for(i=0; i<this.joueur.size(); i++){
+				System.out.println(this.joueur.get(i)+" n'a plus fini");
 				this.joueur.get(i).setaFini(false);
 				/*    			for(j=0; j<=this.joueur.get(i).hand.carte.size(); j++){
     				this.pioche.carte.add(this.joueur.get(i).hand.carte.get(j));
@@ -373,10 +380,11 @@ public class Manche extends Observable{
     			}
 				 */    		}
 
-			// Attribution de points
-			for(i=0; i<=this.nbJoueurs; i++){
+			// Attribution des points
+			for(i=0; i<this.joueur.size(); i++){
+				System.out.println("test"+this.gagnants.indexOf(this.joueur.get(i)));
 				int r=0;
-				if (this.gagnants.indexOf(this.joueur.get(i))==1){
+				if (this.gagnants.indexOf(this.joueur.get(i))==0){
 					r=this.joueur.get(i).getNbPoints()+50;
 					this.joueur.get(i).setNbPoints(r);
 				}
@@ -384,7 +392,7 @@ public class Manche extends Observable{
 					r=this.joueur.get(i).getNbPoints()+20;
 					this.joueur.get(i).setNbPoints(r);
 				}
-				else if (this.gagnants.indexOf(this.joueur.get(i))==1){
+				else if (this.gagnants.indexOf(this.joueur.get(i))==2){
 					r=this.joueur.get(i).getNbPoints()+10;
 					this.joueur.get(i).setNbPoints(r);
 				}
@@ -392,11 +400,16 @@ public class Manche extends Observable{
 					r=this.joueur.get(i).getNbPoints();
 					this.joueur.get(i).setNbPoints(r);
 				}
+			}for(i=0; i<this.joueur.size(); i++) {
+				this.gagnants.remove(this.joueur.get(i));
 			}
 
 			this.pioche.reconstituer();
 			Collections.shuffle(this.pioche.carte);
 			this.pioche.distribuerCartesDebut(this.variante);
+			this.setChanged();
+			this.notifyObservers("fini");
+			this.partie.verifierFinPartie();
 		}
 
 		//}

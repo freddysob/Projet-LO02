@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class Partie extends Observable{
     //@objid ("79e8229f-77de-4a75-97e1-fe3782043a6b")
     private Statut statut;
-    
-    private boolean text;
 
+    private boolean text;
+    
     public boolean isText() {
 		return text;
 	}
@@ -54,9 +54,12 @@ public class Partie extends Observable{
     		for(i=0; i<this.joueur.size(); i++){
     			if (this.joueur.get(i).getNbPoints()>=this.pointsMax){
     				System.out.println("Partie Terminée! Gagnant : "+ this.joueur.get(i).getNom());
+    				this.setChanged();
+    	    		this.notifyObservers(this.joueur.get(i).getNom());
     				s=false;
     			}
     	}
+    		
     	return s;
     }
 

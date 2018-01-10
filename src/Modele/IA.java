@@ -32,13 +32,15 @@ public class IA extends Joueur{
 		Carte carteajouer=null;
 
 		this.signalerDerniereCarte();
-		if(Math.random()>0.2 && !this.manche.getHistorique().isEmpty()){
+		if(Math.random()>0.5 && !this.manche.getHistorique().isEmpty()){
 			/*int i=0;
 			boolean o=true;
 			while(o){
 			if(this.manche.getHistorique().get(0).getNom() == this.manche.getHistorique().get(i).getNom()){		
 				if(this.manche.tatamis.carte.size()!=0){*/
-			this.denoncerMCarte(this.manche.getHistorique().get(0));}
+			this.denoncerMCarte(this.manche.getHistorique().get(0));
+			if(Math.random()>0.7 && this.manche.getHistorique().get(0).hand.carte.size()==1){
+			this.denoncerDCarte(this.manche.getHistorique().get(0));}}
 			/*	i++;}
 			else {o=false;}
 			if(i>this.manche.getHistorique().size()-1){o=false;}
@@ -61,7 +63,7 @@ public class IA extends Joueur{
 			}
 			System.out.println(carteajouer);
 			this.jouerCarte(carteajouer);
-
+			this.manche.joueurSuivant(carteajouer, this);
 		}else{
 			if(Math.random()<0.2) {
 				for(int i=0; i<this.hand.carte.size();i++) {
@@ -71,12 +73,13 @@ public class IA extends Joueur{
 					}
 				}
 				this.jouerCarte(carteajouer);
-
+				this.manche.joueurSuivant(carteajouer, this);
 			}else {
-				this.manche.pioche.distribuerCarte(1, this);
+				this.piocher();
+				//this.manche.joueurSuivant(null, this);
 			}
 		}
-		this.manche.joueurSuivant(carteajouer, this);
+		
 	}
 
 	//@objid ("5db48821-e1bb-4323-8520-b4a682114998")
@@ -108,16 +111,13 @@ public class IA extends Joueur{
 		if(this.manche.getHistorique().size()!=0){
 		int i=0;
 		boolean o=true;
+		boolean vrai = false;
 		while(o && i<this.manche.tatamis.carte.size() && i>=0){
 			if(i==0 && joueur.getNom() == this.manche.getHistorique().get(i).getNom() || i!=0 && joueur.getNom() == this.manche.getHistorique().get(i).getNom() && joueur.getNom() != this.manche.getHistorique().get(i+1).getNom()){
 				if(!this.manche.tatamis.verifierValiditeCarte(i)==true) {
-					List<Object> Obs = new ArrayList<Object> ();
-					Obs.add(3);
-					Obs.add(this);
-					Obs.add(true);
-					this.setChanged();
-					this.notifyObservers(Obs);
 					this.manche.penaliserJoueur(3, joueur);
+					vrai=true;
+					o=false;
 				}
 			}
 			else {
@@ -126,6 +126,12 @@ public class IA extends Joueur{
 			
 			i++;
 			if(i>this.manche.getHistorique().size()-1){o=false;}}
+		List<Object> Obs = new ArrayList<Object> ();
+		Obs.add(3);
+		Obs.add(this);
+		Obs.add(vrai);
+		this.setChanged();
+		this.notifyObservers(Obs);
 		}
 		
 	}

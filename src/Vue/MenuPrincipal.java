@@ -90,7 +90,11 @@ public class MenuPrincipal {
 		panel.setLayout(gbl_panel);
 		
 		final Main M2= new Main();
-		M2.setPi(new Pioche(M.getM()));
+
+		M2.setP(new Partie());
+		M2.setV(new Variante(1,TypVariante.Minimale));
+		M2.setM(new Manche(M2.getV(),M2.getP()));
+		M2.setPi(new Pioche(M2.getM()));
 		M2.setT(new Tatamis());
 		JButton btnNewButton = new JButton("     Jouer      ");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -124,9 +128,33 @@ public class MenuPrincipal {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-//							M2.setP(new Partie());
-//							M2.setV(new Variante(1,TypVariante.Minimale));
-//							M2.setM(new Manche(M.getV(),M2.getP()));
+							
+							if(M2.getM().joueur.size()==0){  //Creation Options par defaut
+								
+								
+								M2.getM().joueur.add(new Joueur("Test", 1, null));
+								M2.getM().joueur.add(new IA("Test", 2, null));
+								
+								Joueur Joueur0 = new Joueur("Test", 1, null);
+								
+								Hand Main1 = new Hand(Joueur0);
+								M2.getM().joueur.get(0).setHand(Main1);
+								Hand Main2 = new Hand(Joueur0);
+								M2.getM().joueur.get(1).setHand(Main2);
+								
+								M2.getM().setNbJoueurs(M2.getM().joueur.size());
+								M2.getM().joueur.get(0).setEtatActif(true);
+								M2.getM().joueur.get(0).setTypePhysique(true);
+								M2.getM().joueur.get(0).setManche(M2.getM());
+								
+								M2.getM().joueur.get(1).setEtatActif(false);
+								M2.getM().joueur.get(1).setTypePhysique(false);
+								M2.getM().joueur.get(1).setManche(M2.getM());
+								
+								
+								}
+							
+							
 							 System.out.println("Liste joueurs manche après transmission : " + M2.getM().getJoueur());
 							 System.out.println("Variante manche après transmission : " + M2.getM().getVariante());
 							
@@ -141,7 +169,6 @@ public class MenuPrincipal {
 						}
 					}
 				});
-				// TODO Auto-generated method stub
 			}
 		});
 		
