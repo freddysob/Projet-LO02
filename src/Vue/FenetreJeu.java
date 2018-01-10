@@ -455,8 +455,11 @@ public class FenetreJeu implements Observer {
 		
 		if (instanceObservable instanceof Pioche){
 			
+			List<Object> tab= (ArrayList) arg1;
+			if((int)tab.get(0)==1){
+			System.out.println("Nb cartes pioche graphique" + pioche.getComponents().length);
 			JButton J = (CarteG) pioche.getComponent(0);
-			Joueur joue = (Joueur) arg1;
+			Joueur joue = (Joueur) tab.get(1);
 			System.out.println(joue.hand.carte.size()+ "dans obs");
 			
 			if(joue.isTypePhysique()) {
@@ -498,10 +501,36 @@ public class FenetreJeu implements Observer {
 				public void actionPerformed(ActionEvent arg0) {
 					if (Manche.joueur.get(0).isEtatActif()) {
 						Manche.joueur.get(0).piocher();
-						Manche.joueurSuivant(null, Manche.joueur.get(0));
+						//Manche.joueurSuivant(null, Manche.joueur.get(0));
 					}
 				}
 			});
+			}
+			if((int)tab.get(0)==2){
+				List<Carte> piocheRecup = (List<Carte>) tab.get(1);
+				int i=0;
+				while(tatamis.getComponents().length>1){
+				tatamis.remove(tatamis.getComponent(1));
+				i++;}
+				System.out.println("Re 2");
+				i=0;
+				while(i<piocheRecup.size()){
+					CarteG carteg= new CarteG(piocheRecup.get(i).getNumero(),piocheRecup.get(i).getType(),pioche);
+					pioche.add(carteg, i);
+					pioche.repaint();
+					((CarteG) pioche.getComponent(i)).retourner();
+					 CarteG J2 = (CarteG) pioche.getComponent(i);
+						J2.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent arg0) {
+								if (Manche.joueur.get(0).isEtatActif()) {
+									Manche.joueur.get(0).piocher();
+								}
+							}
+						});
+					System.out.println("Reconstitution: Graphique : [" +carteg.getNumero()+","+carteg.getType()+ "] / Modele : " +piocheRecup.get(i));
+					i++;
+				}
+			}
 		}
 			  
 		

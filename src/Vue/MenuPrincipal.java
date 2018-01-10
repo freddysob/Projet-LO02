@@ -155,8 +155,8 @@ public class MenuPrincipal {
 								}
 							
 							
-							 System.out.println("Liste joueurs manche aprÃ¨s transmission : " + M2.getM().getJoueur());
-							 System.out.println("Variante manche aprÃ¨s transmission : " + M2.getM().getVariante());
+							 System.out.println("Liste joueurs manche après transmission : " + M2.getM().getJoueur());
+							 System.out.println("Variante manche après transmission : " + M2.getM().getVariante());
 							
 						
 						
@@ -300,7 +300,7 @@ public class MenuPrincipal {
 				    Ma.getM().setNbJoueurs(Ma.getP().joueur.size());
 				    Ma.getM().setJoueur(Ma.getP().getJoueur());
 				    
-				    System.out.println("Liste joueurs manche aprÃ¨s saisie : " +Ma.getM().getJoueur());
+				    System.out.println("Liste joueurs manche après saisie : " +Ma.getM().getJoueur());
 				   
 				    // Transmission des saisies dans une variable "final"
 				    M.setM(Ma.getM());
@@ -308,7 +308,7 @@ public class MenuPrincipal {
 				    M.setV(Ma.getV());
 				    M.getM().setNbJoueurs(M.getM().joueur.size());
 				   
-				    //Copie des saisies dans la variable Main "final" qui sera utilisÃ©e pour construire la fenÃªtre de jeu
+				    //Copie des saisies dans la variable Main "final" qui sera utilisée pour construire la fenêtre de jeu
 				    
 				    M2.setM(M.getM());
 				    M2.setP(M.getP());

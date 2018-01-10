@@ -152,7 +152,7 @@ public class Manche extends Observable{
 	}
 
 	//@objid ("e409e2ce-2222-4319-bbf8-e8959e2145be")
-	void setVariante(Variante value) {
+	public void setVariante(Variante value) {
 		// Automatically generated method. Please delete this comment before entering specific code.
 		this.variante = value;
 	}
@@ -330,6 +330,7 @@ public class Manche extends Observable{
 		joue.setEtatActif(true);
 		this.setChanged();
 		this.notifyObservers(joue);
+		System.out.println("Joueur actif"+joue);
 		return(joue);
 	}
 

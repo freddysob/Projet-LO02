@@ -63,7 +63,7 @@ public class IA extends Joueur{
 			}
 			System.out.println(carteajouer);
 			this.jouerCarte(carteajouer);
-
+			this.manche.joueurSuivant(carteajouer, this);
 		}else{
 			if(Math.random()<0.2) {
 				for(int i=0; i<this.hand.carte.size();i++) {
@@ -73,12 +73,12 @@ public class IA extends Joueur{
 					}
 				}
 				this.jouerCarte(carteajouer);
-
+				this.manche.joueurSuivant(carteajouer, this);
 			}else {
 				this.piocher();
 			}
 		}
-		this.manche.joueurSuivant(carteajouer, this);
+		
 	}
 
 	//@objid ("5db48821-e1bb-4323-8520-b4a682114998")

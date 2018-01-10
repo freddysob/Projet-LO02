@@ -22,7 +22,7 @@ public class ControleurJoueur {
 	Manche M;
 
 	public ControleurJoueur(JButton SignalerDerniereCarte, JButton DenoncerDerniereCarte, JButton DenoncerMauvaiseCarte,
-			final JLayeredPane Tatamis, final JLayeredPane Pioche, final JTabbedPane Joueur, final Manche M) {
+		final JLayeredPane Tatamis, final JLayeredPane Pioche, final JTabbedPane Joueur, final Manche M) {
 		this.SignalerDerniereCarte = SignalerDerniereCarte;
 		this.DenoncerDerniereCarte = DenoncerDerniereCarte;
 		this.DenoncerMauvaiseCarte = DenoncerMauvaiseCarte;
@@ -37,7 +37,7 @@ public class ControleurJoueur {
 				int n = M.joueur.get(0).hand.carte.size();
 				M.joueur.get(0).signalerDerniereCarte();
 				System.out.println("" + M.joueur.get(0).getNom() + " Signale derniere carte");
-				if (M.joueur.get(0).hand.carte.size() > n) {
+				/*if (M.joueur.get(0).hand.carte.size() > n) {
 
 					JButton J = (CarteG) Pioche.getComponent(0);
 					Joueur.add(J);
@@ -57,7 +57,7 @@ public class ControleurJoueur {
 					JOptionPane jop1 = new JOptionPane();
 					jop1.showMessageDialog(null, " Derniere Carte joueur " + M.joueur.get(0).getNom() + "",
 							"Information", JOptionPane.INFORMATION_MESSAGE);
-				}
+				}*/
 			}
 		});
 
@@ -68,9 +68,8 @@ public class ControleurJoueur {
 					int j = 0;
 					int n = M.joueur.get(0).hand.carte.size();
 					M.joueur.get(0).denoncerDCarte(M.getHistorique().get(0));
-					System.out.println("" + M.joueur.get(0).getNom() + " dénonce " + M.getHistorique().get(0).getNom()
-							+ " (derniere carte)");
-					if (M.joueur.get(0).hand.carte.size() > n) {
+					System.out.println("" + M.joueur.get(0).getNom() + " dénonce " + M.getHistorique().get(0).getNom()+ " (derniere carte)");
+					/*if (M.joueur.get(0).hand.carte.size() > n) {
 						for (j = 0; j < 3; j++) {
 							JButton J = (CarteG) Pioche.getComponent(j);
 
@@ -91,7 +90,7 @@ public class ControleurJoueur {
 						JOptionPane jop1 = new JOptionPane();
 						jop1.showMessageDialog(null, " Bien vu ! " + M.joueur.get(0).getNom() + "", "Information",
 								JOptionPane.INFORMATION_MESSAGE);
-					}
+					}*/
 				}
 			}
 		});
@@ -106,7 +105,7 @@ public class ControleurJoueur {
 					M.joueur.get(0).denoncerMCarte(M.getHistorique().get(0));
 					System.out.println("" + M.joueur.get(0).getNom() + " dénonce" + M.getHistorique().get(0).getNom()
 							+ " (Mauvaise carte)");
-					if (M.joueur.get(0).hand.carte.size() > n) {
+					/*if (M.joueur.get(0).hand.carte.size() > n) {
 						for (j = 0; j < 3; j++) {
 							JButton J = (CarteG) Pioche.getComponent(j);
 							Joueur.add(J);
@@ -117,7 +116,7 @@ public class ControleurJoueur {
 							System.out.println("Component to remove in Pioche: " + J);
 							// Boîte du message d'information
 						}
-					}
+					}*/
 				}
 			}
 		});
@@ -129,7 +128,7 @@ public class ControleurJoueur {
 			public void actionPerformed(ActionEvent arg0) {
 				if (M.joueur.get(0).isEtatActif()) {
 					M.joueur.get(0).piocher();
-					M.joueurSuivant(null, M.joueur.get(0));
+					//M.joueurSuivant(null, M.joueur.get(0));
 				}
 			}
 		});

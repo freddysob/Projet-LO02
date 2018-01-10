@@ -140,6 +140,7 @@ public class Joueur extends Observable {
 		System.out.println(this.getNom()+" a pioché");
 		this.manche.pioche.distribuerCarte(1,this);
 		this.manche.getHistorique().add(0,this);
+		this.manche.joueurSuivant(null, this);
 	}
 
 	//@objid ("ad53043c-fa56-4988-98e7-4b52306e1af4")

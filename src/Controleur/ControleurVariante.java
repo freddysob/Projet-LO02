@@ -24,7 +24,7 @@ public class ControleurVariante {
 				CarteG G = new	CarteG(M.pioche.carte.get(i).getNumero(),M.pioche.carte.get(i).getType(), Pioche);
 				//G.setBounds(20, 20, 50, 50);
 				G.retourner();
-				
+
 				Pioche.add(G);
 				JButton C = (CarteG) Pioche.getComponent(0);
 				//C.repaint();

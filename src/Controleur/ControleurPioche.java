@@ -189,7 +189,6 @@ public class ControleurPioche {
 			//Graphics g = null;
 			//C.paintComponent(g);
 			Pioche.remove(J);
-			
 			i=1;
 			fenetre.setEtatLancement(false);
 		}
