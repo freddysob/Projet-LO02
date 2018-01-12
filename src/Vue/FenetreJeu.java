@@ -186,8 +186,7 @@ public class FenetreJeu implements Observer {
 		// Carte
 		
 		
-	Cv = new ControleurVariante(pioche, this.Manche, tatamis,this);
-		
+		Cv = new ControleurVariante(pioche, this.Manche, tatamis,this);
 		Cpi = new ControleurPioche(pioche, tatamis, Joueur, IA_1, IA_2, IA_3, IA_4, IA_5, IA_6, IA_7, this, this.Manche);
 		Ct = new ControleurTatamis();
 		Cj = new ControleurJoueur(SignalerDerniereCarte, DenoncerDerniereCarte, DenoncerMauvaiseCarte, tatamis, pioche, Joueur, this.Manche);
@@ -516,10 +515,10 @@ public class FenetreJeu implements Observer {
 				i=0;
 				while(i<piocheRecup.size()){
 					CarteG carteg= new CarteG(piocheRecup.get(i).getNumero(),piocheRecup.get(i).getType(),pioche);
-					pioche.add(carteg, i);
+					pioche.add(carteg, i+1);
 					pioche.repaint();
-					((CarteG) pioche.getComponent(i)).retourner();
-					 CarteG J2 = (CarteG) pioche.getComponent(i);
+					((CarteG) pioche.getComponent(i+1)).retourner();
+					 CarteG J2 = (CarteG) pioche.getComponent(i+1);
 						J2.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent arg0) {
 								if (Manche.joueur.get(0).isEtatActif()) {
@@ -545,7 +544,7 @@ public class FenetreJeu implements Observer {
 					int i = 0;
 					int ic=0;
 					
-					CarteG carteg = (CarteG) Joueur.getComponent(ic);
+					CarteG carteg = null;
 					if(jouer instanceof IA){
 						System.out.println("Components :");
 						System.out.println("NB elements panel "+jouer.getNom()+" : "+jouer.panel.getComponents().length);
@@ -675,7 +674,7 @@ public class FenetreJeu implements Observer {
 				for(int i = 0; i<Partie.joueur.size();i++){ 
 					M2.getM().joueur.get(i).setHand(new Hand(Partie.joueur.get(i)));
 					System.out.println(Partie.joueur.get(i).hand.carte.size()+" dans la main");
-					M2.getM().joueur.get(i).setEtatActif(true);
+					M2.getM().joueur.get(i).setaFini(false);
 					
 					
 					}
