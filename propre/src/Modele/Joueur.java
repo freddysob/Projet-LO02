@@ -5,26 +5,36 @@ import java.util.*;
 import javax.swing.JLayeredPane;
 
 public class Joueur extends Observable {
+	
+	// attribut permettant de savoir si le joueur joue
 	private boolean etatActif;
 
+	// attribut permettant de savoir si le joueur a fini la manche
 	private boolean aFini;
 
 	private String nom;
 
+	// Si le joueur est humain ou machine
 	private boolean typePhysique;
 
 	private int numeroJoueur;
 
+	// Le nombre de points qu'il a dans la aprtie
 	private int nbPoints;
 
+	// est sur true lorsqu'il a annoce n'avoir qu'une carte
 	private boolean annonceDerniereCarte;
 
+	// sa main
 	public Hand hand;
 
+	// la manche dont il fait partie
 	public Manche manche;
 	
+	// Le panel graphique qui lui est associé
 	public JLayeredPane panel;
 
+	// Constructeur
 	public Joueur(String name, int num, Hand hand) {
 		this.etatActif = false;
 		this.typePhysique = false;
@@ -42,10 +52,7 @@ public class Joueur extends Observable {
 		return s;
 	}
 
-	protected void finalize() {
-	}
-
-
+	// Permet de signaler qu'on a plus qu'une carte. Utilisé uniquement par l'humain
 	public void signalerDerniereCarte() {
 		if(this.hand.carte.size()==1) {
 			this.annonceDerniereCarte=true;
@@ -60,6 +67,7 @@ public class Joueur extends Observable {
 		this.notifyObservers(Obs);
 	}
 
+	// permet de jouer une carte
 	public void jouerCarte(Carte carte) {
 	
 		List<Object> Obs = new ArrayList<Object> ();
@@ -76,6 +84,7 @@ public class Joueur extends Observable {
 		
 	}
 
+	// Permet de dénoncer une dernière carte non annoncé
 	public void denoncerDCarte(Joueur joueur) {
 		boolean vrai = false;
 		if(this.hand.carte.size()==1 && this.annonceDerniereCarte==false) {
@@ -92,10 +101,12 @@ public class Joueur extends Observable {
 		this.notifyObservers(Obs);
 	}
 
+	// Permet d'incrémenter les points d'un joueur
 	public void ajoutPoints(int value) {
 		this.nbPoints+= value;
 	}
-
+	
+	// Permet à l'humain de dénoncer une mauvaise carte de posé
 	public void denoncerMCarte(Joueur joueur) {
 		if(this.manche.getHistorique().size()!=0){
 		int i=0;
@@ -124,10 +135,12 @@ public class Joueur extends Observable {
 		}
 	}
 
+	// Méthode jouer, elle doit être définie car on l'appele que le joueur soit humain ou IA
 	public void jouer() {
 
 	}
 
+	// Permet de piochers
 	public void piocher() {
 		System.out.println(this.getNom()+" a pioché");
 		this.manche.pioche.distribuerCarte(1,this);
@@ -135,6 +148,7 @@ public class Joueur extends Observable {
 		this.manche.joueurSuivant(null, this);
 	}
 
+	// Setter/getter
 	public boolean isEtatActif() {
 		return this.etatActif;
 	}

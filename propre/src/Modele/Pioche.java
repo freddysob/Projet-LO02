@@ -6,22 +6,16 @@ import java.util.List;
 import java.util.Observable;
 
 public class Pioche extends Observable {
+	// liste des cartes de la pioche
 	public List<Carte> carte = new ArrayList<Carte>();
 
+	// manche à laquelle la pioche appartient
 	public Manche manche;
 
+	// constructeur
 	public Pioche(Manche manche) {
 		this.carte = new ArrayList<Carte>();
 		this.manche = manche;
-	}
-
-	public String toString() {
-		String s;
-		s = "[ Pioche ]"; // Affiche le mot "Pioche"
-		return s;
-	}
-
-	protected void finalize() {
 	}
 
 	public List<Carte> getCarte() {
@@ -32,6 +26,7 @@ public class Pioche extends Observable {
 		this.carte = C;
 	}
 
+	// Permet de mettre les cartes du tatamis dans la pioche lorsqu'elle est vide
 	public void reconstituer() {
 		List<Carte> temporaire = new ArrayList<Carte>();
 		this.carte.addAll(this.manche.tatamis.carte);
@@ -50,6 +45,7 @@ public class Pioche extends Observable {
 
 	}
 
+	// permet de distribuer les cartes aux joueurs en début de manche
 	public void distribuerCartesDebut(Variante variante) {
 		for (int i = 0; i < this.manche.joueur.size(); i++) {
 			this.distribuer(variante.getNombreCarteDebut(), this.manche.joueur.get(i));
@@ -61,6 +57,7 @@ public class Pioche extends Observable {
 		this.carte.remove(0);
 	}
 
+	// est appelé par la méthode distribuer carte début
 	public void distribuer(int nombre, Joueur joueur) {
 		for (int i = 0; i < nombre; i++) {
 			joueur.hand.carte.add(this.carte.get(0));
@@ -70,13 +67,13 @@ public class Pioche extends Observable {
 		}
 	}
 
+	// Permet de distribuer les cartes en cas de pioche ou de pénalisation
 	public void distribuerCarte(int nombre, Joueur joueur) {
 
 		for (int i = 0; i < nombre; i++) {
 			System.out.println("Taille pioche modele : " + this.carte.size());
 			if (this.carte.size() < 2) {
 				this.reconstituer();
-				System.out.println("Entre dans le if");
 			}
 			joueur.hand.carte.add(this.carte.get(0));
 			System.out.println("Carte distribuee par la pioche" + this.carte.get(0) + "à" + joueur.getNom()

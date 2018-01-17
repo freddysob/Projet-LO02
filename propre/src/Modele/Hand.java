@@ -3,13 +3,18 @@ package Modele;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hand {
+public class Hand { // Main du joueur
+	
+	// Nombre de cartes dans la main du joueur
 	private int nbCartes;
 
+	// Joueur à qui appartient la main
 	public Joueur joueur;
 
+	// Liste des cartes dans la main du joueur
 	public List<Carte> carte = new ArrayList<Carte>();
 
+	// Constructeur
 	public Hand(Joueur J) {
 		this.nbCartes = 0;
 		this.joueur = J;
@@ -42,6 +47,7 @@ public class Hand {
 		this.carte = value;
 	}
 
+	// Permet de vérifieer si la main est vide, et si c'est le cas gère l'attribution des points
 	public boolean mainVide() {
 		boolean fini = true;
 		if (this.carte.isEmpty()) {

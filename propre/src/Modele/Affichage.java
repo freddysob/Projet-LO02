@@ -4,11 +4,16 @@ import java.util.Scanner;
 
 
 public class Affichage {
+	
+	// Scanner permettant de récupérer la saisie clavier
 	Scanner sc = new Scanner(System.in);
+	
+	// Constructeur
 	public Affichage(){
 
 	}
 
+	// Permet de demander le nombr de joueurs
 	public int saisieNombreDejoueurs(boolean o){
 		int nbj=0;
 
@@ -34,6 +39,7 @@ public class Affichage {
 		return nbj;
 	}
 	
+	// Permet de demander le nombre de points à atteindre pour gagner la partie
 	public int saisiePointMax(boolean o1){
 		int nbj=0;
 		while (o1==false){
@@ -56,9 +62,9 @@ public class Affichage {
 	return nbj;
 	}
 
-
+	// Crèe les joueurs en demandant le nom du joueur
 	public void creationJoueurs(Partie P, Joueur Joueurs[]){
-		for (int i=0;i<P.getNbJoueurs();i++){         // Creation des joueurs                        
+		for (int i=0;i<P.getNbJoueurs();i++){             
 
 			if(i==0){
 				System.out.println("Entrer votre nom ");
@@ -79,6 +85,7 @@ public class Affichage {
 
 	}
 
+	// Permet de demander quelle variante doit être utilisée
 	public void choisirVariante(Variante V, int n) {
 
 		boolean avance = false;
@@ -128,6 +135,8 @@ public class Affichage {
 			}
 		}
 	}
+	
+	// Demande au joueur quelle action il veut faire
 	public void tourJeuJoueurPhysique(Partie P, Manche M, int i1){
 		int h=0;
 		boolean forward=false;
@@ -162,7 +171,6 @@ public class Affichage {
 				else{
 					System.out.println("Votre saisie est invalide");
 					forward=false;}
-				// traitement à faire dans ce cas
 			}
 		}
 

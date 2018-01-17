@@ -4,14 +4,19 @@ import java.util.*;
 
 
 public class Variante extends Observable{
-    private int nbJeuDeCartes;
+    // nombre de jeux de cartes dont a besoin la variante
+	private int nbJeuDeCartes;
 
+	// nom de la variante
     private TypVariante nom;
 
+    // liste des cartes de la variante
     public List<Carte> carte = new ArrayList<Carte> ();
     
+    // nombre de carte à distribuer au début de la partie
     private int nombreCarteDebut;
     
+    // constructeur
     public Variante(int nbCartes, TypVariante nom) {
     	this.nbJeuDeCartes = nbCartes;
         this.nom = nom;
@@ -33,14 +38,6 @@ public class Variante extends Observable{
     public String toString(){
     	String s;
     	s="[ Variante: "+this.nom+"]";         // Affiche seulement le nom de la variante
-    	return s;
-    }
-
-    public void changerPouvoirCarte() {
-    }
-    
-    public List<Carte> creerCartes(TypVariante n){
-    	List<Carte> s=new ArrayList<Carte> ();
     	return s;
     }
 
@@ -77,7 +74,7 @@ public class Variante extends Observable{
 	}    
     
     
-    
+    // Permet de générer le jeu de carte en fonction de la variante
     public List<Carte> genererJeuCartes(){
     	int i=0;
     	List<Carte> L = new ArrayList<Carte> ();

@@ -1,5 +1,5 @@
 package Modele;
 
-public enum Statut {
+public enum Statut {// liste des statut de la partie
 	Encours, Terminee;
 }

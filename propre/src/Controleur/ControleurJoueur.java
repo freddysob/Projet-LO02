@@ -29,6 +29,7 @@ public class ControleurJoueur {
 		this.Joueur = Joueur;
 		this.M = M;
 
+		// action bouton signaler dernière carte
 		SignalerDerniereCarte.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -47,6 +48,7 @@ public class ControleurJoueur {
 			}
 		});
 
+		// action bouton dénoncer dernière carte
 		DenoncerMauvaiseCarte.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (M.getHistorique().size() != 0) {
@@ -57,9 +59,11 @@ public class ControleurJoueur {
 			}
 		});
 		JButton J = (CarteG) Pioche.getComponent(0);
+		// retire l'effet de la carte
 		for (ActionListener act : J.getActionListeners()) {
 			J.removeActionListener(act);
 		}
+		// ajoute l'action de jouer la carte à la carte
 		J.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (M.joueur.get(0).isEtatActif()) {

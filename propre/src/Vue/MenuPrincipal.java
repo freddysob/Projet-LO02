@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 
 
 
-public class MenuPrincipal {
+public class MenuPrincipal { // menu principal de l'application
 
 	private JFrame frame;
 	

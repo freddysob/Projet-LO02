@@ -2,12 +2,14 @@ package Modele;
 
 import java.util.Scanner;
 
-public class Commande extends Carte {
+public class Commande extends Carte { // Commande permet de changer la couleur
 	
+	// Constructeur
 	public Commande(NumeroCarte num, TypCarte typ) {
 		super(num, typ, 23);
 	}
 
+	// Permet d'appliquer le pouvoir de la carte
 	public void appliquerPouvoir(Manche manche, Joueur J) {
 	  String var="";
 	  String Co="Co";

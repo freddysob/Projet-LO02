@@ -1,6 +1,6 @@
 package Modele;
 
-public class Rejoueur extends Carte {
+public class Rejoueur extends Carte { // Pouvoir de rejouer
 
 	public Rejoueur(NumeroCarte num, TypCarte typ) {
 		super(num, typ, 27);

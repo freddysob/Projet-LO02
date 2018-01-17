@@ -1,12 +1,13 @@
 package Modele;
 
 
-public class Piocheur1 extends Carte {
+public class Piocheur1 extends Carte { // Pouvoir faire piocher une carte
 
 	public Piocheur1(NumeroCarte num, TypCarte typ) {
 		super(num, typ, 10);
 	}
 
+	// Permet d'appeler le pouvoir 
 	public void appliquerPouvoir(Manche manche, Joueur J) {
 		Joueur precedent = null;
 		for (int i = 0; i < manche.joueur.size(); i++) {

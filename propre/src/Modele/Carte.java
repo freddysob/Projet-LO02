@@ -3,14 +3,18 @@ package Modele;
 import java.util.*;
 
 public class Carte extends Observable {
+	
 	private NumeroCarte numero;
 
 	private TypCarte type;
 
+	// Valeur utilisé pour l'IA lorsqu'elle joue, elle joue le poids le plus élevé
 	private int poids;
 
+	// Où se trouve la carte
 	private LocalisationCarte localisation;
 
+	// Constructeur d'une carte classique
 	public Carte(NumeroCarte num, TypCarte typ) {
 		this.poids = 5;
 		this.numero = num;
@@ -18,6 +22,7 @@ public class Carte extends Observable {
 		this.localisation = LocalisationCarte.Pioche;
 	}
 
+	// Constructeur d'une carte avec pouvoir utilisé par les classes pouvoirs
 	public Carte(NumeroCarte num, TypCarte typ, int poids) {
 		this.numero = num;
 		this.type = typ;
@@ -31,6 +36,7 @@ public class Carte extends Observable {
 		return s;
 	}
 
+	// Permet de définir quel est le pouvoir de la carte
 	public void appliquerPouvoir(Manche manche, Joueur J) {
 
 		manche.tatamis.setType(manche.tatamis.carte.get(0).getType());
@@ -38,6 +44,7 @@ public class Carte extends Observable {
 
 	}
 
+	// Getter/Setter
 	public NumeroCarte getNumero() {
 		return this.numero;
 	}

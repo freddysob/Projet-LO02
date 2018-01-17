@@ -5,6 +5,7 @@ import java.util.List;
 
 
 public class IA extends Joueur{
+	// Situatuon de l'IA dans la partie
 	private SituationIA situation;
 
 	public Joueur joueur;
@@ -13,12 +14,7 @@ public class IA extends Joueur{
 		super("IA "+ num +"",num, hand);
 	}
 
-
-	public List<Integer> prioriserCartes() {
-		List<Integer> s = new ArrayList<Integer> ();
-		return s;
-	}
-
+	// Methode jouer de l'IA
 	public void jouer() {
 		int poids = -100;
 		Carte carteajouer=null;
@@ -70,6 +66,8 @@ public class IA extends Joueur{
 		this.situation = value;
 	}
 
+	
+	// Permet à l'IA d'annoncer qu'elle n'a qu'une carte
 	public void signalerDerniereCarte() {
 		if(this.hand.carte.size()==1) {
 			this.setAnnonceDerniereCarte(true);
@@ -83,6 +81,7 @@ public class IA extends Joueur{
 		}
 	} 
 
+	// Permet à l'IA de dénoncer lorsqu'une mauvaise carte est posé
 	public void denoncerMCarte(Joueur joueur) {
 		if(this.manche.getHistorique().size()!=0){
 		int i=0;

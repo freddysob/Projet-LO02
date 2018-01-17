@@ -4,8 +4,11 @@ import java.util.*;
 import java.util.ArrayList;
 
 public class Partie extends Observable {
+	
+	// Permet de connaitre le statut de la partie
 	private Statut statut;
 
+	// Permet de savoir si on joue en console (texte) ou en graphique
 	private boolean text;
 
 	public boolean isText() {
@@ -16,12 +19,16 @@ public class Partie extends Observable {
 		this.text = text;
 	}
 
+	// nombre de joueurs de la partie
 	private int nbJoueurs;
 
+	// nombre de points pour finir la partie
 	private int pointsMax;
 
+	// liste des joueurs jouant la partie
 	public List<Joueur> joueur = new ArrayList<Joueur>();
 
+	// constructeur
 	public Partie() {
 		this.statut = Statut.Encours;
 		this.nbJoueurs = 0;
@@ -37,6 +44,7 @@ public class Partie extends Observable {
 		return s;
 	}
 
+	// Permet de vérifier si la partie est finie
 	public boolean verifierFinPartie() {
 		boolean s = true;
 		int i = 0;
@@ -84,9 +92,4 @@ public class Partie extends Observable {
 
 		this.pointsMax = value;
 	}
-
-	public static void main(String[] args) {
-
-	}
-
 }

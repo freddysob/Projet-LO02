@@ -11,14 +11,21 @@ import javax.swing.JLayeredPane;
 
 import Modele.*;
 
-public class CarteG extends JButton {
+public class CarteG extends JButton { // Permet de donner une visualisation graphique à une carte
 
 	private static final long serialVersionUID = 1L;
+	
+	// numéro de la carte dans le modèle
 	public NumeroCarte numero;
+	
+	// type de la carte dans le modèle
 	public TypCarte type;
+	// Panel dans lequel se trouve la carte
 	public JLayeredPane panel;
+	// Permet de savoir si est affiché la face de la carte
 	public boolean positionFace;
 
+	// Constructeur liant une carte à son image
 	public CarteG(NumeroCarte num, TypCarte typ, JLayeredPane p1) {
 		this.numero = num;
 		this.type = typ;
@@ -199,6 +206,7 @@ public class CarteG extends JButton {
 
 	}
 
+	// Permet de mettre la carte de face, ou l'inverse
 	public void retourner() {
 
 		if (positionFace) {

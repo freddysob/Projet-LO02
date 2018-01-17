@@ -1,6 +1,6 @@
 package Modele;
 
-public class Piocheur5 extends Carte {
+public class Piocheur5 extends Carte {// Pouvoir faire piocher 5 cartes
 
 	public Piocheur5(NumeroCarte num, TypCarte typ) {
 		super(num, typ);

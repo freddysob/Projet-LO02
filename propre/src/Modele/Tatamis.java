@@ -6,14 +6,18 @@ import java.util.*;
 
 
 
-public class Tatamis extends Observable{
+public class Tatamis extends Observable{ // Tatamis ou défausse
    
+	// list de ses cartes
     public List<Carte> carte = new ArrayList<Carte> ();
     
+    // type de la carte que le tatamis accepte
     public TypCarte type;
     
+ // numéro de la carte que le tatamis accepte
     public NumeroCarte numero;
    
+    // constructeur
     public Tatamis() {
     	this.carte = new ArrayList<Carte> ();
     }
@@ -23,11 +27,8 @@ public class Tatamis extends Observable{
     	s=""+this.carte.get(0);     // Affichage de la carte de dessus
     	return s;
     }
-    
-   
-    protected void finalize() {
-    }
 
+    // Vérifie si la carte posé est valide
 	public boolean verifierValiditeCarte(int i) {
 		if (this.carte.size() <= 1) {
 			return (true);
@@ -65,6 +66,7 @@ public class Tatamis extends Observable{
         this.type = value;
     }
     
+    // Permet de changer le type de carte accepté par le tatamis
     public void changeType(TypCarte value) {
         this.type = value;
         this.setChanged();

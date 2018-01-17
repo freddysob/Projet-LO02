@@ -4,7 +4,7 @@ import java.util.Collections;
 
 
 
-public class Main {
+public class Main { // Main à lancer pour le jeu en console
 
 	Partie P;
 	Variante V;

@@ -12,12 +12,13 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class FenetreJeu implements Observer {
+public class FenetreJeu implements Observer { // Fenetre de jeu
 
 	private JFrame frame;
 	private Partie Partie;
 	private Manche Manche;
 	private Variante Variante;
+	// permet de savoir si la manche vient d'être lancé
 	private boolean etatLancement = true;
 
 	JButton DenoncerDerniereCarte;
@@ -37,6 +38,7 @@ public class FenetreJeu implements Observer {
 	private JLayeredPane pioche;
 	private JLabel lblTatamis;
 
+	// controllers
 	ControleurJoueur Cj;
 	ControleurPioche Cpi;
 	ControleurVariante Cv;
@@ -306,11 +308,13 @@ public class FenetreJeu implements Observer {
 
 	}
 
+	// update utilisé pour observer les éléments du modèle
 	public void update(Observable instanceObservable, Object arg1) {
 
 		if (instanceObservable instanceof Pioche) {
 
 			List<Object> tab = (ArrayList<Object>) arg1;
+			// action graphique en cas de pioche
 			if ((int) tab.get(0) == 1) {
 				JButton J = (CarteG) pioche.getComponent(0);
 				Joueur joue = (Joueur) tab.get(1);
@@ -346,6 +350,7 @@ public class FenetreJeu implements Observer {
 					}
 				});
 			}
+			// action graphique action en cas de reconsitution de la pioche
 			if ((int) tab.get(0) == 2) {
 				List<Carte> piocheRecup = (List<Carte>) tab.get(1);
 				int i = 0;
@@ -374,6 +379,7 @@ public class FenetreJeu implements Observer {
 
 		if (instanceObservable instanceof Joueur) {
 			List<Object> tab = (ArrayList) arg1;
+			// action graphique si une carte est joué
 			if ((int) tab.get(0) == 1) {
 				Carte carte = (Carte) tab.get(2);
 				Joueur jouer = (Joueur) tab.get(1);
@@ -425,6 +431,7 @@ public class FenetreJeu implements Observer {
 				}
 
 			}
+			// action graphique si une dénonciation de dernière carte est faite
 			if ((int) tab.get(0) == 2) {
 
 				if ((boolean) tab.get(2)) {
@@ -441,6 +448,7 @@ public class FenetreJeu implements Observer {
 					}
 				}
 			}
+			// action graphique si une mauvaise carte est dénoncé
 			if ((int) tab.get(0) == 3) {
 
 				if ((boolean) tab.get(2)) {
@@ -457,6 +465,7 @@ public class FenetreJeu implements Observer {
 					}
 				}
 			}
+			// action graphique si il y a l'annonce d'une dernirèe carte
 			if ((int) tab.get(0) == 4) {
 				JOptionPane.showMessageDialog(null,
 						((Joueur) tab.get(1)).getNom() + " annonce n'avoir plus qu'une carte", "Information",
@@ -464,21 +473,20 @@ public class FenetreJeu implements Observer {
 			}
 		}
 
+		// action graphique lorsqu'une carte est commande est choisie, permettant de savoir qu'est-ce qui a été choisi
 		if (instanceObservable instanceof Tatamis) {
 			JOptionPane.showMessageDialog(null, arg1 + " a été choisi", "Information", JOptionPane.INFORMATION_MESSAGE);
 		}
-
-		if (instanceObservable instanceof Variante) {
-
-		}
-
+		
 		if (instanceObservable instanceof Manche) {
+			// action graphique quand un joueur doit jouer
 			if (arg1 instanceof Joueur) {
 				Joueur joue = (Joueur) arg1;
 				if (!joue.isTypePhysique()) {
 					joue.jouer();
 				}
 			}
+			// action graphique quand une manche est finie
 			if (arg1 instanceof String) {
 				String message = "";
 				for (int i = 0; i < Partie.joueur.size(); i++) {
@@ -512,6 +520,7 @@ public class FenetreJeu implements Observer {
 				window.getFrame().setVisible(true);
 				window.update(Manche, window);
 			}
+			// action graphique quand une partie est finie
 			if (instanceObservable instanceof Partie) {
 				JOptionPane.showMessageDialog(null, arg1 + " est le gagnant", "Information",
 						JOptionPane.INFORMATION_MESSAGE);

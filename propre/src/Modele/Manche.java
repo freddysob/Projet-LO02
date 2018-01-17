@@ -2,31 +2,39 @@ package Modele;
 
 import java.util.*;
 
-public class Manche extends Observable{
+public class Manche extends Observable{ // Classe de la manche. A savoir qu'une manche est un composant de la partie
+	
+	// nombre de joueurs participant à la partie
 	private int nbJoueurs;
 
+	// Permet de savoir si le jeu tourne dans le sens des aiguilles d'une montre, ou non
 	private boolean sensJeuPos;
 
+	// Variante actuellement utilisé
 	private Variante variante;
 
+	// liste des joueurs de la manche
 	public List<Joueur> joueur = new ArrayList<Joueur> ();
 
+	// liste des gagnants
 	public List<Joueur> gagnants = new ArrayList<Joueur> ();
 
+	// tatamis de la manche
 	public Tatamis tatamis;
 
+	// pioche de la manche
 	public Pioche pioche;
 
+	// partie dont elle fait partie
 	public Partie partie;
 	
+	// Permet d'avoir un historique des joueurs ayant joué
 	public List<Joueur> historique = new ArrayList<Joueur> ();
 	
+	// Permet de savoir si la dernière action est une carte rejouer de posé. Utilisé pour joueur suivant
 	private boolean derniereCarteEstRejouer;
-	
 
-
-	
-
+	// constructeur
 	public Manche( Variante variante, Partie partie) {
 		boolean partieFinie=false;
 		for(int i=0; i<this.joueur.size(); i++) {
@@ -52,10 +60,12 @@ public class Manche extends Observable{
 		return s;
 	}
 
+	// Pénalise un joueur s'il est dénoncé ou s'il dénonce mal
 	public void penaliserJoueur(int nombre, Joueur joueur) {
 		pioche.distribuerCarte(nombre, joueur); 
 	}
 
+	// Permet à la fin de la manche de réinitialisé les paramètre du joueur nécessaires
 	public void initialiserJoueur() {
 		for(int i=0; i<this.joueur.size(); i++) {
 			this.joueur.get(i).setEtatActif(false);
@@ -151,6 +161,7 @@ public class Manche extends Observable{
 	}
 	
 	
+	// utilisé dans l'interface graphique pour choisir la variante
 	 public Variante choisirVariante( int n){
 
 		 Variante V = new Variante(1,this.getVariante().getNom());
@@ -216,7 +227,7 @@ public class Manche extends Observable{
 		}
 	
 	
-
+	 // Permet d'appeler le joueur devant ensuite joué
 	public Joueur joueurSuivant(Carte cartePose, Joueur actif) {
 		ArrayList<Joueur> temp = new ArrayList <Joueur>();
 		for(int i=0; i<this.joueur.size(); i++) {
@@ -303,6 +314,7 @@ public class Manche extends Observable{
 		return(joue);
 	}
 
+	// Permet la mise en place de 2 secondes de pause entre les tours en console
 	public void compteARebours(){
 		int tempsTransit=1000;
 		int it=0;
@@ -313,6 +325,7 @@ public class Manche extends Observable{
 		System.out.println(" "+it+" sec");} 				// Compte à rebours
 	}
 
+	// Permet de vérifier si la manche est finie et d'attribuer les points
 	public boolean verifierFinManche() {
 		int i = 0;
 		boolean o = false;
